@@ -1,0 +1,10 @@
+[project]
+name = "map-ats-to-company"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "ddgs>=9.14.4",
+    "requests>=2.34.2",
+]
