@@ -1,9 +1,11 @@
+import logging
 import re
 from typing import Optional
 
 from app.schemas.scraped_job import ScrapedJob
 from app.services.scrapers.validators.scraped_job_validator import ScrapedJobValidator
 
+logger = logging.getLogger(__name__)
 
 EMP_TYPE_EXCLUSION_PATTERNS = [
             r"\bintern\b", r"\binternship\b", r"\bco-op\b", 
@@ -25,8 +27,8 @@ class EmploymentTypeValidator(ScrapedJobValidator):
             if EMP_TYPE_EXCLUSION_REGEX.search(job.title):
                 return False
                 
-        except Exception as e:
-            print(f"[EmploymentTypeValidator] Error processing title: {e}")
+        except Exception as exc:
+            logger.exception("Error processing title: %s", exc)
             return False
 
         return self.check_next(job)

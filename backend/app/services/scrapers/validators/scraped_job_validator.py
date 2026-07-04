@@ -1,7 +1,11 @@
-from abc import abstractmethod, ABC
+import logging
+from abc import ABC, abstractmethod
 from typing import Optional
 
 from app.schemas.scraped_job import ScrapedJob
+
+logger = logging.getLogger(__name__)
+
 
 class ScrapedJobValidator(ABC):
     def __init__(self, next_validator: Optional[ScrapedJobValidator] = None):
