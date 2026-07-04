@@ -1,5 +1,5 @@
 from datetime import datetime, timezone
-from typing import Final
+from typing import Final, Optional
 
 from app.schemas.scraped_job import ScrapedJob
 from app.services.scrapers.ats_scrapers.base_ats_scraper import BaseATSScraper
@@ -38,14 +38,21 @@ class GreenhouseScraper(BaseATSScraper):
 
         return scrape_url
     
-    def map_to_scraped_job(self, job: dict, company_name: str) -> ScrapedJob:
-        scraped_job = ScrapedJob(
-                        title=job.get('title'),
-                        location=job.get('location', {}).get('name', 'Unknown'),
-                        posted_at=job.get('updated_at'),
-                        url=job.get('absolute_url'),
-                        company=company_name,
-                        platform="Greenhouse"
-                    )
+    def map_to_scraped_job(self, job: dict, company_name: str) -> Optional[ScrapedJob]:
+        title = job.get('title')
+        url = job.get('absolute_url')
+        
+        loc_data = job.get('location') or {}
+        loc_name = loc_data.get('name') if isinstance(loc_data, dict) else None
 
-        return scraped_job
+        if not title or not url or not loc_name:
+            return None
+
+        return ScrapedJob(
+            title=title,
+            location=loc_name,
+            posted_at=job.get('updated_at'),
+            url=url,
+            company=company_name,
+            platform="Greenhouse"
+        )

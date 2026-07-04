@@ -1,5 +1,8 @@
+import asyncio
 import logging
 from abc import abstractmethod
+from random import random
+from typing import Optional
 
 import httpx
 
@@ -23,25 +26,53 @@ class BaseATSScraper(BaseScraper):
         return company_url + url_params
     
     @abstractmethod
-    def map_to_scraped_job(self, job: dict, company_name: str) -> ScrapedJob:
+    def map_to_scraped_job(self, job: dict, company_name: str) -> Optional[ScrapedJob]:
         pass
-    
+
+
     async def fetch(self, company_name: str) -> list[ScrapedJob]:
         url = self.build_company_url(company_name)
         jobs = []
-        try:
-            async with httpx.AsyncClient() as client:
-                r = await client.get(url, timeout=8.0)
+        
+        max_retries = 3
+        base_delay = 2.0 
+        
+        for attempt in range(max_retries):
+            current_timeout = httpx.Timeout(12.0 + (attempt * 10.0), connect=5.0)
+            
+            try:
+                async with httpx.AsyncClient() as client:
+                    r = await client.get(url, timeout=current_timeout)
+                
+                if r.status_code == 200:
+                    data = r.json()
+                    raw_jobs = data if isinstance(data, list) else data.get("jobs", [])
+                    
+                    for job in raw_jobs:
+                        try:
+                            scraped_job = self.map_to_scraped_job(job, company_name)
+                            if scraped_job:
+                                jobs.append(scraped_job)
+                        except Exception as map_err:
+                            logger.warning(f"Map error for {company_name}: {map_err}")
+                    return jobs 
+                    
+                elif r.status_code in [429, 500, 502, 503, 504]:
+                    logger.warning(f"Rate limit/Server error {r.status_code} for {company_name}. Retrying...")
+                else:
+                    logger.error(f"Permanent failure status {r.status_code} for {company_name}.")
+                    return []
 
-            if r.status_code == 200:
-                logger.debug("Fetched %s jobs for %s from %s", len(r.json().get("jobs", [])), company_name, url)
-                for job in r.json().get("jobs", []):
-                    scraped_job = self.map_to_scraped_job(job, company_name)
-                    jobs.append(scraped_job)
-            else:
-                logger.warning("Received status %s while scraping %s", r.status_code, company_name)
+            except (httpx.ReadTimeout, httpx.ConnectTimeout) as t_err:
+                logger.warning(f"Timeout on attempt {attempt + 1} for {company_name}: {t_err}")
+            except httpx.RequestError as req_err:
+                logger.error(f"Network request error for {company_name}: {req_err}")
+                return []
 
-        except Exception as exc:
-            logger.exception("Exception while scraping jobs for %s: %s", company_name, exc)
+            if attempt < max_retries - 1:
+                delay = (base_delay * (2 ** attempt)) * random.uniform(0.5, 1.5)
+                logger.info(f"Backing off for {delay:.2f} seconds before retrying {company_name}...")
+                await asyncio.sleep(delay)
 
-        return jobs
+        logger.error(f"All {max_retries} retry attempts failed for {company_name}.")
+        return []

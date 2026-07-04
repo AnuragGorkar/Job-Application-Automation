@@ -1,5 +1,5 @@
 from datetime import datetime, timezone
-from typing import Final
+from typing import Final, Optional
 
 from app.schemas.scraped_job import ScrapedJob
 from app.services.scrapers.ats_scrapers.base_ats_scraper import BaseATSScraper
@@ -25,17 +25,25 @@ class LeverScraper(BaseATSScraper):
             params = self.PARAMS
         )
     
-    def map_to_scraped_job(self, job: dict, company_name: str) -> ScrapedJob:
+    # 3. LEVER SCRAPER
+    def map_to_scraped_job(self, job: dict, company_name: str) -> Optional[ScrapedJob]:
+        title = job.get('text')
+        url = job.get('hostedUrl')
+        
+        categories = job.get('categories') or {}
+        loc_name = categories.get('location')
+
+        if not title or not url or not loc_name:
+            return None
+
         created_at = job.get('createdAt')
         iso_time = datetime.fromtimestamp(created_at / 1000.0, tz=timezone.utc).isoformat() if created_at else None
 
-        scraped_job = ScrapedJob(
-                        title=job.get('text'),
-                        location=job.get('categories', {}).get('location', 'Unknown'),
-                        posted_at=iso_time,
-                        url=job.get('hostedUrl'),
-                        company=company_name,
-                        platform="Lever"
-                    )
-
-        return scraped_job
+        return ScrapedJob(
+            title=title,
+            location=loc_name,
+            posted_at=iso_time,
+            url=url,
+            company=company_name,
+            platform="Lever"
+        )
