@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 from typing import Dict, Optional
-from app.services.resume_updaters.resume_section_enum import ResumeSectionType
-from app.services.resume_updaters.validation_error_enum import ResumeErrorType
+from app.services.resume_updators.resume_section_enum import ResumeSectionType
+from app.services.resume_updators.validation_error_enum import ResumeErrorType
 
 class ResumeChanges(BaseModel):
     SUM: Optional[str] = None

@@ -1,9 +1,9 @@
 import aiofiles
 import re
 from app.schemas.resume_schemas import ResumeChanges
-from backend.app.services.resume_updaters.resume_section_enum import ResumeSectionType
+from app.services.resume_updators.resume_section_enum import ResumeSectionType
 
-class ResumeUpdater:
+class ResumeUpdator:
     def __init__(self, file_path: str):
         self.file_path = file_path
     
@@ -11,14 +11,25 @@ class ResumeUpdater:
         if not new_text:
             return content
         
-        pattern = rf'(%\s*{tag}_START\s*\n)(.*?)(%\s*{tag}_END)'
-        return re.sub(pattern, rf'\1{new_text}\n\3', content, flags=re.DOTALL)
+        # Safely unwrap Enum to its string value if an Enum was passed
+        tag_str = tag.value if hasattr(tag, 'value') else str(tag)
+        
+        pattern = rf'(%\s*{tag_str}_START\s*\n)(.*?)(%\s*{tag_str}_END)'
+        
+        # Using a lambda prevents re.sub from treating backslashes in new_text as regex escapes
+        return re.sub(
+            pattern, 
+            lambda m: f"{m.group(1)}{new_text}\n{m.group(3)}", 
+            content, 
+            flags=re.DOTALL
+        )
 
     async def apply_changes(self, changes: ResumeChanges):
-        async with aiofiles.open(self.file_path, mode='r') as f:
+        async with aiofiles.open(self.file_path, mode='r', encoding='utf-8') as f:
             content = await f.read()
 
         if changes.SUM:
+            # Safely pass strings or Enums; the helper method now unwraps them
             content = self._replace_tag_content(content, ResumeSectionType.SUMMARY, changes.SUM)
             
         if changes.TECHNICAL_SKILLS:
@@ -36,5 +47,5 @@ class ResumeUpdater:
             for key, text in changes.PROJ.items():
                 content = self._replace_tag_content(content, key, text)
 
-        async with aiofiles.open(self.file_path, mode='w') as f:
+        async with aiofiles.open(self.file_path, mode='w', encoding='utf-8') as f:
             await f.write(content)
