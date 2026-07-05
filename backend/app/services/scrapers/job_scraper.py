@@ -35,13 +35,13 @@ class JobScraper:
             jobs = await scraper.fetch(company_name)
             if jobs:
                 logger.info("Found %s jobs for %s on %s", len(jobs), company_name, platform_name)
-                await self.job_queue.put((jobs, platform_name))
+                await self.job_queue.put(jobs)
         except Exception as exc:
             logger.exception("Scrape failed for %s on %s: %s", company_name, platform_name, exc)
 
     async def _validation_job(self):
         while True:
-            job_batch, platform_name = await self.job_queue.get()
+            job_batch = await self.job_queue.get()
 
             if job_batch is None:
                 self.job_queue.task_done()

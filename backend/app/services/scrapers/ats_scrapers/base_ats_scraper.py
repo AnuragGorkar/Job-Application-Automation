@@ -1,7 +1,7 @@
 import asyncio
 import logging
+import random
 from abc import abstractmethod
-from random import random
 from typing import Optional
 
 import httpx
