@@ -19,7 +19,7 @@ class EmploymentTypeValidator(ScrapedJobValidator):
     def __init__(self, next_validator: Optional[ScrapedJobValidator] = None):
         super().__init__(next_validator)
 
-    def validate(self, job: ScrapedJob) -> bool:
+    def _do_validate(self, job: ScrapedJob) -> bool:
         try:
             if not job.title:
                 return False
@@ -31,4 +31,4 @@ class EmploymentTypeValidator(ScrapedJobValidator):
             logger.exception("Error processing title: %s", exc)
             return False
 
-        return self.check_next(job)
+        return self.pass_to_next_validator(job)

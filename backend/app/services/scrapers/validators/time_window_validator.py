@@ -5,7 +5,7 @@ from app.services.scrapers.validators.scraped_job_validator import ScrapedJobVal
 
 
 class TimeWindowValidator(ScrapedJobValidator):
-    def validate(self, job: ScrapedJob) -> bool:    
+    def _do_validate(self, job: ScrapedJob) -> bool:    
         try:
             if not job.posted_at:
                 return False
@@ -21,4 +21,4 @@ class TimeWindowValidator(ScrapedJobValidator):
             print(f"[TimeWindowValidator] Error processing timestamp object: {e}")
             return False
             
-        return self.check_next(job)
+        return self.pass_to_next_validator(job)

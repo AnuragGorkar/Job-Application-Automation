@@ -11,6 +11,7 @@ logger = logging.getLogger(__name__)
 class JobScraper:
     def __init__(self, companies_dict: dict[str, list[str]]):
         logger.info("Initializing JobScraper with %s platforms", len(companies_dict))
+
         self.validator = ValidationsBuilder.get_all_validations()
         self.companies_dict = companies_dict
         self.scraper_dict = {}
@@ -34,13 +35,13 @@ class JobScraper:
             jobs = await scraper.fetch(company_name)
             if jobs:
                 logger.info("Found %s jobs for %s on %s", len(jobs), company_name, platform_name)
-                await self.job_queue.put(jobs)
+                await self.job_queue.put((jobs, platform_name))
         except Exception as exc:
             logger.exception("Scrape failed for %s on %s: %s", company_name, platform_name, exc)
 
     async def _validation_job(self):
         while True:
-            job_batch = await self.job_queue.get()
+            job_batch, platform_name = await self.job_queue.get()
 
             if job_batch is None:
                 self.job_queue.task_done()
@@ -72,5 +73,6 @@ class JobScraper:
 
         await consumer_task
 
+        self.validator.log_validation_stats()
         logger.info("Validation finished. Returning %s matching jobs.", len(self.valid_jobs))
         return self.valid_jobs

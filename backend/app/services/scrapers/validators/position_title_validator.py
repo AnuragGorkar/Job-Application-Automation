@@ -42,7 +42,7 @@ SENIORITY_REGEX = re.compile("|".join(SENIORITY_PATTERNS), re.IGNORECASE)
 
 
 class PositionTitleValidator(ScrapedJobValidator):
-    def validate(self, job: ScrapedJob) -> bool:
+    def _do_validate(self, job: ScrapedJob) -> bool:
         try:
             if not job.title:
                 return False
@@ -54,4 +54,4 @@ class PositionTitleValidator(ScrapedJobValidator):
             print(f"[PositionTitleValidator] Error processing position title: {e}")
             return False
 
-        return self.check_next(job)
+        return self.pass_to_next_validator(job)

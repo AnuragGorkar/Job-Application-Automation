@@ -4,18 +4,10 @@ from app.schemas.scraped_job import ScrapedJob
 from app.services.scrapers.ats_scrapers.base_ats_scraper import BaseATSScraper
 
 class AshbyScraper(BaseATSScraper):
-    _instance = None
-
     BASE_URL: Final[str] = "https://api.ashbyhq.com/posting-api/job-board/"
     PARAMS: Final[dict] = {
         "includeCompensation" : "true"
         }
-
-    def __new__(cls, *args, **kwargs):
-        if cls._instance is None:
-            # Singleton pattern
-            cls._instance = super().__new__(cls)
-        return cls._instance
     
     def __init__(self):
         super().__init__(

@@ -2,6 +2,18 @@ import logging
 import os
 from logging.handlers import RotatingFileHandler
 
+from app.core.config import settings
+
+
+def _should_overwrite_logs() -> bool:
+    env_value = os.getenv("LOG_OVERWRITE", "").strip().lower()
+    if env_value in {"1", "true", "yes", "on"}:
+        return True
+    if env_value in {"0", "false", "no", "off"}:
+        return False
+
+    return settings.log_overwrite or settings.env.lower() in {"dev", "development", "local"}
+
 
 def setup_logging() -> None:
     log_dir = "logs"
@@ -11,7 +23,12 @@ def setup_logging() -> None:
     log_format = "%(asctime)s | %(levelname)-8s | %(name)s | %(message)s"
     formatter = logging.Formatter(log_format)
 
-    file_handler = RotatingFileHandler(log_file, maxBytes=10 * 1024 * 1024, backupCount=5)
+    file_handler = RotatingFileHandler(
+        log_file,
+        maxBytes=10 * 1024 * 1024,
+        backupCount=5,
+        mode="w" if _should_overwrite_logs() else "a",
+    )
     file_handler.setFormatter(formatter)
     file_handler.setLevel(logging.INFO)
 

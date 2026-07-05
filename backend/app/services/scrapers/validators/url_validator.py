@@ -3,7 +3,7 @@ from app.services.scrapers.validators.scraped_job_validator import ScrapedJobVal
 
 
 class URLValidator(ScrapedJobValidator):
-    def validate(self, job: ScrapedJob) -> bool:
+    def _do_validate(self, job: ScrapedJob) -> bool:
         try:
             # Must exist and be a valid HTTP web link
             if not job.url or not job.url.startswith("http"):
@@ -17,4 +17,4 @@ class URLValidator(ScrapedJobValidator):
             print(f"[URLValidator] Error processing URL: {e}")
             return False
 
-        return self.check_next(job)
+        return self.pass_to_next_validator(job)

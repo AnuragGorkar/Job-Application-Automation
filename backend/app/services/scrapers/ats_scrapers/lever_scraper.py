@@ -6,19 +6,11 @@ from app.services.scrapers.ats_scrapers.base_ats_scraper import BaseATSScraper
 
 
 class LeverScraper(BaseATSScraper):
-    _instance = None
-
     BASE_URL: Final[str] = "https://api.lever.co/v0/postings/"
     PARAMS: Final[dict] = {
         "mode" : "json"
         }
 
-    def __new__(cls, *args, **kwargs):
-        if cls._instance is None:
-            # Singleton pattern
-            cls._instance = super().__new__(cls)
-        return cls._instance
-    
     def __init__(self):
         super().__init__(
             base_url = self.BASE_URL, 

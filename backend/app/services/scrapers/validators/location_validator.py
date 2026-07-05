@@ -46,7 +46,7 @@ INTL_REGEX = re.compile("|".join(INTL_PATTERNS), re.IGNORECASE)
 
 
 class LocationValidator(ScrapedJobValidator):
-    def validate(self, job: ScrapedJob) -> bool:
+    def _do_validate(self, job: ScrapedJob) -> bool:
         try: 
             if not job.location:
                 return False
@@ -58,4 +58,4 @@ class LocationValidator(ScrapedJobValidator):
             print(f"[LocationValidator] Error processing location string: {e}")
             return False
 
-        return self.check_next(job)
+        return self.pass_to_next_validator(job)
