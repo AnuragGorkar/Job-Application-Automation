@@ -22,7 +22,8 @@ class ResumeValidator:
             ))
 
     def _check_comma_spacing(self, text: str, section: ResumeSectionType) -> None:
-        if re.search(r',(?!\s)', text):
+        # (?!$) prevents matching commas at the very end of the string
+        if re.search(r',(?!\s)(?!$)', text):
             self.errors.append(ResumeError(
                 error=ResumeErrorType.INVALID_FORMAT,
                 message="Commas must be followed by space.",
@@ -157,8 +158,13 @@ class ResumeValidator:
                         section=ResumeSectionType.PROJECTS
                     ))
 
+                # Strip $|$ before checking latex to avoid false positive on $
+                latex_check_text = text.replace("$|$", "")
+            else:
+                latex_check_text = text
+
             self._check_comma_spacing(text, ResumeSectionType.PROJECTS)
-            self._check_latex_safety(text, ResumeSectionType.PROJECTS)
+            self._check_latex_safety(latex_check_text, ResumeSectionType.PROJECTS)
 
     def _validate_technical_skills(self) -> None:
         skills = self.changes.TECHNICAL_SKILLS
