@@ -1,7 +1,6 @@
 import aiofiles
 import re
 from app.schemas.resume_schemas import ResumeChanges
-from app.services.resume_updators.resume_section_enum import ResumeSectionType
 
 class ResumeUpdator:
     def __init__(self, file_path: str):
@@ -11,12 +10,13 @@ class ResumeUpdator:
         if not new_text:
             return content
         
-        # Safely unwrap Enum to its string value if an Enum was passed
         tag_str = tag.value if hasattr(tag, 'value') else str(tag)
         
-        pattern = rf'(%\s*{tag_str}_START\s*\n)(.*?)(%\s*{tag_str}_END)'
+        # Resilient regex:
+        # .*? handles any trailing spaces/garbage on the START line
+        # (?:\r?\n|\Z) handles Windows/Linux newlines or End-Of-File safely
+        pattern = rf'(%\s*{re.escape(tag_str)}_START.*?(?:\r?\n|\Z))(.*?)(%\s*{re.escape(tag_str)}_END)'
         
-        # Using a lambda prevents re.sub from treating backslashes in new_text as regex escapes
         return re.sub(
             pattern, 
             lambda m: f"{m.group(1)}{new_text}\n{m.group(3)}", 
@@ -29,11 +29,10 @@ class ResumeUpdator:
             content = await f.read()
 
         if changes.SUM:
-            # Safely pass strings or Enums; the helper method now unwraps them
-            content = self._replace_tag_content(content, ResumeSectionType.SUMMARY, changes.SUM)
+            content = self._replace_tag_content(content, "SUM", changes.SUM)
             
         if changes.TECHNICAL_SKILLS:
-            content = self._replace_tag_content(content, ResumeSectionType.SKILLS, changes.TECHNICAL_SKILLS)
+            content = self._replace_tag_content(content, "TECHNICAL_SKILLS", changes.TECHNICAL_SKILLS)
 
         if changes.COURSES:
             for key, text in changes.COURSES.items():

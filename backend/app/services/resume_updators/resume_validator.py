@@ -22,11 +22,18 @@ class ResumeValidator:
             ))
 
     def _check_comma_spacing(self, text: str, section: ResumeSectionType) -> None:
-        # (?!$) prevents matching commas at the very end of the string
         if re.search(r',(?!\s)(?!$)', text):
             self.errors.append(ResumeError(
                 error=ResumeErrorType.INVALID_FORMAT,
                 message="Commas must be followed by space.",
+                section=section
+            ))
+
+    def _check_no_ending_punctuation(self, text: str, section: ResumeSectionType) -> None:
+        if text.strip().endswith(",") or text.strip().endswith("."):
+            self.errors.append(ResumeError(
+                error=ResumeErrorType.INVALID_FORMAT,
+                message="Cannot end with comma or full stop.",
                 section=section
             ))
 
@@ -65,13 +72,6 @@ class ResumeValidator:
                     section=ResumeSectionType.COURSES
                 ))
                 
-            if text.endswith(",") or text.endswith("."):
-                self.errors.append(ResumeError(
-                    error=ResumeErrorType.INVALID_FORMAT,
-                    message="Cannot end with comma or full stop.",
-                    section=ResumeSectionType.COURSES
-                ))
-                
             course_list = text.replace("Courses: ", "").split(",")
             if len(course_list) > 4:
                 self.errors.append(ResumeError(
@@ -80,6 +80,7 @@ class ResumeValidator:
                     section=ResumeSectionType.COURSES
                 ))
 
+            self._check_no_ending_punctuation(text, ResumeSectionType.COURSES)
             self._check_comma_spacing(text, ResumeSectionType.COURSES)
             self._check_latex_safety(text, ResumeSectionType.COURSES)
 
@@ -104,13 +105,7 @@ class ResumeValidator:
                     section=ResumeSectionType.EXPERIENCE
                 ))
 
-            if text.strip().endswith("."):
-                self.errors.append(ResumeError(
-                    error=ResumeErrorType.INVALID_FORMAT,
-                    message="Experience bullet cannot end with full stop.",
-                    section=ResumeSectionType.EXPERIENCE
-                ))
-                
+            self._check_no_ending_punctuation(text, ResumeSectionType.EXPERIENCE)
             self._check_comma_spacing(text, ResumeSectionType.EXPERIENCE)
             self._check_latex_safety(text, ResumeSectionType.EXPERIENCE)
 
@@ -158,11 +153,11 @@ class ResumeValidator:
                         section=ResumeSectionType.PROJECTS
                     ))
 
-                # Strip $|$ before checking latex to avoid false positive on $
                 latex_check_text = text.replace("$|$", "")
             else:
                 latex_check_text = text
 
+            self._check_no_ending_punctuation(text, ResumeSectionType.PROJECTS)
             self._check_comma_spacing(text, ResumeSectionType.PROJECTS)
             self._check_latex_safety(latex_check_text, ResumeSectionType.PROJECTS)
 
@@ -197,13 +192,15 @@ class ResumeValidator:
                     section=ResumeSectionType.SKILLS
                 ))
             
-            if index < len(lines) - 1 and not line.endswith(r'\\'):
+            # Require EVERY line to end with \\
+            if not line.endswith(r'\\'):
                 self.errors.append(ResumeError(
                     error=ResumeErrorType.INVALID_FORMAT,
                     message=f"Line {index + 1} must end with ' \\\\'.",
                     section=ResumeSectionType.SKILLS
                 ))
 
+            self._check_comma_spacing(line, ResumeSectionType.SKILLS)
             self._check_latex_safety(line, ResumeSectionType.SKILLS)
 
     def validate(self, changes: ResumeChanges) -> bool:
