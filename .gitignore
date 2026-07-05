@@ -8,6 +8,11 @@ venv/
 __pycache__/
 *.pyc
 
+# Backend
+app/__pycache__/
+logs/
+*.log
+
 # Frontend
 node_modules/
 dist/
