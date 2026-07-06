@@ -13,7 +13,7 @@ backend_dir = root_dir / "backend"
 sys.path.append(str(backend_dir))
 
 # 2. Import the ResumeManager from your FastAPI app
-from app.services.resume_updators.resume_manager import ResumeManager
+from app.services.resume_updaters.resume_manager import ResumeManager
 
 async def main():
     # 3. Define paths

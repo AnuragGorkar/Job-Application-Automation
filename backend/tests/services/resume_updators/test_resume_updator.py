@@ -2,7 +2,7 @@ import pytest
 import aiofiles
 from pathlib import Path
 from app.schemas.resume_schemas import ResumeChanges
-from app.services.resume_updators.resume_updator import ResumeUpdator
+from app.services.resume_updaters.resume_updater import ResumeUpdater
 
 # Base template mimicking your actual LaTeX file
 BASE_LATEX_CONTENT = """
@@ -39,9 +39,9 @@ def temp_resume_file(tmp_path: Path) -> str:
     return str(file_path)
 
 @pytest.fixture
-def updater(temp_resume_file: str) -> ResumeUpdator:
+def updater(temp_resume_file: str) -> ResumeUpdater:
     """Returns an updater pointed at the temp file."""
-    return ResumeUpdator(temp_resume_file)
+    return ResumeUpdater(temp_resume_file)
 
 # --- Sync Regex Tests ---
 

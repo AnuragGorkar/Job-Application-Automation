@@ -1,4 +1,4 @@
-from app.services.resume_updators import resume_constants as const
+from app.services.resume_updaters import resume_constants as const
 
 class ResumePromptBuilder:
     

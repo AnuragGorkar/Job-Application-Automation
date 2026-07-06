@@ -1,9 +1,9 @@
 import pytest
 from app.schemas.resume_schemas import ResumeChanges
-from app.services.resume_updators.resume_validator import ResumeValidator
-from app.services.resume_updators.validation_error_enum import ResumeErrorType
-from app.services.resume_updators.resume_section_enum import ResumeSectionType
-from app.services.resume_updators import resume_constants as const
+from app.services.resume_updaters.resume_validator import ResumeValidator
+from app.services.resume_updaters.validation_error_enum import ResumeErrorType
+from app.services.resume_updaters.resume_section_enum import ResumeSectionType
+from app.services.resume_updaters import resume_constants as const
 
 @pytest.fixture
 def validator():

@@ -1,12 +1,12 @@
 from pydantic import ValidationError
 from app.schemas.resume_schemas import ResumeChanges
-from app.services.resume_updators.resume_validator import ResumeValidator
-from app.services.resume_updators.resume_updator import ResumeUpdator
-from app.services.resume_updators.exceptions import ResumeValidationError
+from app.services.resume_updaters.resume_validator import ResumeValidator
+from app.services.resume_updaters.resume_updater import ResumeUpdater
+from app.services.resume_updaters.exceptions import ResumeValidationError
 
 class ResumeManager:
     def __init__(self, file_path: str):
-        self.updator = ResumeUpdator(file_path)
+        self.updater = ResumeUpdater(file_path)
         self.validator = ResumeValidator()
 
     async def process_llm_response(self, raw_llm_json: str) -> str:
@@ -22,7 +22,7 @@ class ResumeManager:
             self.validator.validate(changes)
 
             # 3. Apply to LaTeX file
-            await self.updator.apply_changes(changes)
+            await self.updater.apply_changes(changes)
 
             return "SUCCESS"
 

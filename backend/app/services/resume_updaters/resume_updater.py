@@ -2,7 +2,7 @@ import aiofiles
 import re
 from app.schemas.resume_schemas import ResumeChanges
 
-class ResumeUpdator:
+class ResumeUpdater:
     def __init__(self, file_path: str):
         self.file_path = file_path
     

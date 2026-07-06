@@ -1,10 +1,10 @@
 import re
 from typing import List
 from app.schemas.resume_schemas import ResumeChanges, ResumeError
-from app.services.resume_updators.exceptions import ResumeValidationError
-from app.services.resume_updators.validation_error_enum import ResumeErrorType
-from app.services.resume_updators.resume_section_enum import ResumeSectionType
-from app.services.resume_updators import resume_constants as const
+from app.services.resume_updaters.exceptions import ResumeValidationError
+from app.services.resume_updaters.validation_error_enum import ResumeErrorType
+from app.services.resume_updaters.resume_section_enum import ResumeSectionType
+from app.services.resume_updaters import resume_constants as const
 
 class ResumeValidator:
     

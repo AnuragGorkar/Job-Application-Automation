@@ -1,7 +1,7 @@
 import pytest
 import json
 from pathlib import Path
-from app.services.resume_updators.resume_manager import ResumeManager
+from app.services.resume_updaters.resume_manager import ResumeManager
 
 @pytest.fixture
 def temp_resume_file(tmp_path: Path) -> str:
