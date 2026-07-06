@@ -6,7 +6,7 @@ from fastapi import FastAPI
 from app.core.config import settings
 from app.core.constants import COMPANIES
 from app.core.logger import setup_logging
-from app.services.scrapers.job_scraper import JobScraper
+from app.services.job_scrapers.job_scraper import JobScraper
 
 setup_logging()
 logger = logging.getLogger(__name__)

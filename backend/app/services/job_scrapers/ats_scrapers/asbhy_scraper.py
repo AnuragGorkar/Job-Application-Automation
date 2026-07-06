@@ -1,7 +1,7 @@
 from typing import Final, Optional
 
 from app.schemas.scraped_job import ScrapedJob
-from app.services.scrapers.ats_scrapers.base_ats_scraper import BaseATSScraper
+from app.services.job_scrapers.ats_scrapers.base_ats_scraper import BaseATSScraper
 
 class AshbyScraper(BaseATSScraper):
     BASE_URL: Final[str] = "https://api.ashbyhq.com/posting-api/job-board/"

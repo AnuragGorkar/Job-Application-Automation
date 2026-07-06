@@ -1,12 +1,12 @@
 import logging
 from functools import reduce
 
-from app.services.scrapers.validators.employment_type_validator import EmploymentTypeValidator
-from app.services.scrapers.validators.location_validator import LocationValidator
-from app.services.scrapers.validators.position_title_validator import PositionTitleValidator
-from app.services.scrapers.validators.scraped_job_validator import ScrapedJobValidator
-from app.services.scrapers.validators.time_window_validator import TimeWindowValidator
-from app.services.scrapers.validators.url_validator import URLValidator
+from app.services.job_scrapers.validators.employment_type_validator import EmploymentTypeValidator
+from app.services.job_scrapers.validators.location_validator import LocationValidator
+from app.services.job_scrapers.validators.position_title_validator import PositionTitleValidator
+from app.services.job_scrapers.validators.scraped_job_validator import ScrapedJobValidator
+from app.services.job_scrapers.validators.time_window_validator import TimeWindowValidator
+from app.services.job_scrapers.validators.url_validator import URLValidator
 
 logger = logging.getLogger(__name__)
 

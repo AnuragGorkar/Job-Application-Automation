@@ -2,8 +2,8 @@ import asyncio
 import logging
 
 from app.schemas.scraped_job import ScrapedJob
-from app.services.scrapers.scraper_factory import ScraperFactory
-from app.services.scrapers.validators.validations_builder import ValidationsBuilder
+from app.services.job_scrapers.scraper_factory import ScraperFactory
+from app.services.job_scrapers.validators.validations_builder import ValidationsBuilder
 
 logger = logging.getLogger(__name__)
 

@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta, timezone
 
 from app.schemas.scraped_job import ScrapedJob
-from app.services.scrapers.validators.scraped_job_validator import ScrapedJobValidator
+from app.services.job_scrapers.validators.scraped_job_validator import ScrapedJobValidator
 
 
 class TimeWindowValidator(ScrapedJobValidator):

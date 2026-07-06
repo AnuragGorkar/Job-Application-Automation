@@ -1,7 +1,7 @@
 import logging
 
 from app.schemas.scraped_job import ScrapedJob
-from app.services.scrapers.base_scraper import BaseScraper
+from app.services.job_scrapers.base_scraper import BaseScraper
 
 logger = logging.getLogger(__name__)
 

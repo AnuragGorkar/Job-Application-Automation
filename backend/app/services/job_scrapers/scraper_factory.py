@@ -1,8 +1,8 @@
-from app.services.scrapers.ats_scrapers.asbhy_scraper import AshbyScraper
-from app.services.scrapers.ats_scrapers.greenhouse_scraper import GreenhouseScraper 
-from app.services.scrapers.ats_scrapers.lever_scraper import LeverScraper
-from app.services.scrapers.null_scraper import NullScraper
-from app.services.scrapers.base_scraper import BaseScraper
+from app.services.job_scrapers.ats_scrapers.asbhy_scraper import AshbyScraper
+from app.services.job_scrapers.ats_scrapers.greenhouse_scraper import GreenhouseScraper 
+from app.services.job_scrapers.ats_scrapers.lever_scraper import LeverScraper
+from app.services.job_scrapers.null_scraper import NullScraper
+from app.services.job_scrapers.base_scraper import BaseScraper
 
 
 class ScraperFactory:

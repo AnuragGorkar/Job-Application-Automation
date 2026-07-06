@@ -3,7 +3,7 @@ import re
 from typing import Optional
 
 from app.schemas.scraped_job import ScrapedJob
-from app.services.scrapers.validators.scraped_job_validator import ScrapedJobValidator
+from app.services.job_scrapers.validators.scraped_job_validator import ScrapedJobValidator
 
 logger = logging.getLogger(__name__)
 
