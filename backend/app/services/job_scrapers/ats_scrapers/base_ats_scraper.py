@@ -26,9 +26,11 @@ class BaseATSScraper(BaseScraper):
         return company_url + url_params
     
     @abstractmethod
-    def map_to_scraped_job(self, job: dict, company_name: str) -> Optional[ScrapedJob]:
+    def map_to_ats_scraped_job(self, job: dict, company_name: str) -> Optional[ScrapedJob]:
         pass
 
+    def map_to_scraped_job(self, job: dict, company_name: str) -> Optional[ScrapedJob]:
+        return self.map_to_ats_scraped_job(job, company_name)
 
     async def fetch(self, company_name: str) -> list[ScrapedJob]:
         url = self.build_company_url(company_name)

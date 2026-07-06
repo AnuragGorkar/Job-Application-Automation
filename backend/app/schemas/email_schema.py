@@ -4,7 +4,7 @@ from datetime import datetime
 
 class ScrapedEmail(BaseModel):
     email_id: str
-    folder: str  # Added to track which folder the email came from
+    folder: str
     sender_email: str
     subject: str
     time: datetime

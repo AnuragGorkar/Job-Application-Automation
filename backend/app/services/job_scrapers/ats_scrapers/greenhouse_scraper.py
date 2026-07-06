@@ -1,5 +1,9 @@
-from datetime import datetime, timezone
+import html
+import logging
+
+from bs4 import BeautifulSoup
 from typing import Final, Optional
+import datetime
 
 from app.schemas.scraped_job import ScrapedJob
 from app.services.job_scrapers.ats_scrapers.base_ats_scraper import BaseATSScraper
@@ -30,20 +34,26 @@ class GreenhouseScraper(BaseATSScraper):
 
         return scrape_url
     
-    def map_to_scraped_job(self, job: dict, company_name: str) -> Optional[ScrapedJob]:
+    def map_to_ats_scraped_job(self, job: dict, company_name: str) -> Optional[ScrapedJob]:
         title = job.get('title')
         url = job.get('absolute_url')
         
         loc_data = job.get('location') or {}
         loc_name = loc_data.get('name') if isinstance(loc_data, dict) else None
 
-        if not title or not url or not loc_name:
+        raw_description = job.get('content', '')
+        raw_description = html.unescape(raw_description)
+        clean_description = BeautifulSoup(raw_description, 'html.parser').get_text(separator='\n').strip()
+        posted_at = job.get('updated_at', None)
+        
+        if not title or not url or not loc_name or not clean_description or not posted_at:
             return None
 
         return ScrapedJob(
             title=title,
+            description=clean_description,
             location=loc_name,
-            posted_at=job.get('updated_at'),
+            posted_at=posted_at,
             url=url,
             company=company_name,
             platform="Greenhouse"
