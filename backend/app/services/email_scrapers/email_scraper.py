@@ -7,17 +7,18 @@ from email.utils import parseaddr, parsedate_to_datetime
 from datetime import datetime
 from typing import List
 
-from app.core.config import settings
+from src.core.config import get_settings
 from app.schemas.email_schema import ScrapedEmail
 
 # Configure logger
 logger = logging.getLogger(__name__)
+settings = get_settings()
 
 class GmailScraper:
     def __init__(self):
-        self.username = settings.GMAIL_USERNAME
-        self.app_password = settings.GMAIL_APP_PASSWORD
-        self.imap_server = settings.IMAP_SERVER
+        self.username = settings.gmail_username
+        self.app_password = settings.gmail_app_password
+        self.imap_server = settings.imap_server
         
         # Target folders (Quotes handle spaces in folder names)
         self.rejected_folder_name = '"Rejected Jobs"' 
