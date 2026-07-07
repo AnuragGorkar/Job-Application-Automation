@@ -1,7 +1,7 @@
 import asyncio
 import logging
 import random
-from datetime import datetime, timedelta
+from datetime import datetime
 from typing import Optional
 from urllib.parse import parse_qs, urlparse
 
@@ -19,12 +19,12 @@ class MicrosoftScraper(BaseScraper):
         self.company_name = "Microsoft"
         self.frontend_urls = [
             "https://apply.careers.microsoft.com/careers?query=Software+Engineer&start=30&location=Seattle%2C++WA%2C++United+States&pid=1970393556883703&sort_by=timestamp&filter_distance=160&filter_include_remote=1&filter_career_discipline=Software+Engineering%2CData+Science&filter_profession=software+engineering&filter_seniority=Entry%2CMid-Level",
-        "https://apply.careers.microsoft.com/careers?query=Software+Engineer&start=0&location=Sunnyvale%2C++CA%2C++United+States&pid=1970393556918542&sort_by=relevance&filter_distance=160&filter_include_remote=1&filter_career_discipline=Software+Engineering%2CData+Science&filter_profession=software+engineering&filter_seniority=Entry%2CMid-Level",
-        "https://apply.careers.microsoft.com/careers?query=Software+Engineer&start=0&location=Mountain+View%2C++CA%2C++United+States&pid=1970393556849595&sort_by=relevance&filter_distance=160&filter_include_remote=1&filter_career_discipline=Software+Engineering%2CData+Science&filter_profession=software+engineering&filter_seniority=Entry%2CMid-Level",
-        "https://apply.careers.microsoft.com/careers?query=Software+Engineer&start=0&location=New+York%2C++NY%2C++United+States&pid=1970393556849595&sort_by=relevance&filter_distance=160&filter_include_remote=1&filter_career_discipline=Software+Engineering%2CData+Science&filter_profession=software+engineering&filter_seniority=Entry%2CMid-Level",
-        "https://apply.careers.microsoft.com/careers?query=Software+Engineer&start=0&location=Austin%2C++TX%2C++United+States&pid=1970393556918542&sort_by=relevance&filter_distance=160&filter_include_remote=1&filter_career_discipline=Software+Engineering%2CData+Science&filter_profession=software+engineering&filter_seniority=Entry%2CMid-Level",
-        "https://apply.careers.microsoft.com/careers?query=Software+Engineer&start=0&location=San+Francisco%2C++CA%2C++United+States&pid=1970393556849595&sort_by=relevance&filter_distance=160&filter_include_remote=1&filter_career_discipline=Software+Engineering%2CData+Science&filter_profession=software+engineering&filter_seniority=Entry%2CMid-Level"
-    ]
+            "https://apply.careers.microsoft.com/careers?query=Software+Engineer&start=0&location=Sunnyvale%2C++CA%2C++United+States&pid=1970393556918542&sort_by=relevance&filter_distance=160&filter_include_remote=1&filter_career_discipline=Software+Engineering%2CData+Science&filter_profession=software+engineering&filter_seniority=Entry%2CMid-Level",
+            "https://apply.careers.microsoft.com/careers?query=Software+Engineer&start=0&location=Mountain+View%2C++CA%2C++United+States&pid=1970393556849595&sort_by=relevance&filter_distance=160&filter_include_remote=1&filter_career_discipline=Software+Engineering%2CData+Science&filter_profession=software+engineering&filter_seniority=Entry%2CMid-Level",
+            "https://apply.careers.microsoft.com/careers?query=Software+Engineer&start=0&location=New+York%2C++NY%2C++United+States&pid=1970393556849595&sort_by=relevance&filter_distance=160&filter_include_remote=1&filter_career_discipline=Software+Engineering%2CData+Science&filter_profession=software+engineering&filter_seniority=Entry%2CMid-Level",
+            "https://apply.careers.microsoft.com/careers?query=Software+Engineer&start=0&location=Austin%2C++TX%2C++United+States&pid=1970393556918542&sort_by=relevance&filter_distance=160&filter_include_remote=1&filter_career_discipline=Software+Engineering%2CData+Science&filter_profession=software+engineering&filter_seniority=Entry%2CMid-Level",
+            "https://apply.careers.microsoft.com/careers?query=Software+Engineer&start=0&location=San+Francisco%2C++CA%2C++United+States&pid=1970393556849595&sort_by=relevance&filter_distance=160&filter_include_remote=1&filter_career_discipline=Software+Engineering%2CData+Science&filter_profession=software+engineering&filter_seniority=Entry%2CMid-Level"
+        ]
         self.max_concurrency = max_concurrency
         
         self.search_api_url = "https://apply.careers.microsoft.com/api/pcsx/search"
@@ -35,15 +35,11 @@ class MicrosoftScraper(BaseScraper):
             "Accept": "application/json",
             "Accept-Encoding": "gzip, deflate"
         }
-        
-        self.cutoff_date = datetime.now() - timedelta(days=1)
 
     def map_to_scraped_job(self, job: dict, company_name: str) -> Optional[ScrapedJob]:
-        """Implements the mandatory BaseScraper abstract method contract."""
         title = job.get("name", "").strip()
         job_id = str(job.get("id", ""))
 
-        # Extract standard structural fields
         emp_type_arr = job.get("efcustomTextEmploymentType", [])
         schedule_type = emp_type_arr[0] if emp_type_arr else "Full-Time"
         
@@ -51,7 +47,6 @@ class MicrosoftScraper(BaseScraper):
         loc_list = " | ".join(job.get("locations", []))
         work_site = ", ".join(job.get("efcustomTextWorkSite", []))
 
-        # Build custom presentation summary
         custom_desc = f"Company: {company_name}\n"
         custom_desc += f"Locations: {loc_list}\n"
         custom_desc += f"Department: {dept}\n"
@@ -60,7 +55,6 @@ class MicrosoftScraper(BaseScraper):
         raw_body = job.get("jobDescription", "")
         custom_desc += "### Job Profile\n" + BeautifulSoup(raw_body, "html.parser").get_text(separator="\n")
 
-        # Parse date representation cleanly
         raw_ts = job.get("postedTs")
         try:
             posted_at = datetime.utcfromtimestamp(float(raw_ts)) if raw_ts else datetime.now()
@@ -68,8 +62,6 @@ class MicrosoftScraper(BaseScraper):
             posted_at = datetime.now()
 
         url = job.get("publicUrl", f"https://apply.careers.microsoft.com/careers/job/{job_id}")
-
-        # Primary location selection fallback
         locations_arr = job.get("locations", [])
         location = locations_arr[0] if locations_arr else "USA"
 
@@ -84,7 +76,6 @@ class MicrosoftScraper(BaseScraper):
         )
 
     def _parse_url_to_api_params(self, url: str) -> dict:
-        """Translates a frontend search view URL into raw API request parameters."""
         parsed_url = urlparse(url)
         raw_params = parse_qs(parsed_url.query)
 
@@ -104,49 +95,51 @@ class MicrosoftScraper(BaseScraper):
             
         return params
 
-    async def _gather_ids_from_url(self, client: httpx.AsyncClient, frontend_url: str) -> set[str]:
-        """Paginates a single search category URL sequentially and extracts candidate job IDs."""
+    async def _fetch_search_batch(self, base_params: dict, offset: int, client: httpx.AsyncClient) -> tuple[list[str], int]:
+        """Fetches a single search batch and returns Job IDs and the total hit count."""
+        params = dict(base_params)
+        params["start"] = [str(offset)]
+
+        try:
+            response = await client.get(self.search_api_url, params=params, timeout=10.0, headers=self.headers)
+            response.raise_for_status()
+            data = response.json().get("data", {})
+
+            positions = data.get("positions", [])
+            total_hits = data.get("count", 0)
+            
+            # Map raw IDs. All validation/filtering happens downstream in the validator chain.
+            job_ids = [str(pos.get("id")) for pos in positions if pos.get("id")]
+            return job_ids, total_hits
+        except Exception as exc:
+            logger.error("Failed executing search batch at offset %s: %s", offset, exc)
+            return [], 0
+
+    async def _gather_ids_for_url(self, url: str, client: httpx.AsyncClient, semaphore: asyncio.Semaphore) -> set[str]:
+        """Applies the Amazon parallel pagination pattern to a single Microsoft search URL."""
+        base_params = self._parse_url_to_api_params(url)
         collected_ids = set()
-        params = self._parse_url_to_api_params(frontend_url)
-        
-        start = int(params.get("start", ["0"])[0])
-        total_count = None
-        current_time_ts = datetime.now().timestamp()
-        cutoff_seconds = 86400.0  # 24 Hours
 
-        while total_count is None or start < total_count:
-            params["start"] = [str(start)]
-            try:
-                response = await client.get(self.search_api_url, params=params, timeout=10.0, headers=self.headers)
-                response.raise_for_status()
-                data = response.json().get("data", {})
+        # Extract total hits right from the first call
+        first_batch_ids, total_hits = await self._fetch_search_batch(base_params, 0, client)
+        collected_ids.update(first_batch_ids)
 
-                positions = data.get("positions", [])
-                if not positions:
-                    break
+        if total_hits == 0 or not first_batch_ids:
+            return collected_ids
 
-                if total_count is None:
-                    total_count = data.get("count", 0)
+        # Microsoft APIs typically return 20 jobs per page. Fallback to 20 if dynamic check fails.
+        page_size = len(first_batch_ids) or 20
+        offsets = [offset for offset in range(page_size, total_hits, page_size)]
 
-                for pos in positions:
-                    # 1. Geography Filter
-                    locations = pos.get("standardizedLocations", [])
-                    if "US" not in locations and not any(loc.endswith(", US") for loc in locations):
-                        continue
+        async def bounded_search_fetch(offset: int) -> list[str]:
+            async with semaphore:
+                batch_ids, _ = await self._fetch_search_batch(base_params, offset, client)
+                return batch_ids
 
-                    # 2. Strict 24-Hour Cutoff Filter
-                    posted_ts = pos.get("postedTs")
-                    if posted_ts:
-                        age_seconds = current_time_ts - float(posted_ts)
-                        if age_seconds <= cutoff_seconds:
-                            collected_ids.add(str(pos.get("id")))
-
-                start += len(positions)
-                await asyncio.sleep(0.3)  # Gentle pagination delay
-
-            except Exception as exc:
-                logger.error("Failed executing search batch pagination at offset %s: %s", start, exc)
-                break
+        if offsets:
+            batch_results = await asyncio.gather(*(bounded_search_fetch(offset) for offset in offsets))
+            for batch in batch_results:
+                collected_ids.update(batch)
 
         return collected_ids
 
@@ -160,7 +153,7 @@ class MicrosoftScraper(BaseScraper):
             try:
                 response = await client.get(self.details_api_url, params=detail_params, timeout=12.0, headers=self.headers)
                 
-                # Dynamic Rate Limit (429) Handling
+                # Dynamic Rate Limit (429) Handling - Microsoft is aggressive here
                 if response.status_code == 429:
                     delay = (base_delay * (2 ** attempt)) + random.uniform(0.5, 2.0)
                     logger.warning("Rate limited (429) on job %s. Backing off for %ss...", job_id, round(delay, 2))
@@ -179,41 +172,41 @@ class MicrosoftScraper(BaseScraper):
                 if attempt < max_retries - 1:
                     await asyncio.sleep(base_delay * (attempt + 1))
             except Exception as exc:
-                logger.exception("Fatal processing parsing fault on Microsoft profile ID %s: %s", job_id, exc)
+                logger.exception("Fatal processing fault on Microsoft profile ID %s: %s", job_id, exc)
                 break
 
         return None
 
     async def fetch(self, company_name: str, client: httpx.AsyncClient) -> list[ScrapedJob]:
-        scraped_jobs: list[ScrapedJob] = []
         unique_job_ids: set[str] = set()
+        semaphore = asyncio.Semaphore(self.max_concurrency)
 
-        # Phase 1: Parallelize the collection of targeted Job IDs across all entry URLs
-        logger.info("Executing Phase 1: Gathering Job IDs concurrently across categories...")
-        search_tasks = [self._gather_ids_from_url(client, url) for url in self.frontend_urls]
+        # Phase 1: Parallelize the collection of targeted Job IDs across all URLs using the Amazon pattern
+        logger.info("Executing Phase 1: Gathering Job IDs concurrently...")
+        
+        search_tasks = [self._gather_ids_for_url(url, client, semaphore) for url in self.frontend_urls]
         search_results = await asyncio.gather(*search_tasks)
 
         for id_set in search_results:
             unique_job_ids.update(id_set)
 
-        logger.info("Phase 1 Complete. Found %s unique, 24-hour US job matches.", len(unique_job_ids))
+        logger.info("Phase 1 Complete. Found %s total raw jobs. Passing to Phase 2.", len(unique_job_ids))
         if not unique_job_ids:
             return []
 
-        # Phase 2: Parallelize deep-profile fetches with bounded concurrency management
+        # Phase 2: Parallelize deep-profile fetches for descriptions (Required for MS API)
         logger.info("Executing Phase 2: Fetching full descriptions concurrently...")
-        semaphore = asyncio.Semaphore(self.max_concurrency)
 
-        async def bounded_detail_fetch(client_instance: httpx.AsyncClient, j_id: str) -> Optional[ScrapedJob]:
+        async def bounded_detail_fetch(j_id: str) -> Optional[ScrapedJob]:
             async with semaphore:
-                # Standard polite processing spacing to help protect worker nodes from 429 penalties
+                # Slight sleep protects worker nodes from rapid 429 penalties during detail fetching
                 await asyncio.sleep(random.uniform(0.2, 0.8))
-                return await self._fetch_single_job_detail(client_instance, j_id, company_name)
+                return await self._fetch_single_job_detail(client, j_id, company_name)
 
-        detail_tasks = [bounded_detail_fetch(client, job_id) for job_id in unique_job_ids]
+        detail_tasks = [bounded_detail_fetch(job_id) for job_id in unique_job_ids]
         detail_results = await asyncio.gather(*detail_tasks)
 
-        # Drop None elements resulting from fetch failures or validation exclusions
         scraped_jobs = [job for job in detail_results if job is not None]
-        logger.info("Successfully extracted %s fully hydrated Microsoft jobs.", len(scraped_jobs))
+        logger.info("Successfully extracted %s raw Microsoft jobs. Passing to validator chain...", len(scraped_jobs))
+        
         return scraped_jobs

@@ -78,6 +78,10 @@ def test_valid_us_locations(location):
     "Vienna, AT",
     "Athens, GR",
     "Moscow, RU",
+    "IL, Tel Aviv",
+    "IN, TN, Chennai",
+    "IN, TS, Hyderabad",
+    "IN, KA, Bengaluru"
 ])
 def test_invalid_international_locations(location):
     """Ensure clearly international locations are rejected."""
