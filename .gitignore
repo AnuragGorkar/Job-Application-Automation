@@ -1,20 +1,40 @@
 # Environments
-.env.dev
-.env.prod
+**/.env.dev
+**/.env.prod
+**/.env
+
+# Virtual Environments
 .venv/
-env/
 venv/
+env/
 
 # Python
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
 
 # Backend
 app/__pycache__/
 logs/
 *.log
 
+# Testing & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
 # Frontend
 node_modules/
 dist/
 build/
+.next/
+
+# IDEs (VSCode, PyCharm)
+.vscode/
+.idea/
+*.swp
+
+# OS Files
+.DS_Store
+Thumbs.db
