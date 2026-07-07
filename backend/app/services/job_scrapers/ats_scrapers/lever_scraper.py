@@ -1,10 +1,10 @@
 from datetime import datetime, timezone
-import html
 import logging
 from typing import Final, Optional
 
 from app.schemas.scraped_job import ScrapedJob
 from app.services.job_scrapers.ats_scrapers.base_ats_scraper import BaseATSScraper
+from app.utils.html_utils import clean_html
 
 
 class LeverScraper(BaseATSScraper):
@@ -26,10 +26,7 @@ class LeverScraper(BaseATSScraper):
         
         categories = job.get('categories') or {}
         loc_name = categories.get('location')
-        description = html.unescape(job.get('descriptionPlain', '').strip())
-        
-        if not title or not url or not loc_name or not description:
-            return None
+        description = clean_html(job.get('descriptionPlain', ''))
         
         created_at = job.get('createdAt')
         iso_time = datetime.fromtimestamp(created_at / 1000.0, tz=timezone.utc).isoformat() if created_at else None

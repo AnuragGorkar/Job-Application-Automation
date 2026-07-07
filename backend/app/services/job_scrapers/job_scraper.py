@@ -1,6 +1,8 @@
 import asyncio
 import logging
 
+import httpx
+
 from app.schemas.scraped_job import ScrapedJob
 from app.services.job_scrapers.scraper_factory import ScraperFactory
 from app.services.job_scrapers.validators.validations_builder import ValidationsBuilder
@@ -24,7 +26,7 @@ class JobScraper:
         for scraper in companies_dict.keys():
             self.scraper_dict[scraper] = ScraperFactory.get_scraper(scraper)
 
-    async def _company_scraper(self, platform_name: str, company_name: str):
+    async def _company_scraper(self, platform_name: str, company_name: str, client: httpx.AsyncClient):
         scraper = self.scraper_dict.get(platform_name)
         if not scraper:
             logger.debug("No scraper configured for platform %s", platform_name)
@@ -32,7 +34,7 @@ class JobScraper:
 
         try:
             logger.debug("Starting scrape for %s on %s", company_name, platform_name)
-            jobs = await scraper.fetch(company_name)
+            jobs = await scraper.fetch(company_name, client)
             if jobs:
                 logger.info("Found %s jobs for %s on %s", len(jobs), company_name, platform_name)
                 await self.job_queue.put(jobs)
@@ -61,13 +63,15 @@ class JobScraper:
 
         consumer_task = asyncio.create_task(self._validation_job())
 
-        tasks = [
-            self._company_scraper(platform, company)
-            for platform, companies in self.companies_dict.items()
-            for company in companies
-        ]
+        limits = httpx.Limits(max_connections=100, max_keepalive_connections=20)
+        async with httpx.AsyncClient(limits=limits) as client:
+            tasks = [
+                self._company_scraper(platform, company, client)
+                for platform, companies in self.companies_dict.items()
+                for company in companies
+            ]
 
-        await asyncio.gather(*tasks)
+            await asyncio.gather(*tasks)
 
         await self.job_queue.put(None)
 

@@ -5,6 +5,7 @@ from abc import abstractmethod
 from typing import Optional
 
 import httpx
+from pydantic import ValidationError
 
 from app.schemas.scraped_job import ScrapedJob
 from app.services.job_scrapers.base_scraper import BaseScraper
@@ -18,12 +19,7 @@ class BaseATSScraper(BaseScraper):
         self.params = params
 
     def build_company_url(self, company_name: str) -> str:
-        company_url = self.base_url + company_name
-        url_params = "?"
-        for key, value in self.params.items():
-            url_params += key + "=" + value
-        
-        return company_url + url_params
+        return self.base_url + company_name
     
     @abstractmethod
     def map_to_ats_scraped_job(self, job: dict, company_name: str) -> Optional[ScrapedJob]:
@@ -32,7 +28,7 @@ class BaseATSScraper(BaseScraper):
     def map_to_scraped_job(self, job: dict, company_name: str) -> Optional[ScrapedJob]:
         return self.map_to_ats_scraped_job(job, company_name)
 
-    async def fetch(self, company_name: str) -> list[ScrapedJob]:
+    async def fetch(self, company_name: str, client: httpx.AsyncClient) -> list[ScrapedJob]:
         url = self.build_company_url(company_name)
         jobs = []
         
@@ -43,8 +39,7 @@ class BaseATSScraper(BaseScraper):
             current_timeout = httpx.Timeout(12.0 + (attempt * 10.0), connect=5.0)
             
             try:
-                async with httpx.AsyncClient() as client:
-                    r = await client.get(url, timeout=current_timeout)
+                r = await client.get(url, params=self.params, timeout=current_timeout)
                 
                 if r.status_code == 200:
                     data = r.json()
@@ -55,6 +50,13 @@ class BaseATSScraper(BaseScraper):
                             scraped_job = self.map_to_scraped_job(job, company_name)
                             if scraped_job:
                                 jobs.append(scraped_job)
+                        except ValidationError as validation_err:
+                            logger.debug(
+                                "Validation error for %s on %s: %s",
+                                company_name,
+                                self.__class__.__name__,
+                                validation_err,
+                            )
                         except Exception as map_err:
                             logger.warning(f"Map error for {company_name}: {map_err}")
                     return jobs 

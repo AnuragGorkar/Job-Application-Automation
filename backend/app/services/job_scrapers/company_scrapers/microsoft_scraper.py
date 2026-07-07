@@ -18,7 +18,7 @@ class MicrosoftScraper(BaseScraper):
     def __init__(self, max_concurrency: int = 5):
         self.company_name = "Microsoft"
         self.frontend_urls = [
-        "https://apply.careers.microsoft.com/careers?query=Software+Engineer&start=30&location=Seattle%2C++WA%2C++United+States&pid=1970393556883703&sort_by=timestamp&filter_distance=160&filter_include_remote=1&filter_career_discipline=Software+Engineering%2CData+Science&filter_profession=software+engineering&filter_seniority=Entry%2CMid-Level",
+            "https://apply.careers.microsoft.com/careers?query=Software+Engineer&start=30&location=Seattle%2C++WA%2C++United+States&pid=1970393556883703&sort_by=timestamp&filter_distance=160&filter_include_remote=1&filter_career_discipline=Software+Engineering%2CData+Science&filter_profession=software+engineering&filter_seniority=Entry%2CMid-Level",
         "https://apply.careers.microsoft.com/careers?query=Software+Engineer&start=0&location=Sunnyvale%2C++CA%2C++United+States&pid=1970393556918542&sort_by=relevance&filter_distance=160&filter_include_remote=1&filter_career_discipline=Software+Engineering%2CData+Science&filter_profession=software+engineering&filter_seniority=Entry%2CMid-Level",
         "https://apply.careers.microsoft.com/careers?query=Software+Engineer&start=0&location=Mountain+View%2C++CA%2C++United+States&pid=1970393556849595&sort_by=relevance&filter_distance=160&filter_include_remote=1&filter_career_discipline=Software+Engineering%2CData+Science&filter_profession=software+engineering&filter_seniority=Entry%2CMid-Level",
         "https://apply.careers.microsoft.com/careers?query=Software+Engineer&start=0&location=New+York%2C++NY%2C++United+States&pid=1970393556849595&sort_by=relevance&filter_distance=160&filter_include_remote=1&filter_career_discipline=Software+Engineering%2CData+Science&filter_profession=software+engineering&filter_seniority=Entry%2CMid-Level",
@@ -42,8 +42,6 @@ class MicrosoftScraper(BaseScraper):
         """Implements the mandatory BaseScraper abstract method contract."""
         title = job.get("name", "").strip()
         job_id = str(job.get("id", ""))
-        if not title or not job_id:
-            return None
 
         # Extract standard structural fields
         emp_type_arr = job.get("efcustomTextEmploymentType", [])
@@ -119,7 +117,7 @@ class MicrosoftScraper(BaseScraper):
         while total_count is None or start < total_count:
             params["start"] = [str(start)]
             try:
-                response = await client.get(self.search_api_url, params=params, timeout=10.0)
+                response = await client.get(self.search_api_url, params=params, timeout=10.0, headers=self.headers)
                 response.raise_for_status()
                 data = response.json().get("data", {})
 
@@ -160,7 +158,7 @@ class MicrosoftScraper(BaseScraper):
 
         for attempt in range(max_retries):
             try:
-                response = await client.get(self.details_api_url, params=detail_params, timeout=12.0)
+                response = await client.get(self.details_api_url, params=detail_params, timeout=12.0, headers=self.headers)
                 
                 # Dynamic Rate Limit (429) Handling
                 if response.status_code == 429:
@@ -186,18 +184,17 @@ class MicrosoftScraper(BaseScraper):
 
         return None
 
-    async def fetch(self, company_name: str) -> list[ScrapedJob]:
+    async def fetch(self, company_name: str, client: httpx.AsyncClient) -> list[ScrapedJob]:
         scraped_jobs: list[ScrapedJob] = []
         unique_job_ids: set[str] = set()
 
         # Phase 1: Parallelize the collection of targeted Job IDs across all entry URLs
         logger.info("Executing Phase 1: Gathering Job IDs concurrently across categories...")
-        async with httpx.AsyncClient(headers=self.headers) as client:
-            search_tasks = [self._gather_ids_from_url(client, url) for url in self.frontend_urls]
-            search_results = await asyncio.gather(*search_tasks)
-            
-            for id_set in search_results:
-                unique_job_ids.update(id_set)
+        search_tasks = [self._gather_ids_from_url(client, url) for url in self.frontend_urls]
+        search_results = await asyncio.gather(*search_tasks)
+
+        for id_set in search_results:
+            unique_job_ids.update(id_set)
 
         logger.info("Phase 1 Complete. Found %s unique, 24-hour US job matches.", len(unique_job_ids))
         if not unique_job_ids:
@@ -213,9 +210,8 @@ class MicrosoftScraper(BaseScraper):
                 await asyncio.sleep(random.uniform(0.2, 0.8))
                 return await self._fetch_single_job_detail(client_instance, j_id, company_name)
 
-        async with httpx.AsyncClient(headers=self.headers) as detail_client:
-            detail_tasks = [bounded_detail_fetch(detail_client, job_id) for job_id in unique_job_ids]
-            detail_results = await asyncio.gather(*detail_tasks)
+        detail_tasks = [bounded_detail_fetch(client, job_id) for job_id in unique_job_ids]
+        detail_results = await asyncio.gather(*detail_tasks)
 
         # Drop None elements resulting from fetch failures or validation exclusions
         scraped_jobs = [job for job in detail_results if job is not None]

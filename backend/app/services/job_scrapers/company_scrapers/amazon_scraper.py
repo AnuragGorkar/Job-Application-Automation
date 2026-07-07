@@ -10,6 +10,7 @@ from bs4 import BeautifulSoup
 
 from app.schemas.scraped_job import ScrapedJob
 from app.services.job_scrapers.base_scraper import BaseScraper
+from app.utils.html_utils import clean_html
 
 logger = logging.getLogger(__name__)
 
@@ -63,10 +64,7 @@ class AmazonScraper(BaseScraper):
         if job.get("basic_qualifications"):
             raw_desc += f"### Basic Qualifications\n{job.get('basic_qualifications')}"
 
-        description = BeautifulSoup(raw_desc, "html.parser").get_text(separator="\n").strip()
-        
-        if not description or not location or not title or not url or not posted_at:
-            return None
+        description = clean_html(raw_desc)
 
         return ScrapedJob(
             title=title,
@@ -78,7 +76,7 @@ class AmazonScraper(BaseScraper):
             platform=self.company_name,
         )
 
-    async def _fetch_batch(self, offset: int) -> tuple[list[ScrapedJob], int]:
+    async def _fetch_batch(self, offset: int, client: httpx.AsyncClient) -> tuple[list[ScrapedJob], int]:
         """Fetches a batch and returns both the parsed jobs AND the total hits count."""
         batch_url = self._build_query_url(self.batch_limit, offset)
         jobs: list[ScrapedJob] = []
@@ -89,8 +87,7 @@ class AmazonScraper(BaseScraper):
         for attempt in range(max_retries):
             timeout = httpx.Timeout(12.0 + attempt * 10.0, connect=5.0)
             try:
-                async with httpx.AsyncClient() as client:
-                    response = await client.get(batch_url, headers=self.headers, timeout=timeout)
+                response = await client.get(batch_url, headers=self.headers, timeout=timeout)
 
                 response.raise_for_status()
                 data = response.json()
@@ -121,12 +118,12 @@ class AmazonScraper(BaseScraper):
         logger.error("All %s retry attempts failed or aborted for AMAZON offset %s.", max_retries, offset)
         return [], 0
 
-    async def fetch(self, company_name: str) -> list[ScrapedJob]:
+    async def fetch(self, company_name: str, client: httpx.AsyncClient) -> list[ScrapedJob]:
         jobs: list[ScrapedJob] = []
         first_offset = 0
 
         # Extract total hits right from the first call to save a network request
-        first_batch, total_hits = await self._fetch_batch(first_offset)
+        first_batch, total_hits = await self._fetch_batch(first_offset, client)
         jobs.extend(first_batch)
 
         if total_hits == 0:
@@ -137,7 +134,7 @@ class AmazonScraper(BaseScraper):
 
         async def bounded_fetch(offset: int) -> list[ScrapedJob]:
             async with semaphore:
-                batch_jobs, _ = await self._fetch_batch(offset)
+                batch_jobs, _ = await self._fetch_batch(offset, client)
                 return batch_jobs
 
         if offsets:

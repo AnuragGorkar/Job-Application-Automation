@@ -4,6 +4,8 @@ from datetime import datetime
 from typing import Optional
 from playwright.async_api import async_playwright
 
+import httpx
+
 from app.schemas.scraped_job import ScrapedJob
 from app.services.job_scrapers.base_scraper import BaseScraper
 
@@ -34,8 +36,6 @@ class MetaScraper(BaseScraper):
         """Implements the mandatory BaseScraper abstract method contract."""
         job_id = str(job.get("id", ""))
         title = job.get("title", "").strip()
-        if not job_id or not title:
-            return None
 
         # 1. Geographic Filtering
         locations = job.get("locations", [])
@@ -62,9 +62,6 @@ class MetaScraper(BaseScraper):
 
         url = f"https://www.metacareers.com/jobs/{job_id}/"
 
-        if not custom_desc or not location or not title or not url or not posted_at:
-            return None
-
         return ScrapedJob(
             title=title,
             location=location,
@@ -75,8 +72,7 @@ class MetaScraper(BaseScraper):
             platform=self.company_name,
         )
 
-    async def fetch(self, company_name: str) -> list[ScrapedJob]:
-        scraped_jobs: list[ScrapedJob] = []
+    async def fetch(self, company_name: str, client: httpx.AsyncClient) -> list[ScrapedJob]:
         graphql_payloads: list[list] = []
 
         async with async_playwright() as p:

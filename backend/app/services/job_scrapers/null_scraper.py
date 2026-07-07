@@ -1,3 +1,4 @@
+import httpx
 import logging
 from typing import Optional
 
@@ -8,7 +9,7 @@ logger = logging.getLogger(__name__)
 
 
 class NullScraper(BaseScraper):
-    async def fetch(self, company_name: str) -> list[ScrapedJob]:
+    async def fetch(self, company_name: str, client: httpx.AsyncClient) -> list[ScrapedJob]:
         logger.debug("Ignoring company %s because no scraper is configured", company_name)
         return []
     

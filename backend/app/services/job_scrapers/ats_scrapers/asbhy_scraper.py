@@ -1,11 +1,9 @@
-import html
 import logging
 from typing import Final, Optional
-import datetime
-from bs4 import BeautifulSoup
 
 from app.schemas.scraped_job import ScrapedJob
 from app.services.job_scrapers.ats_scrapers.base_ats_scraper import BaseATSScraper
+from app.utils.html_utils import clean_html
 
 class AshbyScraper(BaseATSScraper):
     BASE_URL: Final[str] = "https://api.ashbyhq.com/posting-api/job-board/"
@@ -24,14 +22,9 @@ class AshbyScraper(BaseATSScraper):
         url = job.get('jobUrl')
         location = job.get('location')
 
-        raw_description = job.get('description', '')
-        raw_description = html.unescape(raw_description)
-        clean_description = BeautifulSoup(raw_description, 'html.parser').get_text(separator='\n').strip()
+        clean_description = clean_html(job.get('description', ''))
 
         posted_at = job.get('publishedAt', None)
-        
-        if not title or not url or not location or not clean_description or not posted_at:
-            return None
 
         return ScrapedJob(
             title=title,
