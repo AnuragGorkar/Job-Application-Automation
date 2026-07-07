@@ -31,4 +31,4 @@ class EmploymentTypeValidator(ScrapedJobValidator):
             logger.exception("Error processing title: %s", exc)
             return False
 
-        return self.pass_to_next_validator(job)
+        return True

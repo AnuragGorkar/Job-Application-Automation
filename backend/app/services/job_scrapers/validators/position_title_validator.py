@@ -54,4 +54,4 @@ class PositionTitleValidator(ScrapedJobValidator):
             print(f"[PositionTitleValidator] Error processing position title: {e}")
             return False
 
-        return self.pass_to_next_validator(job)
+        return True

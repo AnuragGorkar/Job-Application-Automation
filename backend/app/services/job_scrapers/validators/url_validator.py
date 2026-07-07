@@ -17,4 +17,4 @@ class URLValidator(ScrapedJobValidator):
             print(f"[URLValidator] Error processing URL: {e}")
             return False
 
-        return self.pass_to_next_validator(job)
+        return True

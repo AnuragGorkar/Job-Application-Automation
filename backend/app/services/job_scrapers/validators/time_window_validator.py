@@ -21,4 +21,4 @@ class TimeWindowValidator(ScrapedJobValidator):
             print(f"[TimeWindowValidator] Error processing timestamp object: {e}")
             return False
             
-        return self.pass_to_next_validator(job)
+        return True

@@ -58,4 +58,4 @@ class LocationValidator(ScrapedJobValidator):
             print(f"[LocationValidator] Error processing location string: {e}")
             return False
 
-        return self.pass_to_next_validator(job)
+        return True
