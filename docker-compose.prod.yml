@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: "${DB_USER}"
+      POSTGRES_PASSWORD: "${DB_PASS}"
+      POSTGRES_DB: "${DB_NAME}"
+    ports: 
+      - "${DB_PORT}:5432"
+    volumes: 
+      - "${DB_VOLUME_NAME}:/var/lib/postgresql/data"
+
+volumes:
+  db_data:
+    name: ${DB_VOLUME_NAME}
