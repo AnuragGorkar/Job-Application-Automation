@@ -1,0 +1,623 @@
+{
+  "driscolls_Driscolls_Outside": {
+    "company_name": "driscolls",
+    "api_url": "https://driscolls.wd5.myworkdayjobs.com/wday/cxs/driscolls/Driscolls_Outside/jobs",
+    "portal_id": "Driscolls_Outside",
+    "server": "wd5",
+    "tenant": "driscolls",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "deseretmanagement_DMCC": {
+    "company_name": "deseretmanagement",
+    "api_url": "https://deseretmanagement.wd1.myworkdayjobs.com/wday/cxs/deseretmanagement/DMCC/jobs",
+    "portal_id": "DMCC",
+    "server": "wd1",
+    "tenant": "deseretmanagement",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "mcafee_External": {
+    "company_name": "mcafee",
+    "api_url": "https://mcafee.wd1.myworkdayjobs.com/wday/cxs/mcafee/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "mcafee",
+    "discovery": "guess",
+    "total_active_jobs": 0
+  },
+  "mantech_External": {
+    "company_name": "mantech",
+    "api_url": "https://mantech.wd1.myworkdayjobs.com/wday/cxs/mantech/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "mantech",
+    "discovery": "guess",
+    "total_active_jobs": 0
+  },
+  "firstrepublic_Careers": {
+    "company_name": "firstrepublic",
+    "api_url": "https://firstrepublic.wd1.myworkdayjobs.com/wday/cxs/firstrepublic/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "firstrepublic",
+    "discovery": "guess",
+    "total_active_jobs": 0
+  },
+  "pxd_PXDCareers": {
+    "company_name": "pxd",
+    "api_url": "https://pxd.wd1.myworkdayjobs.com/wday/cxs/pxd/PXDCareers/jobs",
+    "portal_id": "PXDCareers",
+    "server": "wd1",
+    "tenant": "pxd",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "barings_Early_Talent": {
+    "company_name": "barings",
+    "api_url": "https://barings.wd1.myworkdayjobs.com/wday/cxs/barings/Early_Talent/jobs",
+    "portal_id": "Early_Talent",
+    "server": "wd1",
+    "tenant": "barings",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "broadinstitute_broadinstitute_cdot": {
+    "company_name": "broadinstitute",
+    "api_url": "https://broadinstitute.wd1.myworkdayjobs.com/wday/cxs/broadinstitute/broadinstitute_cdot/jobs",
+    "portal_id": "broadinstitute_cdot",
+    "server": "wd1",
+    "tenant": "broadinstitute",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "fujifilmdiosynth_External": {
+    "company_name": "fujifilmdiosynth",
+    "api_url": "https://fujifilmdiosynth.wd3.myworkdayjobs.com/wday/cxs/fujifilmdiosynth/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "fujifilmdiosynth",
+    "discovery": "guess",
+    "total_active_jobs": 0
+  },
+  "theglobalfund_External": {
+    "company_name": "theglobalfund",
+    "api_url": "https://theglobalfund.wd1.myworkdayjobs.com/wday/cxs/theglobalfund/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "theglobalfund",
+    "discovery": "guess",
+    "total_active_jobs": 0
+  },
+  "nationstar_MrCooper": {
+    "company_name": "nationstar",
+    "api_url": "https://nationstar.wd5.myworkdayjobs.com/wday/cxs/nationstar/MrCooper/jobs",
+    "portal_id": "MrCooper",
+    "server": "wd5",
+    "tenant": "nationstar",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "gam_GAM": {
+    "company_name": "gam",
+    "api_url": "https://gam.wd3.myworkdayjobs.com/wday/cxs/gam/GAM/jobs",
+    "portal_id": "GAM",
+    "server": "wd3",
+    "tenant": "gam",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "heequipment_Careers": {
+    "company_name": "heequipment",
+    "api_url": "https://heequipment.wd5.myworkdayjobs.com/wday/cxs/heequipment/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd5",
+    "tenant": "heequipment",
+    "discovery": "guess",
+    "total_active_jobs": 0
+  },
+  "evertonfc_Everton-Careers": {
+    "company_name": "evertonfc",
+    "api_url": "https://evertonfc.wd3.myworkdayjobs.com/wday/cxs/evertonfc/Everton-Careers/jobs",
+    "portal_id": "Everton-Careers",
+    "server": "wd3",
+    "tenant": "evertonfc",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "ngs_ngs_external_career_site_intern": {
+    "company_name": "ngs",
+    "api_url": "https://ngs.wd1.myworkdayjobs.com/wday/cxs/ngs/ngs_external_career_site_intern/jobs",
+    "portal_id": "ngs_external_career_site_intern",
+    "server": "wd1",
+    "tenant": "ngs",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "dukeenergy_nosearch": {
+    "company_name": "dukeenergy",
+    "api_url": "https://dukeenergy.wd1.myworkdayjobs.com/wday/cxs/dukeenergy/nosearch/jobs",
+    "portal_id": "nosearch",
+    "server": "wd1",
+    "tenant": "dukeenergy",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "lkab_LKAB_External_Career_Site": {
+    "company_name": "lkab",
+    "api_url": "https://lkab.wd3.myworkdayjobs.com/wday/cxs/lkab/LKAB_External_Career_Site/jobs",
+    "portal_id": "LKAB_External_Career_Site",
+    "server": "wd3",
+    "tenant": "lkab",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "hedgeserv_hedgeservcareerfair": {
+    "company_name": "hedgeserv",
+    "api_url": "https://hedgeserv.wd1.myworkdayjobs.com/wday/cxs/hedgeserv/hedgeservcareerfair/jobs",
+    "portal_id": "hedgeservcareerfair",
+    "server": "wd1",
+    "tenant": "hedgeserv",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "imc_invitation": {
+    "company_name": "imc",
+    "api_url": "https://imc.wd5.myworkdayjobs.com/wday/cxs/imc/invitation/jobs",
+    "portal_id": "invitation",
+    "server": "wd5",
+    "tenant": "imc",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "usfca_USF_Students": {
+    "company_name": "usfca",
+    "api_url": "https://usfca.wd5.myworkdayjobs.com/wday/cxs/usfca/USF_Students/jobs",
+    "portal_id": "USF_Students",
+    "server": "wd5",
+    "tenant": "usfca",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "clubmed_External_Career_Site_2024": {
+    "company_name": "clubmed",
+    "api_url": "https://clubmed.wd3.myworkdayjobs.com/wday/cxs/clubmed/External_Career_Site_2024/jobs",
+    "portal_id": "External_Career_Site_2024",
+    "server": "wd3",
+    "tenant": "clubmed",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "applus_applus_careers": {
+    "company_name": "applus",
+    "api_url": "https://applus.wd3.myworkdayjobs.com/wday/cxs/applus/applus_careers/jobs",
+    "portal_id": "applus_careers",
+    "server": "wd3",
+    "tenant": "applus",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "hl_External": {
+    "company_name": "hl",
+    "api_url": "https://hl.wd1.myworkdayjobs.com/wday/cxs/hl/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "hl",
+    "discovery": "guess",
+    "total_active_jobs": 0
+  },
+  "nccgroup_NCC_Group": {
+    "company_name": "nccgroup",
+    "api_url": "https://nccgroup.wd3.myworkdayjobs.com/wday/cxs/nccgroup/NCC_Group/jobs",
+    "portal_id": "NCC_Group",
+    "server": "wd3",
+    "tenant": "nccgroup",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "eeronline_EndeavorEnergyCareers": {
+    "company_name": "eeronline",
+    "api_url": "https://eeronline.wd1.myworkdayjobs.com/wday/cxs/eeronline/EndeavorEnergyCareers/jobs",
+    "portal_id": "EndeavorEnergyCareers",
+    "server": "wd1",
+    "tenant": "eeronline",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "adobe_external_university": {
+    "company_name": "adobe",
+    "api_url": "https://adobe.wd5.myworkdayjobs.com/wday/cxs/adobe/external_university/jobs",
+    "portal_id": "external_university",
+    "server": "wd5",
+    "tenant": "adobe",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "talentmanagementsolution_Tracx": {
+    "company_name": "talentmanagementsolution",
+    "api_url": "https://talentmanagementsolution.wd3.myworkdayjobs.com/wday/cxs/talentmanagementsolution/Tracx/jobs",
+    "portal_id": "Tracx",
+    "server": "wd3",
+    "tenant": "talentmanagementsolution",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "salvationarmy_Careers": {
+    "company_name": "salvationarmy",
+    "api_url": "https://salvationarmy.wd3.myworkdayjobs.com/wday/cxs/salvationarmy/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd3",
+    "tenant": "salvationarmy",
+    "discovery": "guess",
+    "total_active_jobs": 0
+  },
+  "maxar_lanterisspace": {
+    "company_name": "maxar",
+    "api_url": "https://maxar.wd1.myworkdayjobs.com/wday/cxs/maxar/lanterisspace/jobs",
+    "portal_id": "lanterisspace",
+    "server": "wd1",
+    "tenant": "maxar",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "mcgillandpartners_MGP": {
+    "company_name": "mcgillandpartners",
+    "api_url": "https://mcgillandpartners.wd3.myworkdayjobs.com/wday/cxs/mcgillandpartners/MGP/jobs",
+    "portal_id": "MGP",
+    "server": "wd3",
+    "tenant": "mcgillandpartners",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "bcbsnc_BCBSNC1": {
+    "company_name": "bcbsnc",
+    "api_url": "https://bcbsnc.wd5.myworkdayjobs.com/wday/cxs/bcbsnc/BCBSNC1/jobs",
+    "portal_id": "BCBSNC1",
+    "server": "wd5",
+    "tenant": "bcbsnc",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "alvarezandmarsal_alvarezandmarsalp": {
+    "company_name": "alvarezandmarsal",
+    "api_url": "https://alvarezandmarsal.wd1.myworkdayjobs.com/wday/cxs/alvarezandmarsal/alvarezandmarsalp/jobs",
+    "portal_id": "alvarezandmarsalp",
+    "server": "wd1",
+    "tenant": "alvarezandmarsal",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "nngroup_External": {
+    "company_name": "nngroup",
+    "api_url": "https://nngroup.wd3.myworkdayjobs.com/wday/cxs/nngroup/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "nngroup",
+    "discovery": "guess",
+    "total_active_jobs": 0
+  },
+  "cognosante_Cognosantecareers": {
+    "company_name": "cognosante",
+    "api_url": "https://cognosante.wd1.myworkdayjobs.com/wday/cxs/cognosante/Cognosantecareers/jobs",
+    "portal_id": "Cognosantecareers",
+    "server": "wd1",
+    "tenant": "cognosante",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "joinroot_joinroot": {
+    "company_name": "joinroot",
+    "api_url": "https://joinroot.wd1.myworkdayjobs.com/wday/cxs/joinroot/joinroot/jobs",
+    "portal_id": "joinroot",
+    "server": "wd1",
+    "tenant": "joinroot",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "fedex_FXO_External": {
+    "company_name": "fedex",
+    "api_url": "https://fedex.wd1.myworkdayjobs.com/wday/cxs/fedex/FXO_External/jobs",
+    "portal_id": "FXO_External",
+    "server": "wd1",
+    "tenant": "fedex",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "novavax_Careers": {
+    "company_name": "novavax",
+    "api_url": "https://novavax.wd1.myworkdayjobs.com/wday/cxs/novavax/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "novavax",
+    "discovery": "guess",
+    "total_active_jobs": 0
+  },
+  "groupon_jobs": {
+    "company_name": "groupon",
+    "api_url": "https://groupon.wd5.myworkdayjobs.com/wday/cxs/groupon/jobs/jobs",
+    "portal_id": "jobs",
+    "server": "wd5",
+    "tenant": "groupon",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "csgi_csgi": {
+    "company_name": "csgi",
+    "api_url": "https://csgi.wd5.myworkdayjobs.com/wday/cxs/csgi/csgi/jobs",
+    "portal_id": "csgi",
+    "server": "wd5",
+    "tenant": "csgi",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "cyracom_US_CyraCom_Careers": {
+    "company_name": "cyracom",
+    "api_url": "https://cyracom.wd1.myworkdayjobs.com/wday/cxs/cyracom/US_CyraCom_Careers/jobs",
+    "portal_id": "US_CyraCom_Careers",
+    "server": "wd1",
+    "tenant": "cyracom",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "horvath_Horvath_Careers": {
+    "company_name": "horvath",
+    "api_url": "https://horvath.wd3.myworkdayjobs.com/wday/cxs/horvath/Horvath_Careers/jobs",
+    "portal_id": "Horvath_Careers",
+    "server": "wd3",
+    "tenant": "horvath",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "storebrand_SPP_Careers": {
+    "company_name": "storebrand",
+    "api_url": "https://storebrand.wd3.myworkdayjobs.com/wday/cxs/storebrand/SPP_Careers/jobs",
+    "portal_id": "SPP_Careers",
+    "server": "wd3",
+    "tenant": "storebrand",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "qantas_Qantas_Careers": {
+    "company_name": "qantas",
+    "api_url": "https://qantas.wd3.myworkdayjobs.com/wday/cxs/qantas/Qantas_Careers/jobs",
+    "portal_id": "Qantas_Careers",
+    "server": "wd3",
+    "tenant": "qantas",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "onerailaustralia_OneRail_Career_Site": {
+    "company_name": "onerailaustralia",
+    "api_url": "https://onerailaustralia.wd3.myworkdayjobs.com/wday/cxs/onerailaustralia/OneRail_Career_Site/jobs",
+    "portal_id": "OneRail_Career_Site",
+    "server": "wd3",
+    "tenant": "onerailaustralia",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "pgahq_PGAHQ": {
+    "company_name": "pgahq",
+    "api_url": "https://pgahq.wd1.myworkdayjobs.com/wday/cxs/pgahq/PGAHQ/jobs",
+    "portal_id": "PGAHQ",
+    "server": "wd1",
+    "tenant": "pgahq",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "customink_CustomInk": {
+    "company_name": "customink",
+    "api_url": "https://customink.wd5.myworkdayjobs.com/wday/cxs/customink/CustomInk/jobs",
+    "portal_id": "CustomInk",
+    "server": "wd5",
+    "tenant": "customink",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "endemolshine_EndemolShine_UK_Jobs": {
+    "company_name": "endemolshine",
+    "api_url": "https://endemolshine.wd3.myworkdayjobs.com/wday/cxs/endemolshine/EndemolShine_UK_Jobs/jobs",
+    "portal_id": "EndemolShine_UK_Jobs",
+    "server": "wd3",
+    "tenant": "endemolshine",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "dell_External": {
+    "company_name": "dell",
+    "api_url": "https://dell.wd1.myworkdayjobs.com/wday/cxs/dell/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "dell",
+    "discovery": "guess",
+    "total_active_jobs": 0
+  },
+  "francescas_Field_Opportunities": {
+    "company_name": "francescas",
+    "api_url": "https://francescas.wd1.myworkdayjobs.com/wday/cxs/francescas/Field_Opportunities/jobs",
+    "portal_id": "Field_Opportunities",
+    "server": "wd1",
+    "tenant": "francescas",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "autismplus_Autismplus_careers": {
+    "company_name": "autismplus",
+    "api_url": "https://autismplus.wd3.myworkdayjobs.com/wday/cxs/autismplus/Autismplus_careers/jobs",
+    "portal_id": "Autismplus_careers",
+    "server": "wd3",
+    "tenant": "autismplus",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "priceline_Priceline-CollegeHiring": {
+    "company_name": "priceline",
+    "api_url": "https://priceline.wd1.myworkdayjobs.com/wday/cxs/priceline/Priceline-CollegeHiring/jobs",
+    "portal_id": "Priceline-CollegeHiring",
+    "server": "wd1",
+    "tenant": "priceline",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "mlp_mlpcareers": {
+    "company_name": "mlp",
+    "api_url": "https://mlp.wd5.myworkdayjobs.com/wday/cxs/mlp/mlpcareers/jobs",
+    "portal_id": "mlpcareers",
+    "server": "wd5",
+    "tenant": "mlp",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "angc_Public": {
+    "company_name": "angc",
+    "api_url": "https://angc.wd5.myworkdayjobs.com/wday/cxs/angc/Public/jobs",
+    "portal_id": "Public",
+    "server": "wd5",
+    "tenant": "angc",
+    "discovery": "guess",
+    "total_active_jobs": 0
+  },
+  "pinebridge_PineBridge_Campus_Site": {
+    "company_name": "pinebridge",
+    "api_url": "https://pinebridge.wd5.myworkdayjobs.com/wday/cxs/pinebridge/PineBridge_Campus_Site/jobs",
+    "portal_id": "PineBridge_Campus_Site",
+    "server": "wd5",
+    "tenant": "pinebridge",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "raiffeisen_jobs-raiffeisen": {
+    "company_name": "raiffeisen",
+    "api_url": "https://raiffeisen.wd3.myworkdayjobs.com/wday/cxs/raiffeisen/jobs-raiffeisen/jobs",
+    "portal_id": "jobs-raiffeisen",
+    "server": "wd3",
+    "tenant": "raiffeisen",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "enova_TBB_EXTERNAL_SITE": {
+    "company_name": "enova",
+    "api_url": "https://enova.wd1.myworkdayjobs.com/wday/cxs/enova/TBB_EXTERNAL_SITE/jobs",
+    "portal_id": "TBB_EXTERNAL_SITE",
+    "server": "wd1",
+    "tenant": "enova",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "w2o_RealChemistry": {
+    "company_name": "w2o",
+    "api_url": "https://w2o.wd1.myworkdayjobs.com/wday/cxs/w2o/RealChemistry/jobs",
+    "portal_id": "RealChemistry",
+    "server": "wd1",
+    "tenant": "w2o",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "grab_Careers": {
+    "company_name": "grab",
+    "api_url": "https://grab.wd3.myworkdayjobs.com/wday/cxs/grab/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd3",
+    "tenant": "grab",
+    "discovery": "guess",
+    "total_active_jobs": 0
+  },
+  "enquest_Enquest_Careers": {
+    "company_name": "enquest",
+    "api_url": "https://enquest.wd3.myworkdayjobs.com/wday/cxs/enquest/Enquest_Careers/jobs",
+    "portal_id": "Enquest_Careers",
+    "server": "wd3",
+    "tenant": "enquest",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "scmtd_METRO_Careers": {
+    "company_name": "scmtd",
+    "api_url": "https://scmtd.wd12.myworkdayjobs.com/wday/cxs/scmtd/METRO_Careers/jobs",
+    "portal_id": "METRO_Careers",
+    "server": "wd12",
+    "tenant": "scmtd",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "dlg_mediacom_external": {
+    "company_name": "dlg",
+    "api_url": "https://dlg.wd3.myworkdayjobs.com/wday/cxs/dlg/mediacom_external/jobs",
+    "portal_id": "mediacom_external",
+    "server": "wd3",
+    "tenant": "dlg",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "seacor_Fairwater-Crew": {
+    "company_name": "seacor",
+    "api_url": "https://seacor.wd1.myworkdayjobs.com/wday/cxs/seacor/Fairwater-Crew/jobs",
+    "portal_id": "Fairwater-Crew",
+    "server": "wd1",
+    "tenant": "seacor",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "calibercollision_CaliberAutoGlass": {
+    "company_name": "calibercollision",
+    "api_url": "https://calibercollision.wd1.myworkdayjobs.com/wday/cxs/calibercollision/CaliberAutoGlass/jobs",
+    "portal_id": "CaliberAutoGlass",
+    "server": "wd1",
+    "tenant": "calibercollision",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "scribeamerica_ScribeAmerica": {
+    "company_name": "scribeamerica",
+    "api_url": "https://scribeamerica.wd1.myworkdayjobs.com/wday/cxs/scribeamerica/ScribeAmerica/jobs",
+    "portal_id": "ScribeAmerica",
+    "server": "wd1",
+    "tenant": "scribeamerica",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "successacademies_Success_Academy_Careers": {
+    "company_name": "successacademies",
+    "api_url": "https://successacademies.wd1.myworkdayjobs.com/wday/cxs/successacademies/Success_Academy_Careers/jobs",
+    "portal_id": "Success_Academy_Careers",
+    "server": "wd1",
+    "tenant": "successacademies",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "genmab_Genmab_Careers_Site": {
+    "company_name": "genmab",
+    "api_url": "https://genmab.wd3.myworkdayjobs.com/wday/cxs/genmab/Genmab_Careers_Site/jobs",
+    "portal_id": "Genmab_Careers_Site",
+    "server": "wd3",
+    "tenant": "genmab",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "gtsgbu_Careers": {
+    "company_name": "gtsgbu",
+    "api_url": "https://gtsgbu.wd3.myworkdayjobs.com/wday/cxs/gtsgbu/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd3",
+    "tenant": "gtsgbu",
+    "discovery": "guess",
+    "total_active_jobs": 0
+  },
+  "frontiersin_Frontiers": {
+    "company_name": "frontiersin",
+    "api_url": "https://frontiersin.wd3.myworkdayjobs.com/wday/cxs/frontiersin/Frontiers/jobs",
+    "portal_id": "Frontiers",
+    "server": "wd3",
+    "tenant": "frontiersin",
+    "discovery": "duckduckgo",
+    "total_active_jobs": 0
+  },
+  "marshfieldclinichealthsystems_External": {
+    "company_name": "marshfieldclinichealthsystems",
+    "api_url": "https://marshfieldclinichealthsystems.wd5.myworkdayjobs.com/wday/cxs/marshfieldclinichealthsystems/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "marshfieldclinichealthsystems",
+    "discovery": "guess",
+    "total_active_jobs": 0
+  }
+}

@@ -1,0 +1,2866 @@
+{
+  "ksbe_External": {
+    "company_name": "ksbe",
+    "api_url": "https://ksbe.wd1.myworkdayjobs.com/wday/cxs/ksbe/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "ksbe",
+    "discovery": "guess"
+  },
+  "labcorp_External": {
+    "company_name": "labcorp",
+    "api_url": "https://labcorp.wd1.myworkdayjobs.com/wday/cxs/labcorp/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "labcorp",
+    "discovery": "guess"
+  },
+  "crick_External": {
+    "company_name": "crick",
+    "api_url": "https://crick.wd3.myworkdayjobs.com/wday/cxs/crick/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "crick",
+    "discovery": "guess"
+  },
+  "largo_External": {
+    "company_name": "largo",
+    "api_url": "https://largo.wd1.myworkdayjobs.com/wday/cxs/largo/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "largo",
+    "discovery": "guess"
+  },
+  "latitudefinancial_Careers": {
+    "company_name": "latitudefinancial",
+    "api_url": "https://latitudefinancial.wd3.myworkdayjobs.com/wday/cxs/latitudefinancial/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd3",
+    "tenant": "latitudefinancial",
+    "discovery": "guess"
+  },
+  "cryoport_External": {
+    "company_name": "cryoport",
+    "api_url": "https://cryoport.wd12.myworkdayjobs.com/wday/cxs/cryoport/External/jobs",
+    "portal_id": "External",
+    "server": "wd12",
+    "tenant": "cryoport",
+    "discovery": "guess"
+  },
+  "reputation_External": {
+    "company_name": "reputation",
+    "api_url": "https://reputation.wd1.myworkdayjobs.com/wday/cxs/reputation/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "reputation",
+    "discovery": "guess"
+  },
+  "capitalpower_External": {
+    "company_name": "capitalpower",
+    "api_url": "https://capitalpower.wd10.myworkdayjobs.com/wday/cxs/capitalpower/External/jobs",
+    "portal_id": "External",
+    "server": "wd10",
+    "tenant": "capitalpower",
+    "discovery": "guess"
+  },
+  "zeppelin_Careers": {
+    "company_name": "zeppelin",
+    "api_url": "https://zeppelin.wd3.myworkdayjobs.com/wday/cxs/zeppelin/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd3",
+    "tenant": "zeppelin",
+    "discovery": "guess"
+  },
+  "leidos_External": {
+    "company_name": "leidos",
+    "api_url": "https://leidos.wd5.myworkdayjobs.com/wday/cxs/leidos/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "leidos",
+    "discovery": "guess"
+  },
+  "viatris_External": {
+    "company_name": "viatris",
+    "api_url": "https://viatris.wd5.myworkdayjobs.com/wday/cxs/viatris/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "viatris",
+    "discovery": "guess"
+  },
+  "ritzcarltonyachtcollection_External_Career_Site": {
+    "company_name": "ritzcarltonyachtcollection",
+    "api_url": "https://ritzcarltonyachtcollection.wd5.myworkdayjobs.com/wday/cxs/ritzcarltonyachtcollection/External_Career_Site/jobs",
+    "portal_id": "External_Career_Site",
+    "server": "wd5",
+    "tenant": "ritzcarltonyachtcollection",
+    "discovery": "guess"
+  },
+  "curriculumassociates_External": {
+    "company_name": "curriculumassociates",
+    "api_url": "https://curriculumassociates.wd5.myworkdayjobs.com/wday/cxs/curriculumassociates/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "curriculumassociates",
+    "discovery": "guess"
+  },
+  "villeroyboch_Careers": {
+    "company_name": "villeroyboch",
+    "api_url": "https://villeroyboch.wd3.myworkdayjobs.com/wday/cxs/villeroyboch/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd3",
+    "tenant": "villeroyboch",
+    "discovery": "guess"
+  },
+  "levistraussandco_External": {
+    "company_name": "levistraussandco",
+    "api_url": "https://levistraussandco.wd5.myworkdayjobs.com/wday/cxs/levistraussandco/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "levistraussandco",
+    "discovery": "guess"
+  },
+  "catalent_External": {
+    "company_name": "catalent",
+    "api_url": "https://catalent.wd1.myworkdayjobs.com/wday/cxs/catalent/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "catalent",
+    "discovery": "guess"
+  },
+  "viavisolutions_Careers": {
+    "company_name": "viavisolutions",
+    "api_url": "https://viavisolutions.wd1.myworkdayjobs.com/wday/cxs/viavisolutions/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "viavisolutions",
+    "discovery": "guess"
+  },
+  "cw_External": {
+    "company_name": "cw",
+    "api_url": "https://cw.wd1.myworkdayjobs.com/wday/cxs/cw/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "cw",
+    "discovery": "guess"
+  },
+  "lplfinancial_External": {
+    "company_name": "lplfinancial",
+    "api_url": "https://lplfinancial.wd1.myworkdayjobs.com/wday/cxs/lplfinancial/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "lplfinancial",
+    "discovery": "guess"
+  },
+  "lhoist_Careers": {
+    "company_name": "lhoist",
+    "api_url": "https://lhoist.wd3.myworkdayjobs.com/wday/cxs/lhoist/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd3",
+    "tenant": "lhoist",
+    "discovery": "guess"
+  },
+  "wellington_External": {
+    "company_name": "wellington",
+    "api_url": "https://wellington.wd5.myworkdayjobs.com/wday/cxs/wellington/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "wellington",
+    "discovery": "guess"
+  },
+  "myrayonieram_Careers": {
+    "company_name": "myrayonieram",
+    "api_url": "https://myrayonieram.wd5.myworkdayjobs.com/wday/cxs/myrayonieram/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd5",
+    "tenant": "myrayonieram",
+    "discovery": "guess"
+  },
+  "idahopowercompany_External": {
+    "company_name": "idahopowercompany",
+    "api_url": "https://idahopowercompany.wd1.myworkdayjobs.com/wday/cxs/idahopowercompany/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "idahopowercompany",
+    "discovery": "guess"
+  },
+  "myview_Careers": {
+    "company_name": "myview",
+    "api_url": "https://myview.wd3.myworkdayjobs.com/wday/cxs/myview/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd3",
+    "tenant": "myview",
+    "discovery": "guess"
+  },
+  "lifespacecommunities_Careers": {
+    "company_name": "lifespacecommunities",
+    "api_url": "https://lifespacecommunities.wd1.myworkdayjobs.com/wday/cxs/lifespacecommunities/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "lifespacecommunities",
+    "discovery": "guess"
+  },
+  "lifeworks_External": {
+    "company_name": "lifeworks",
+    "api_url": "https://lifeworks.wd3.myworkdayjobs.com/wday/cxs/lifeworks/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "lifeworks",
+    "discovery": "guess"
+  },
+  "luminegrp_External": {
+    "company_name": "luminegrp",
+    "api_url": "https://luminegrp.wd3.myworkdayjobs.com/wday/cxs/luminegrp/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "luminegrp",
+    "discovery": "guess"
+  },
+  "mars_External": {
+    "company_name": "mars",
+    "api_url": "https://mars.wd3.myworkdayjobs.com/wday/cxs/mars/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "mars",
+    "discovery": "guess"
+  },
+  "ielfreight_External": {
+    "company_name": "ielfreight",
+    "api_url": "https://ielfreight.wd1.myworkdayjobs.com/wday/cxs/ielfreight/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "ielfreight",
+    "discovery": "guess"
+  },
+  "comscore_External": {
+    "company_name": "comscore",
+    "api_url": "https://comscore.wd5.myworkdayjobs.com/wday/cxs/comscore/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "comscore",
+    "discovery": "guess"
+  },
+  "likewize_External": {
+    "company_name": "likewize",
+    "api_url": "https://likewize.wd1.myworkdayjobs.com/wday/cxs/likewize/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "likewize",
+    "discovery": "guess"
+  },
+  "marshfieldclinichealthsystems_External": {
+    "company_name": "marshfieldclinichealthsystems",
+    "api_url": "https://marshfieldclinichealthsystems.wd5.myworkdayjobs.com/wday/cxs/marshfieldclinichealthsystems/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "marshfieldclinichealthsystems",
+    "discovery": "guess"
+  },
+  "if_Careers": {
+    "company_name": "if",
+    "api_url": "https://if.wd3.myworkdayjobs.com/wday/cxs/if/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd3",
+    "tenant": "if",
+    "discovery": "guess"
+  },
+  "lynn_Careers": {
+    "company_name": "lynn",
+    "api_url": "https://lynn.wd5.myworkdayjobs.com/wday/cxs/lynn/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd5",
+    "tenant": "lynn",
+    "discovery": "guess"
+  },
+  "marymount_Careers": {
+    "company_name": "marymount",
+    "api_url": "https://marymount.wd5.myworkdayjobs.com/wday/cxs/marymount/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd5",
+    "tenant": "marymount",
+    "discovery": "guess"
+  },
+  "conocophillips_External": {
+    "company_name": "conocophillips",
+    "api_url": "https://conocophillips.wd1.myworkdayjobs.com/wday/cxs/conocophillips/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "conocophillips",
+    "discovery": "guess"
+  },
+  "constructoruniversity_Careers": {
+    "company_name": "constructoruniversity",
+    "api_url": "https://constructoruniversity.wd103.myworkdayjobs.com/wday/cxs/constructoruniversity/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd103",
+    "tenant": "constructoruniversity",
+    "discovery": "guess"
+  },
+  "wgu_External": {
+    "company_name": "wgu",
+    "api_url": "https://wgu.wd5.myworkdayjobs.com/wday/cxs/wgu/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "wgu",
+    "discovery": "guess"
+  },
+  "iherb_Careers": {
+    "company_name": "iherb",
+    "api_url": "https://iherb.wd5.myworkdayjobs.com/wday/cxs/iherb/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd5",
+    "tenant": "iherb",
+    "discovery": "guess"
+  },
+  "whitecap_Careers": {
+    "company_name": "whitecap",
+    "api_url": "https://whitecap.wd1.myworkdayjobs.com/wday/cxs/whitecap/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "whitecap",
+    "discovery": "guess"
+  },
+  "mastercard_CorporateCareers": {
+    "company_name": "mastercard",
+    "api_url": "https://mastercard.wd1.myworkdayjobs.com/wday/cxs/mastercard/CorporateCareers/jobs",
+    "portal_id": "CorporateCareers",
+    "server": "wd1",
+    "tenant": "mastercard",
+    "discovery": "guess"
+  },
+  "nationalchurchresidences_Careers": {
+    "company_name": "nationalchurchresidences",
+    "api_url": "https://nationalchurchresidences.wd5.myworkdayjobs.com/wday/cxs/nationalchurchresidences/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd5",
+    "tenant": "nationalchurchresidences",
+    "discovery": "guess"
+  },
+  "williams_External": {
+    "company_name": "williams",
+    "api_url": "https://williams.wd5.myworkdayjobs.com/wday/cxs/williams/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "williams",
+    "discovery": "guess"
+  },
+  "wk_External": {
+    "company_name": "wk",
+    "api_url": "https://wk.wd3.myworkdayjobs.com/wday/cxs/wk/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "wk",
+    "discovery": "guess"
+  },
+  "navigators_External": {
+    "company_name": "navigators",
+    "api_url": "https://navigators.wd1.myworkdayjobs.com/wday/cxs/navigators/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "navigators",
+    "discovery": "guess"
+  },
+  "shakeshack_External": {
+    "company_name": "shakeshack",
+    "api_url": "https://shakeshack.wd5.myworkdayjobs.com/wday/cxs/shakeshack/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "shakeshack",
+    "discovery": "guess"
+  },
+  "lmu_Careers": {
+    "company_name": "lmu",
+    "api_url": "https://lmu.wd1.myworkdayjobs.com/wday/cxs/lmu/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "lmu",
+    "discovery": "guess"
+  },
+  "shawinc_External": {
+    "company_name": "shawinc",
+    "api_url": "https://shawinc.wd1.myworkdayjobs.com/wday/cxs/shawinc/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "shawinc",
+    "discovery": "guess"
+  },
+  "shelterinsurance_Careers": {
+    "company_name": "shelterinsurance",
+    "api_url": "https://shelterinsurance.wd5.myworkdayjobs.com/wday/cxs/shelterinsurance/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd5",
+    "tenant": "shelterinsurance",
+    "discovery": "guess"
+  },
+  "mcafee_External": {
+    "company_name": "mcafee",
+    "api_url": "https://mcafee.wd1.myworkdayjobs.com/wday/cxs/mcafee/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "mcafee",
+    "discovery": "guess"
+  },
+  "wolseley_External": {
+    "company_name": "wolseley",
+    "api_url": "https://wolseley.wd3.myworkdayjobs.com/wday/cxs/wolseley/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "wolseley",
+    "discovery": "guess"
+  },
+  "independencepetgroup_Careers": {
+    "company_name": "independencepetgroup",
+    "api_url": "https://independencepetgroup.wd12.myworkdayjobs.com/wday/cxs/independencepetgroup/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd12",
+    "tenant": "independencepetgroup",
+    "discovery": "guess"
+  },
+  "mc_External": {
+    "company_name": "mc",
+    "api_url": "https://mc.wd1.myworkdayjobs.com/wday/cxs/mc/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "mc",
+    "discovery": "guess"
+  },
+  "manh_External": {
+    "company_name": "manh",
+    "api_url": "https://manh.wd5.myworkdayjobs.com/wday/cxs/manh/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "manh",
+    "discovery": "guess"
+  },
+  "mantech_External": {
+    "company_name": "mantech",
+    "api_url": "https://mantech.wd1.myworkdayjobs.com/wday/cxs/mantech/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "mantech",
+    "discovery": "guess"
+  },
+  "shusa_External": {
+    "company_name": "shusa",
+    "api_url": "https://shusa.wd5.myworkdayjobs.com/wday/cxs/shusa/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "shusa",
+    "discovery": "guess"
+  },
+  "looprecruiting_External": {
+    "company_name": "looprecruiting",
+    "api_url": "https://looprecruiting.wd1.myworkdayjobs.com/wday/cxs/looprecruiting/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "looprecruiting",
+    "discovery": "guess"
+  },
+  "mdlz_External": {
+    "company_name": "mdlz",
+    "api_url": "https://mdlz.wd3.myworkdayjobs.com/wday/cxs/mdlz/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "mdlz",
+    "discovery": "guess"
+  },
+  "mearsgroup_External_Career_Site": {
+    "company_name": "mearsgroup",
+    "api_url": "https://mearsgroup.wd3.myworkdayjobs.com/wday/cxs/mearsgroup/External_Career_Site/jobs",
+    "portal_id": "External_Career_Site",
+    "server": "wd3",
+    "tenant": "mearsgroup",
+    "discovery": "guess"
+  },
+  "medaviehs_External": {
+    "company_name": "medaviehs",
+    "api_url": "https://medaviehs.wd10.myworkdayjobs.com/wday/cxs/medaviehs/External/jobs",
+    "portal_id": "External",
+    "server": "wd10",
+    "tenant": "medaviehs",
+    "discovery": "guess"
+  },
+  "firstrepublic_Careers": {
+    "company_name": "firstrepublic",
+    "api_url": "https://firstrepublic.wd1.myworkdayjobs.com/wday/cxs/firstrepublic/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "firstrepublic",
+    "discovery": "guess"
+  },
+  "tealium_Careers": {
+    "company_name": "tealium",
+    "api_url": "https://tealium.wd1.myworkdayjobs.com/wday/cxs/tealium/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "tealium",
+    "discovery": "guess"
+  },
+  "fractal_Careers": {
+    "company_name": "fractal",
+    "api_url": "https://fractal.wd1.myworkdayjobs.com/wday/cxs/fractal/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "fractal",
+    "discovery": "guess"
+  },
+  "chghealthcare_External": {
+    "company_name": "chghealthcare",
+    "api_url": "https://chghealthcare.wd1.myworkdayjobs.com/wday/cxs/chghealthcare/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "chghealthcare",
+    "discovery": "guess"
+  },
+  "aah_External": {
+    "company_name": "aah",
+    "api_url": "https://aah.wd5.myworkdayjobs.com/wday/cxs/aah/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "aah",
+    "discovery": "guess"
+  },
+  "meharrymedicalcollege_External": {
+    "company_name": "meharrymedicalcollege",
+    "api_url": "https://meharrymedicalcollege.wd12.myworkdayjobs.com/wday/cxs/meharrymedicalcollege/External/jobs",
+    "portal_id": "External",
+    "server": "wd12",
+    "tenant": "meharrymedicalcollege",
+    "discovery": "guess"
+  },
+  "gdit_External_Career_Site": {
+    "company_name": "gdit",
+    "api_url": "https://gdit.wd5.myworkdayjobs.com/wday/cxs/gdit/External_Career_Site/jobs",
+    "portal_id": "External_Career_Site",
+    "server": "wd5",
+    "tenant": "gdit",
+    "discovery": "guess"
+  },
+  "directv_Careers": {
+    "company_name": "directv",
+    "api_url": "https://directv.wd1.myworkdayjobs.com/wday/cxs/directv/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "directv",
+    "discovery": "guess"
+  },
+  "pierrefabre_External_Career_Site": {
+    "company_name": "pierrefabre",
+    "api_url": "https://pierrefabre.wd3.myworkdayjobs.com/wday/cxs/pierrefabre/External_Career_Site/jobs",
+    "portal_id": "External_Career_Site",
+    "server": "wd3",
+    "tenant": "pierrefabre",
+    "discovery": "guess"
+  },
+  "pillsburylaw_External": {
+    "company_name": "pillsburylaw",
+    "api_url": "https://pillsburylaw.wd5.myworkdayjobs.com/wday/cxs/pillsburylaw/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "pillsburylaw",
+    "discovery": "guess"
+  },
+  "choicehotels_External": {
+    "company_name": "choicehotels",
+    "api_url": "https://choicehotels.wd5.myworkdayjobs.com/wday/cxs/choicehotels/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "choicehotels",
+    "discovery": "guess"
+  },
+  "geico_External": {
+    "company_name": "geico",
+    "api_url": "https://geico.wd1.myworkdayjobs.com/wday/cxs/geico/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "geico",
+    "discovery": "guess"
+  },
+  "memorialhermann_External": {
+    "company_name": "memorialhermann",
+    "api_url": "https://memorialhermann.wd5.myworkdayjobs.com/wday/cxs/memorialhermann/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "memorialhermann",
+    "discovery": "guess"
+  },
+  "gen_Careers": {
+    "company_name": "gen",
+    "api_url": "https://gen.wd1.myworkdayjobs.com/wday/cxs/gen/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "gen",
+    "discovery": "guess"
+  },
+  "flextronics_Careers": {
+    "company_name": "flextronics",
+    "api_url": "https://flextronics.wd1.myworkdayjobs.com/wday/cxs/flextronics/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "flextronics",
+    "discovery": "guess"
+  },
+  "frostbank_External": {
+    "company_name": "frostbank",
+    "api_url": "https://frostbank.wd5.myworkdayjobs.com/wday/cxs/frostbank/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "frostbank",
+    "discovery": "guess"
+  },
+  "merceruniversity_External": {
+    "company_name": "merceruniversity",
+    "api_url": "https://merceruniversity.wd1.myworkdayjobs.com/wday/cxs/merceruniversity/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "merceruniversity",
+    "discovery": "guess"
+  },
+  "pjtpartners_Careers": {
+    "company_name": "pjtpartners",
+    "api_url": "https://pjtpartners.wd1.myworkdayjobs.com/wday/cxs/pjtpartners/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "pjtpartners",
+    "discovery": "guess"
+  },
+  "fugro_Careers": {
+    "company_name": "fugro",
+    "api_url": "https://fugro.wd3.myworkdayjobs.com/wday/cxs/fugro/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd3",
+    "tenant": "fugro",
+    "discovery": "guess"
+  },
+  "ciena_Careers": {
+    "company_name": "ciena",
+    "api_url": "https://ciena.wd5.myworkdayjobs.com/wday/cxs/ciena/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd5",
+    "tenant": "ciena",
+    "discovery": "guess"
+  },
+  "fujifilmdiosynth_External": {
+    "company_name": "fujifilmdiosynth",
+    "api_url": "https://fujifilmdiosynth.wd3.myworkdayjobs.com/wday/cxs/fujifilmdiosynth/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "fujifilmdiosynth",
+    "discovery": "guess"
+  },
+  "mes_Careers": {
+    "company_name": "mes",
+    "api_url": "https://mes.wd5.myworkdayjobs.com/wday/cxs/mes/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd5",
+    "tenant": "mes",
+    "discovery": "guess"
+  },
+  "fullsail_External": {
+    "company_name": "fullsail",
+    "api_url": "https://fullsail.wd1.myworkdayjobs.com/wday/cxs/fullsail/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "fullsail",
+    "discovery": "guess"
+  },
+  "abbluecross_Careers": {
+    "company_name": "abbluecross",
+    "api_url": "https://abbluecross.wd3.myworkdayjobs.com/wday/cxs/abbluecross/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd3",
+    "tenant": "abbluecross",
+    "discovery": "guess"
+  },
+  "trendmicro_External": {
+    "company_name": "trendmicro",
+    "api_url": "https://trendmicro.wd3.myworkdayjobs.com/wday/cxs/trendmicro/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "trendmicro",
+    "discovery": "guess"
+  },
+  "thales_Careers": {
+    "company_name": "thales",
+    "api_url": "https://thales.wd3.myworkdayjobs.com/wday/cxs/thales/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd3",
+    "tenant": "thales",
+    "discovery": "guess"
+  },
+  "theahsg_Careers": {
+    "company_name": "theahsg",
+    "api_url": "https://theahsg.wd5.myworkdayjobs.com/wday/cxs/theahsg/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd5",
+    "tenant": "theahsg",
+    "discovery": "guess"
+  },
+  "pluralsight_Careers": {
+    "company_name": "pluralsight",
+    "api_url": "https://pluralsight.wd1.myworkdayjobs.com/wday/cxs/pluralsight/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "pluralsight",
+    "discovery": "guess"
+  },
+  "academy_Careers": {
+    "company_name": "academy",
+    "api_url": "https://academy.wd1.myworkdayjobs.com/wday/cxs/academy/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "academy",
+    "discovery": "guess"
+  },
+  "cityofgainesville_Careers": {
+    "company_name": "cityofgainesville",
+    "api_url": "https://cityofgainesville.wd5.myworkdayjobs.com/wday/cxs/cityofgainesville/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd5",
+    "tenant": "cityofgainesville",
+    "discovery": "guess"
+  },
+  "dssmith_Careers": {
+    "company_name": "dssmith",
+    "api_url": "https://dssmith.wd3.myworkdayjobs.com/wday/cxs/dssmith/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd3",
+    "tenant": "dssmith",
+    "discovery": "guess"
+  },
+  "pnc_External": {
+    "company_name": "pnc",
+    "api_url": "https://pnc.wd5.myworkdayjobs.com/wday/cxs/pnc/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "pnc",
+    "discovery": "guess"
+  },
+  "theglobalfund_External": {
+    "company_name": "theglobalfund",
+    "api_url": "https://theglobalfund.wd1.myworkdayjobs.com/wday/cxs/theglobalfund/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "theglobalfund",
+    "discovery": "guess"
+  },
+  "galderma_External": {
+    "company_name": "galderma",
+    "api_url": "https://galderma.wd3.myworkdayjobs.com/wday/cxs/galderma/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "galderma",
+    "discovery": "guess"
+  },
+  "polypipe_Careers": {
+    "company_name": "polypipe",
+    "api_url": "https://polypipe.wd103.myworkdayjobs.com/wday/cxs/polypipe/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd103",
+    "tenant": "polypipe",
+    "discovery": "guess"
+  },
+  "gici_Careers": {
+    "company_name": "gici",
+    "api_url": "https://gici.wd5.myworkdayjobs.com/wday/cxs/gici/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd5",
+    "tenant": "gici",
+    "discovery": "guess"
+  },
+  "duboischemicals_External": {
+    "company_name": "duboischemicals",
+    "api_url": "https://duboischemicals.wd1.myworkdayjobs.com/wday/cxs/duboischemicals/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "duboischemicals",
+    "discovery": "guess"
+  },
+  "mhs_Careers": {
+    "company_name": "mhs",
+    "api_url": "https://mhs.wd1.myworkdayjobs.com/wday/cxs/mhs/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "mhs",
+    "discovery": "guess"
+  },
+  "theocc_Careers": {
+    "company_name": "theocc",
+    "api_url": "https://theocc.wd5.myworkdayjobs.com/wday/cxs/theocc/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd5",
+    "tenant": "theocc",
+    "discovery": "guess"
+  },
+  "gamestop_Careers": {
+    "company_name": "gamestop",
+    "api_url": "https://gamestop.wd5.myworkdayjobs.com/wday/cxs/gamestop/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd5",
+    "tenant": "gamestop",
+    "discovery": "guess"
+  },
+  "globalblue_External": {
+    "company_name": "globalblue",
+    "api_url": "https://globalblue.wd3.myworkdayjobs.com/wday/cxs/globalblue/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "globalblue",
+    "discovery": "guess"
+  },
+  "posti_External": {
+    "company_name": "posti",
+    "api_url": "https://posti.wd3.myworkdayjobs.com/wday/cxs/posti/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "posti",
+    "discovery": "guess"
+  },
+  "globalfoundries_External": {
+    "company_name": "globalfoundries",
+    "api_url": "https://globalfoundries.wd1.myworkdayjobs.com/wday/cxs/globalfoundries/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "globalfoundries",
+    "discovery": "guess"
+  },
+  "accelya_Careers": {
+    "company_name": "accelya",
+    "api_url": "https://accelya.wd103.myworkdayjobs.com/wday/cxs/accelya/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd103",
+    "tenant": "accelya",
+    "discovery": "guess"
+  },
+  "allina_External": {
+    "company_name": "allina",
+    "api_url": "https://allina.wd5.myworkdayjobs.com/wday/cxs/allina/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "allina",
+    "discovery": "guess"
+  },
+  "thomsonreuters_External_Career_Site": {
+    "company_name": "thomsonreuters",
+    "api_url": "https://thomsonreuters.wd5.myworkdayjobs.com/wday/cxs/thomsonreuters/External_Career_Site/jobs",
+    "portal_id": "External_Career_Site",
+    "server": "wd5",
+    "tenant": "thomsonreuters",
+    "discovery": "guess"
+  },
+  "michaels_External": {
+    "company_name": "michaels",
+    "api_url": "https://michaels.wd5.myworkdayjobs.com/wday/cxs/michaels/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "michaels",
+    "discovery": "guess"
+  },
+  "broadridge_Careers": {
+    "company_name": "broadridge",
+    "api_url": "https://broadridge.wd5.myworkdayjobs.com/wday/cxs/broadridge/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd5",
+    "tenant": "broadridge",
+    "discovery": "guess"
+  },
+  "movadogroup_Careers": {
+    "company_name": "movadogroup",
+    "api_url": "https://movadogroup.wd1.myworkdayjobs.com/wday/cxs/movadogroup/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "movadogroup",
+    "discovery": "guess"
+  },
+  "alpinephysicians_External": {
+    "company_name": "alpinephysicians",
+    "api_url": "https://alpinephysicians.wd1.myworkdayjobs.com/wday/cxs/alpinephysicians/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "alpinephysicians",
+    "discovery": "guess"
+  },
+  "becu_External": {
+    "company_name": "becu",
+    "api_url": "https://becu.wd1.myworkdayjobs.com/wday/cxs/becu/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "becu",
+    "discovery": "guess"
+  },
+  "heequipment_Careers": {
+    "company_name": "heequipment",
+    "api_url": "https://heequipment.wd5.myworkdayjobs.com/wday/cxs/heequipment/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd5",
+    "tenant": "heequipment",
+    "discovery": "guess"
+  },
+  "movement_Careers": {
+    "company_name": "movement",
+    "api_url": "https://movement.wd1.myworkdayjobs.com/wday/cxs/movement/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "movement",
+    "discovery": "guess"
+  },
+  "statestreet_Global": {
+    "company_name": "statestreet",
+    "api_url": "https://statestreet.wd1.myworkdayjobs.com/wday/cxs/statestreet/Global/jobs",
+    "portal_id": "Global",
+    "server": "wd1",
+    "tenant": "statestreet",
+    "discovery": "guess"
+  },
+  "stcharles_External": {
+    "company_name": "stcharles",
+    "api_url": "https://stcharles.wd1.myworkdayjobs.com/wday/cxs/stcharles/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "stcharles",
+    "discovery": "guess"
+  },
+  "altamed_Careers": {
+    "company_name": "altamed",
+    "api_url": "https://altamed.wd1.myworkdayjobs.com/wday/cxs/altamed/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "altamed",
+    "discovery": "guess"
+  },
+  "roquette_External": {
+    "company_name": "roquette",
+    "api_url": "https://roquette.wd3.myworkdayjobs.com/wday/cxs/roquette/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "roquette",
+    "discovery": "guess"
+  },
+  "browserstack_External": {
+    "company_name": "browserstack",
+    "api_url": "https://browserstack.wd3.myworkdayjobs.com/wday/cxs/browserstack/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "browserstack",
+    "discovery": "guess"
+  },
+  "bellpartnersinc_Careers": {
+    "company_name": "bellpartnersinc",
+    "api_url": "https://bellpartnersinc.wd5.myworkdayjobs.com/wday/cxs/bellpartnersinc/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd5",
+    "tenant": "bellpartnersinc",
+    "discovery": "guess"
+  },
+  "olg_Careers": {
+    "company_name": "olg",
+    "api_url": "https://olg.wd3.myworkdayjobs.com/wday/cxs/olg/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd3",
+    "tenant": "olg",
+    "discovery": "guess"
+  },
+  "msfg_Careers": {
+    "company_name": "msfg",
+    "api_url": "https://msfg.wd3.myworkdayjobs.com/wday/cxs/msfg/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd3",
+    "tenant": "msfg",
+    "discovery": "guess"
+  },
+  "bucknell_External": {
+    "company_name": "bucknell",
+    "api_url": "https://bucknell.wd1.myworkdayjobs.com/wday/cxs/bucknell/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "bucknell",
+    "discovery": "guess"
+  },
+  "stevens_External": {
+    "company_name": "stevens",
+    "api_url": "https://stevens.wd5.myworkdayjobs.com/wday/cxs/stevens/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "stevens",
+    "discovery": "guess"
+  },
+  "onelineage_External": {
+    "company_name": "onelineage",
+    "api_url": "https://onelineage.wd1.myworkdayjobs.com/wday/cxs/onelineage/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "onelineage",
+    "discovery": "guess"
+  },
+  "stewart_External": {
+    "company_name": "stewart",
+    "api_url": "https://stewart.wd1.myworkdayjobs.com/wday/cxs/stewart/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "stewart",
+    "discovery": "guess"
+  },
+  "amat_External": {
+    "company_name": "amat",
+    "api_url": "https://amat.wd1.myworkdayjobs.com/wday/cxs/amat/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "amat",
+    "discovery": "guess"
+  },
+  "bestwestern_Careers": {
+    "company_name": "bestwestern",
+    "api_url": "https://bestwestern.wd1.myworkdayjobs.com/wday/cxs/bestwestern/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "bestwestern",
+    "discovery": "guess"
+  },
+  "herbertsmithfreehills_External": {
+    "company_name": "herbertsmithfreehills",
+    "api_url": "https://herbertsmithfreehills.wd3.myworkdayjobs.com/wday/cxs/herbertsmithfreehills/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "herbertsmithfreehills",
+    "discovery": "guess"
+  },
+  "rtddenver_Careers": {
+    "company_name": "rtddenver",
+    "api_url": "https://rtddenver.wd5.myworkdayjobs.com/wday/cxs/rtddenver/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd5",
+    "tenant": "rtddenver",
+    "discovery": "guess"
+  },
+  "cenovus_Careers": {
+    "company_name": "cenovus",
+    "api_url": "https://cenovus.wd3.myworkdayjobs.com/wday/cxs/cenovus/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd3",
+    "tenant": "cenovus",
+    "discovery": "guess"
+  },
+  "hhmi_External": {
+    "company_name": "hhmi",
+    "api_url": "https://hhmi.wd1.myworkdayjobs.com/wday/cxs/hhmi/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "hhmi",
+    "discovery": "guess"
+  },
+  "ruger_External": {
+    "company_name": "ruger",
+    "api_url": "https://ruger.wd1.myworkdayjobs.com/wday/cxs/ruger/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "ruger",
+    "discovery": "guess"
+  },
+  "ameren_External": {
+    "company_name": "ameren",
+    "api_url": "https://ameren.wd1.myworkdayjobs.com/wday/cxs/ameren/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "ameren",
+    "discovery": "guess"
+  },
+  "stoneridge_Careers": {
+    "company_name": "stoneridge",
+    "api_url": "https://stoneridge.wd5.myworkdayjobs.com/wday/cxs/stoneridge/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd5",
+    "tenant": "stoneridge",
+    "discovery": "guess"
+  },
+  "bhs_Careers": {
+    "company_name": "bhs",
+    "api_url": "https://bhs.wd1.myworkdayjobs.com/wday/cxs/bhs/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "bhs",
+    "discovery": "guess"
+  },
+  "ont_External": {
+    "company_name": "ont",
+    "api_url": "https://ont.wd5.myworkdayjobs.com/wday/cxs/ont/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "ont",
+    "discovery": "guess"
+  },
+  "bilh_External": {
+    "company_name": "bilh",
+    "api_url": "https://bilh.wd1.myworkdayjobs.com/wday/cxs/bilh/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "bilh",
+    "discovery": "guess"
+  },
+  "centrify_External": {
+    "company_name": "centrify",
+    "api_url": "https://centrify.wd1.myworkdayjobs.com/wday/cxs/centrify/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "centrify",
+    "discovery": "guess"
+  },
+  "ouryahoo_Careers": {
+    "company_name": "ouryahoo",
+    "api_url": "https://ouryahoo.wd5.myworkdayjobs.com/wday/cxs/ouryahoo/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd5",
+    "tenant": "ouryahoo",
+    "discovery": "guess"
+  },
+  "hillenbrand_Global": {
+    "company_name": "hillenbrand",
+    "api_url": "https://hillenbrand.wd3.myworkdayjobs.com/wday/cxs/hillenbrand/Global/jobs",
+    "portal_id": "Global",
+    "server": "wd3",
+    "tenant": "hillenbrand",
+    "discovery": "guess"
+  },
+  "billgosling_Global": {
+    "company_name": "billgosling",
+    "api_url": "https://billgosling.wd5.myworkdayjobs.com/wday/cxs/billgosling/Global/jobs",
+    "portal_id": "Global",
+    "server": "wd5",
+    "tenant": "billgosling",
+    "discovery": "guess"
+  },
+  "strayer_Careers": {
+    "company_name": "strayer",
+    "api_url": "https://strayer.wd1.myworkdayjobs.com/wday/cxs/strayer/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "strayer",
+    "discovery": "guess"
+  },
+  "amerilife_External": {
+    "company_name": "amerilife",
+    "api_url": "https://amerilife.wd5.myworkdayjobs.com/wday/cxs/amerilife/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "amerilife",
+    "discovery": "guess"
+  },
+  "caa_Careers": {
+    "company_name": "caa",
+    "api_url": "https://caa.wd1.myworkdayjobs.com/wday/cxs/caa/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "caa",
+    "discovery": "guess"
+  },
+  "strongtie_External": {
+    "company_name": "strongtie",
+    "api_url": "https://strongtie.wd1.myworkdayjobs.com/wday/cxs/strongtie/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "strongtie",
+    "discovery": "guess"
+  },
+  "amfam_Careers": {
+    "company_name": "amfam",
+    "api_url": "https://amfam.wd1.myworkdayjobs.com/wday/cxs/amfam/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "amfam",
+    "discovery": "guess"
+  },
+  "caci_External": {
+    "company_name": "caci",
+    "api_url": "https://caci.wd1.myworkdayjobs.com/wday/cxs/caci/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "caci",
+    "discovery": "guess"
+  },
+  "mustangfuel_External": {
+    "company_name": "mustangfuel",
+    "api_url": "https://mustangfuel.wd5.myworkdayjobs.com/wday/cxs/mustangfuel/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "mustangfuel",
+    "discovery": "guess"
+  },
+  "orchidortho_Careers": {
+    "company_name": "orchidortho",
+    "api_url": "https://orchidortho.wd5.myworkdayjobs.com/wday/cxs/orchidortho/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd5",
+    "tenant": "orchidortho",
+    "discovery": "guess"
+  },
+  "hl_External": {
+    "company_name": "hl",
+    "api_url": "https://hl.wd1.myworkdayjobs.com/wday/cxs/hl/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "hl",
+    "discovery": "guess"
+  },
+  "amgen_Careers": {
+    "company_name": "amgen",
+    "api_url": "https://amgen.wd1.myworkdayjobs.com/wday/cxs/amgen/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "amgen",
+    "discovery": "guess"
+  },
+  "cfindustries_Careers": {
+    "company_name": "cfindustries",
+    "api_url": "https://cfindustries.wd1.myworkdayjobs.com/wday/cxs/cfindustries/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "cfindustries",
+    "discovery": "guess"
+  },
+  "orientalbank_Careers": {
+    "company_name": "orientalbank",
+    "api_url": "https://orientalbank.wd1.myworkdayjobs.com/wday/cxs/orientalbank/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "orientalbank",
+    "discovery": "guess"
+  },
+  "originbank_Careers": {
+    "company_name": "originbank",
+    "api_url": "https://originbank.wd1.myworkdayjobs.com/wday/cxs/originbank/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "originbank",
+    "discovery": "guess"
+  },
+  "calix_External": {
+    "company_name": "calix",
+    "api_url": "https://calix.wd1.myworkdayjobs.com/wday/cxs/calix/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "calix",
+    "discovery": "guess"
+  },
+  "hollandhospital_External": {
+    "company_name": "hollandhospital",
+    "api_url": "https://hollandhospital.wd1.myworkdayjobs.com/wday/cxs/hollandhospital/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "hollandhospital",
+    "discovery": "guess"
+  },
+  "salesforce_External_Career_Site": {
+    "company_name": "salesforce",
+    "api_url": "https://salesforce.wd12.myworkdayjobs.com/wday/cxs/salesforce/External_Career_Site/jobs",
+    "portal_id": "External_Career_Site",
+    "server": "wd12",
+    "tenant": "salesforce",
+    "discovery": "guess"
+  },
+  "amynta_Global": {
+    "company_name": "amynta",
+    "api_url": "https://amynta.wd5.myworkdayjobs.com/wday/cxs/amynta/Global/jobs",
+    "portal_id": "Global",
+    "server": "wd5",
+    "tenant": "amynta",
+    "discovery": "guess"
+  },
+  "salvationarmy_Careers": {
+    "company_name": "salvationarmy",
+    "api_url": "https://salvationarmy.wd3.myworkdayjobs.com/wday/cxs/salvationarmy/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd3",
+    "tenant": "salvationarmy",
+    "discovery": "guess"
+  },
+  "analogdevices_External": {
+    "company_name": "analogdevices",
+    "api_url": "https://analogdevices.wd1.myworkdayjobs.com/wday/cxs/analogdevices/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "analogdevices",
+    "discovery": "guess"
+  },
+  "myhrabc_Global": {
+    "company_name": "myhrabc",
+    "api_url": "https://myhrabc.wd5.myworkdayjobs.com/wday/cxs/myhrabc/Global/jobs",
+    "portal_id": "Global",
+    "server": "wd5",
+    "tenant": "myhrabc",
+    "discovery": "guess"
+  },
+  "palmbeachstate_External": {
+    "company_name": "palmbeachstate",
+    "api_url": "https://palmbeachstate.wd1.myworkdayjobs.com/wday/cxs/palmbeachstate/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "palmbeachstate",
+    "discovery": "guess"
+  },
+  "irsc_External": {
+    "company_name": "irsc",
+    "api_url": "https://irsc.wd5.myworkdayjobs.com/wday/cxs/irsc/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "irsc",
+    "discovery": "guess"
+  },
+  "arriva_Careers": {
+    "company_name": "arriva",
+    "api_url": "https://arriva.wd3.myworkdayjobs.com/wday/cxs/arriva/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd3",
+    "tenant": "arriva",
+    "discovery": "guess"
+  },
+  "truist_Careers": {
+    "company_name": "truist",
+    "api_url": "https://truist.wd1.myworkdayjobs.com/wday/cxs/truist/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "truist",
+    "discovery": "guess"
+  },
+  "accuray_External": {
+    "company_name": "accuray",
+    "api_url": "https://accuray.wd5.myworkdayjobs.com/wday/cxs/accuray/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "accuray",
+    "discovery": "guess"
+  },
+  "ace_Careers": {
+    "company_name": "ace",
+    "api_url": "https://ace.wd5.myworkdayjobs.com/wday/cxs/ace/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd5",
+    "tenant": "ace",
+    "discovery": "guess"
+  },
+  "newschool_External": {
+    "company_name": "newschool",
+    "api_url": "https://newschool.wd1.myworkdayjobs.com/wday/cxs/newschool/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "newschool",
+    "discovery": "guess"
+  },
+  "acehardware_External": {
+    "company_name": "acehardware",
+    "api_url": "https://acehardware.wd1.myworkdayjobs.com/wday/cxs/acehardware/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "acehardware",
+    "discovery": "guess"
+  },
+  "nexperia_Careers": {
+    "company_name": "nexperia",
+    "api_url": "https://nexperia.wd3.myworkdayjobs.com/wday/cxs/nexperia/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd3",
+    "tenant": "nexperia",
+    "discovery": "guess"
+  },
+  "acg_Careers": {
+    "company_name": "acg",
+    "api_url": "https://acg.wd1.myworkdayjobs.com/wday/cxs/acg/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "acg",
+    "discovery": "guess"
+  },
+  "ascentsolutions_External": {
+    "company_name": "ascentsolutions",
+    "api_url": "https://ascentsolutions.wd1.myworkdayjobs.com/wday/cxs/ascentsolutions/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "ascentsolutions",
+    "discovery": "guess"
+  },
+  "insitu_Careers": {
+    "company_name": "insitu",
+    "api_url": "https://insitu.wd1.myworkdayjobs.com/wday/cxs/insitu/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "insitu",
+    "discovery": "guess"
+  },
+  "nghs_External": {
+    "company_name": "nghs",
+    "api_url": "https://nghs.wd1.myworkdayjobs.com/wday/cxs/nghs/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "nghs",
+    "discovery": "guess"
+  },
+  "integer_External": {
+    "company_name": "integer",
+    "api_url": "https://integer.wd1.myworkdayjobs.com/wday/cxs/integer/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "integer",
+    "discovery": "guess"
+  },
+  "acuityinternational_External": {
+    "company_name": "acuityinternational",
+    "api_url": "https://acuityinternational.wd5.myworkdayjobs.com/wday/cxs/acuityinternational/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "acuityinternational",
+    "discovery": "guess"
+  },
+  "asmglobal_Careers": {
+    "company_name": "asmglobal",
+    "api_url": "https://asmglobal.wd1.myworkdayjobs.com/wday/cxs/asmglobal/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "asmglobal",
+    "discovery": "guess"
+  },
+  "evolent_External": {
+    "company_name": "evolent",
+    "api_url": "https://evolent.wd1.myworkdayjobs.com/wday/cxs/evolent/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "evolent",
+    "discovery": "guess"
+  },
+  "intel_External": {
+    "company_name": "intel",
+    "api_url": "https://intel.wd1.myworkdayjobs.com/wday/cxs/intel/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "intel",
+    "discovery": "guess"
+  },
+  "synchronyfinancial_Careers": {
+    "company_name": "synchronyfinancial",
+    "api_url": "https://synchronyfinancial.wd5.myworkdayjobs.com/wday/cxs/synchronyfinancial/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd5",
+    "tenant": "synchronyfinancial",
+    "discovery": "guess"
+  },
+  "nibcatwork_External": {
+    "company_name": "nibcatwork",
+    "api_url": "https://nibcatwork.wd3.myworkdayjobs.com/wday/cxs/nibcatwork/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "nibcatwork",
+    "discovery": "guess"
+  },
+  "adient_External": {
+    "company_name": "adient",
+    "api_url": "https://adient.wd3.myworkdayjobs.com/wday/cxs/adient/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "adient",
+    "discovery": "guess"
+  },
+  "admiralbeverage_External": {
+    "company_name": "admiralbeverage",
+    "api_url": "https://admiralbeverage.wd5.myworkdayjobs.com/wday/cxs/admiralbeverage/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "admiralbeverage",
+    "discovery": "guess"
+  },
+  "bbinsurance_Careers": {
+    "company_name": "bbinsurance",
+    "api_url": "https://bbinsurance.wd1.myworkdayjobs.com/wday/cxs/bbinsurance/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "bbinsurance",
+    "discovery": "guess"
+  },
+  "jefferson_External": {
+    "company_name": "jefferson",
+    "api_url": "https://jefferson.wd5.myworkdayjobs.com/wday/cxs/jefferson/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "jefferson",
+    "discovery": "guess"
+  },
+  "exeterfinance_External": {
+    "company_name": "exeterfinance",
+    "api_url": "https://exeterfinance.wd1.myworkdayjobs.com/wday/cxs/exeterfinance/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "exeterfinance",
+    "discovery": "guess"
+  },
+  "bcbsa_Careers": {
+    "company_name": "bcbsa",
+    "api_url": "https://bcbsa.wd1.myworkdayjobs.com/wday/cxs/bcbsa/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "bcbsa",
+    "discovery": "guess"
+  },
+  "advantech_External": {
+    "company_name": "advantech",
+    "api_url": "https://advantech.wd3.myworkdayjobs.com/wday/cxs/advantech/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "advantech",
+    "discovery": "guess"
+  },
+  "takeda_External": {
+    "company_name": "takeda",
+    "api_url": "https://takeda.wd3.myworkdayjobs.com/wday/cxs/takeda/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "takeda",
+    "discovery": "guess"
+  },
+  "astrazeneca_Careers": {
+    "company_name": "astrazeneca",
+    "api_url": "https://astrazeneca.wd3.myworkdayjobs.com/wday/cxs/astrazeneca/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd3",
+    "tenant": "astrazeneca",
+    "discovery": "guess"
+  },
+  "uvmhealth_External": {
+    "company_name": "uvmhealth",
+    "api_url": "https://uvmhealth.wd1.myworkdayjobs.com/wday/cxs/uvmhealth/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "uvmhealth",
+    "discovery": "guess"
+  },
+  "nngroup_External": {
+    "company_name": "nngroup",
+    "api_url": "https://nngroup.wd3.myworkdayjobs.com/wday/cxs/nngroup/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "nngroup",
+    "discovery": "guess"
+  },
+  "bcbsks_External": {
+    "company_name": "bcbsks",
+    "api_url": "https://bcbsks.wd1.myworkdayjobs.com/wday/cxs/bcbsks/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "bcbsks",
+    "discovery": "guess"
+  },
+  "bcbsla_External": {
+    "company_name": "bcbsla",
+    "api_url": "https://bcbsla.wd1.myworkdayjobs.com/wday/cxs/bcbsla/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "bcbsla",
+    "discovery": "guess"
+  },
+  "intrum_External": {
+    "company_name": "intrum",
+    "api_url": "https://intrum.wd3.myworkdayjobs.com/wday/cxs/intrum/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "intrum",
+    "discovery": "guess"
+  },
+  "athenahealth_External": {
+    "company_name": "athenahealth",
+    "api_url": "https://athenahealth.wd1.myworkdayjobs.com/wday/cxs/athenahealth/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "athenahealth",
+    "discovery": "guess"
+  },
+  "aero_External": {
+    "company_name": "aero",
+    "api_url": "https://aero.wd5.myworkdayjobs.com/wday/cxs/aero/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "aero",
+    "discovery": "guess"
+  },
+  "bcbst_External": {
+    "company_name": "bcbst",
+    "api_url": "https://bcbst.wd1.myworkdayjobs.com/wday/cxs/bcbst/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "bcbst",
+    "discovery": "guess"
+  },
+  "johngore_Careers": {
+    "company_name": "johngore",
+    "api_url": "https://johngore.wd1.myworkdayjobs.com/wday/cxs/johngore/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "johngore",
+    "discovery": "guess"
+  },
+  "taskus_Careers": {
+    "company_name": "taskus",
+    "api_url": "https://taskus.wd1.myworkdayjobs.com/wday/cxs/taskus/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "taskus",
+    "discovery": "guess"
+  },
+  "bcbswy_Careers": {
+    "company_name": "bcbswy",
+    "api_url": "https://bcbswy.wd1.myworkdayjobs.com/wday/cxs/bcbswy/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "bcbswy",
+    "discovery": "guess"
+  },
+  "aeso_External": {
+    "company_name": "aeso",
+    "api_url": "https://aeso.wd3.myworkdayjobs.com/wday/cxs/aeso/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "aeso",
+    "discovery": "guess"
+  },
+  "vanderlande_Careers": {
+    "company_name": "vanderlande",
+    "api_url": "https://vanderlande.wd3.myworkdayjobs.com/wday/cxs/vanderlande/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd3",
+    "tenant": "vanderlande",
+    "discovery": "guess"
+  },
+  "taylor_External": {
+    "company_name": "taylor",
+    "api_url": "https://taylor.wd1.myworkdayjobs.com/wday/cxs/taylor/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "taylor",
+    "discovery": "guess"
+  },
+  "atlanticmedia_Careers": {
+    "company_name": "atlanticmedia",
+    "api_url": "https://atlanticmedia.wd1.myworkdayjobs.com/wday/cxs/atlanticmedia/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "atlanticmedia",
+    "discovery": "guess"
+  },
+  "northeastern_Careers": {
+    "company_name": "northeastern",
+    "api_url": "https://northeastern.wd1.myworkdayjobs.com/wday/cxs/northeastern/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "northeastern",
+    "discovery": "guess"
+  },
+  "bdgrowers_External": {
+    "company_name": "bdgrowers",
+    "api_url": "https://bdgrowers.wd1.myworkdayjobs.com/wday/cxs/bdgrowers/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "bdgrowers",
+    "discovery": "guess"
+  },
+  "juliusbaer_External": {
+    "company_name": "juliusbaer",
+    "api_url": "https://juliusbaer.wd3.myworkdayjobs.com/wday/cxs/juliusbaer/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "juliusbaer",
+    "discovery": "guess"
+  },
+  "bdrthermea_External": {
+    "company_name": "bdrthermea",
+    "api_url": "https://bdrthermea.wd103.myworkdayjobs.com/wday/cxs/bdrthermea/External/jobs",
+    "portal_id": "External",
+    "server": "wd103",
+    "tenant": "bdrthermea",
+    "discovery": "guess"
+  },
+  "vaultex_Careers": {
+    "company_name": "vaultex",
+    "api_url": "https://vaultex.wd3.myworkdayjobs.com/wday/cxs/vaultex/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd3",
+    "tenant": "vaultex",
+    "discovery": "guess"
+  },
+  "agiliti_Careers": {
+    "company_name": "agiliti",
+    "api_url": "https://agiliti.wd5.myworkdayjobs.com/wday/cxs/agiliti/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd5",
+    "tenant": "agiliti",
+    "discovery": "guess"
+  },
+  "agilonhealth_External": {
+    "company_name": "agilonhealth",
+    "api_url": "https://agilonhealth.wd1.myworkdayjobs.com/wday/cxs/agilonhealth/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "agilonhealth",
+    "discovery": "guess"
+  },
+  "novavax_Careers": {
+    "company_name": "novavax",
+    "api_url": "https://novavax.wd1.myworkdayjobs.com/wday/cxs/novavax/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "novavax",
+    "discovery": "guess"
+  },
+  "jurists_Global": {
+    "company_name": "jurists",
+    "api_url": "https://jurists.wd3.myworkdayjobs.com/wday/cxs/jurists/Global/jobs",
+    "portal_id": "Global",
+    "server": "wd3",
+    "tenant": "jurists",
+    "discovery": "guess"
+  },
+  "auroragov_Careers": {
+    "company_name": "auroragov",
+    "api_url": "https://auroragov.wd1.myworkdayjobs.com/wday/cxs/auroragov/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "auroragov",
+    "discovery": "guess"
+  },
+  "pplingo_External": {
+    "company_name": "pplingo",
+    "api_url": "https://pplingo.wd3.myworkdayjobs.com/wday/cxs/pplingo/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "pplingo",
+    "discovery": "guess"
+  },
+  "austincc_External": {
+    "company_name": "austincc",
+    "api_url": "https://austincc.wd1.myworkdayjobs.com/wday/cxs/austincc/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "austincc",
+    "discovery": "guess"
+  },
+  "nreca_External": {
+    "company_name": "nreca",
+    "api_url": "https://nreca.wd1.myworkdayjobs.com/wday/cxs/nreca/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "nreca",
+    "discovery": "guess"
+  },
+  "agoc_External": {
+    "company_name": "agoc",
+    "api_url": "https://agoc.wd5.myworkdayjobs.com/wday/cxs/agoc/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "agoc",
+    "discovery": "guess"
+  },
+  "agrana_Careers": {
+    "company_name": "agrana",
+    "api_url": "https://agrana.wd3.myworkdayjobs.com/wday/cxs/agrana/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd3",
+    "tenant": "agrana",
+    "discovery": "guess"
+  },
+  "nrf_External": {
+    "company_name": "nrf",
+    "api_url": "https://nrf.wd3.myworkdayjobs.com/wday/cxs/nrf/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "nrf",
+    "discovery": "guess"
+  },
+  "quadient_External_Career_Site": {
+    "company_name": "quadient",
+    "api_url": "https://quadient.wd3.myworkdayjobs.com/wday/cxs/quadient/External_Career_Site/jobs",
+    "portal_id": "External_Career_Site",
+    "server": "wd3",
+    "tenant": "quadient",
+    "discovery": "guess"
+  },
+  "endo_External": {
+    "company_name": "endo",
+    "api_url": "https://endo.wd1.myworkdayjobs.com/wday/cxs/endo/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "endo",
+    "discovery": "guess"
+  },
+  "aia_External": {
+    "company_name": "aia",
+    "api_url": "https://aia.wd3.myworkdayjobs.com/wday/cxs/aia/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "aia",
+    "discovery": "guess"
+  },
+  "qualys_Careers": {
+    "company_name": "qualys",
+    "api_url": "https://qualys.wd5.myworkdayjobs.com/wday/cxs/qualys/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd5",
+    "tenant": "qualys",
+    "discovery": "guess"
+  },
+  "bmo_External": {
+    "company_name": "bmo",
+    "api_url": "https://bmo.wd3.myworkdayjobs.com/wday/cxs/bmo/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "bmo",
+    "discovery": "guess"
+  },
+  "energynorthwest_External": {
+    "company_name": "energynorthwest",
+    "api_url": "https://energynorthwest.wd1.myworkdayjobs.com/wday/cxs/energynorthwest/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "energynorthwest",
+    "discovery": "guess"
+  },
+  "airasia_Careers": {
+    "company_name": "airasia",
+    "api_url": "https://airasia.wd3.myworkdayjobs.com/wday/cxs/airasia/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd3",
+    "tenant": "airasia",
+    "discovery": "guess"
+  },
+  "ntst_Careers": {
+    "company_name": "ntst",
+    "api_url": "https://ntst.wd1.myworkdayjobs.com/wday/cxs/ntst/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "ntst",
+    "discovery": "guess"
+  },
+  "ntu_Careers": {
+    "company_name": "ntu",
+    "api_url": "https://ntu.wd3.myworkdayjobs.com/wday/cxs/ntu/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd3",
+    "tenant": "ntu",
+    "discovery": "guess"
+  },
+  "ais_Careers": {
+    "company_name": "ais",
+    "api_url": "https://ais.wd3.myworkdayjobs.com/wday/cxs/ais/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd3",
+    "tenant": "ais",
+    "discovery": "guess"
+  },
+  "nus_Careers": {
+    "company_name": "nus",
+    "api_url": "https://nus.wd1.myworkdayjobs.com/wday/cxs/nus/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "nus",
+    "discovery": "guess"
+  },
+  "hrhs_Careers": {
+    "company_name": "hrhs",
+    "api_url": "https://hrhs.wd1.myworkdayjobs.com/wday/cxs/hrhs/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "hrhs",
+    "discovery": "guess"
+  },
+  "aviva_External": {
+    "company_name": "aviva",
+    "api_url": "https://aviva.wd1.myworkdayjobs.com/wday/cxs/aviva/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "aviva",
+    "discovery": "guess"
+  },
+  "rand_External_Career_Site": {
+    "company_name": "rand",
+    "api_url": "https://rand.wd5.myworkdayjobs.com/wday/cxs/rand/External_Career_Site/jobs",
+    "portal_id": "External_Career_Site",
+    "server": "wd5",
+    "tenant": "rand",
+    "discovery": "guess"
+  },
+  "wasatchproperty_External": {
+    "company_name": "wasatchproperty",
+    "api_url": "https://wasatchproperty.wd1.myworkdayjobs.com/wday/cxs/wasatchproperty/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "wasatchproperty",
+    "discovery": "guess"
+  },
+  "warnerbros_Global": {
+    "company_name": "warnerbros",
+    "api_url": "https://warnerbros.wd5.myworkdayjobs.com/wday/cxs/warnerbros/Global/jobs",
+    "portal_id": "Global",
+    "server": "wd5",
+    "tenant": "warnerbros",
+    "discovery": "guess"
+  },
+  "albemarle_External": {
+    "company_name": "albemarle",
+    "api_url": "https://albemarle.wd5.myworkdayjobs.com/wday/cxs/albemarle/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "albemarle",
+    "discovery": "guess"
+  },
+  "alcoa_Careers": {
+    "company_name": "alcoa",
+    "api_url": "https://alcoa.wd5.myworkdayjobs.com/wday/cxs/alcoa/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd5",
+    "tenant": "alcoa",
+    "discovery": "guess"
+  },
+  "dedalus_External": {
+    "company_name": "dedalus",
+    "api_url": "https://dedalus.wd3.myworkdayjobs.com/wday/cxs/dedalus/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "dedalus",
+    "discovery": "guess"
+  },
+  "nxp_Careers": {
+    "company_name": "nxp",
+    "api_url": "https://nxp.wd3.myworkdayjobs.com/wday/cxs/nxp/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd3",
+    "tenant": "nxp",
+    "discovery": "guess"
+  },
+  "razer_Careers": {
+    "company_name": "razer",
+    "api_url": "https://razer.wd3.myworkdayjobs.com/wday/cxs/razer/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd3",
+    "tenant": "razer",
+    "discovery": "guess"
+  },
+  "wasteconnections_Careers": {
+    "company_name": "wasteconnections",
+    "api_url": "https://wasteconnections.wd1.myworkdayjobs.com/wday/cxs/wasteconnections/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "wasteconnections",
+    "discovery": "guess"
+  },
+  "bouldercolorado_External": {
+    "company_name": "bouldercolorado",
+    "api_url": "https://bouldercolorado.wd1.myworkdayjobs.com/wday/cxs/bouldercolorado/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "bouldercolorado",
+    "discovery": "guess"
+  },
+  "nycsca_External_Career_Site": {
+    "company_name": "nycsca",
+    "api_url": "https://nycsca.wd1.myworkdayjobs.com/wday/cxs/nycsca/External_Career_Site/jobs",
+    "portal_id": "External_Career_Site",
+    "server": "wd1",
+    "tenant": "nycsca",
+    "discovery": "guess"
+  },
+  "wattswater_External": {
+    "company_name": "wattswater",
+    "api_url": "https://wattswater.wd5.myworkdayjobs.com/wday/cxs/wattswater/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "wattswater",
+    "discovery": "guess"
+  },
+  "pru_Careers": {
+    "company_name": "pru",
+    "api_url": "https://pru.wd5.myworkdayjobs.com/wday/cxs/pru/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd5",
+    "tenant": "pru",
+    "discovery": "guess"
+  },
+  "axis_External_Career_Site": {
+    "company_name": "axis",
+    "api_url": "https://axis.wd3.myworkdayjobs.com/wday/cxs/axis/External_Career_Site/jobs",
+    "portal_id": "External_Career_Site",
+    "server": "wd3",
+    "tenant": "axis",
+    "discovery": "guess"
+  },
+  "wawa_Careers": {
+    "company_name": "wawa",
+    "api_url": "https://wawa.wd1.myworkdayjobs.com/wday/cxs/wawa/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "wawa",
+    "discovery": "guess"
+  },
+  "prysmiangroup_Careers": {
+    "company_name": "prysmiangroup",
+    "api_url": "https://prysmiangroup.wd3.myworkdayjobs.com/wday/cxs/prysmiangroup/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd3",
+    "tenant": "prysmiangroup",
+    "discovery": "guess"
+  },
+  "dell_External": {
+    "company_name": "dell",
+    "api_url": "https://dell.wd1.myworkdayjobs.com/wday/cxs/dell/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "dell",
+    "discovery": "guess"
+  },
+  "wustl_External": {
+    "company_name": "wustl",
+    "api_url": "https://wustl.wd1.myworkdayjobs.com/wday/cxs/wustl/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "wustl",
+    "discovery": "guess"
+  },
+  "rcgt_External": {
+    "company_name": "rcgt",
+    "api_url": "https://rcgt.wd3.myworkdayjobs.com/wday/cxs/rcgt/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "rcgt",
+    "discovery": "guess"
+  },
+  "oanda_External": {
+    "company_name": "oanda",
+    "api_url": "https://oanda.wd10.myworkdayjobs.com/wday/cxs/oanda/External/jobs",
+    "portal_id": "External",
+    "server": "wd10",
+    "tenant": "oanda",
+    "discovery": "guess"
+  },
+  "allegion_Careers": {
+    "company_name": "allegion",
+    "api_url": "https://allegion.wd5.myworkdayjobs.com/wday/cxs/allegion/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd5",
+    "tenant": "allegion",
+    "discovery": "guess"
+  },
+  "pullmanregionalhospital_Careers": {
+    "company_name": "pullmanregionalhospital",
+    "api_url": "https://pullmanregionalhospital.wd1.myworkdayjobs.com/wday/cxs/pullmanregionalhospital/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "pullmanregionalhospital",
+    "discovery": "guess"
+  },
+  "baicommunications_External": {
+    "company_name": "baicommunications",
+    "api_url": "https://baicommunications.wd3.myworkdayjobs.com/wday/cxs/baicommunications/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "baicommunications",
+    "discovery": "guess"
+  },
+  "husqvarnagroup_External_Career_Site": {
+    "company_name": "husqvarnagroup",
+    "api_url": "https://husqvarnagroup.wd3.myworkdayjobs.com/wday/cxs/husqvarnagroup/External_Career_Site/jobs",
+    "portal_id": "External_Career_Site",
+    "server": "wd3",
+    "tenant": "husqvarnagroup",
+    "discovery": "guess"
+  },
+  "equifax_External": {
+    "company_name": "equifax",
+    "api_url": "https://equifax.wd5.myworkdayjobs.com/wday/cxs/equifax/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "equifax",
+    "discovery": "guess"
+  },
+  "bridgestone_External": {
+    "company_name": "bridgestone",
+    "api_url": "https://bridgestone.wd5.myworkdayjobs.com/wday/cxs/bridgestone/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "bridgestone",
+    "discovery": "guess"
+  },
+  "equinix_External": {
+    "company_name": "equinix",
+    "api_url": "https://equinix.wd1.myworkdayjobs.com/wday/cxs/equinix/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "equinix",
+    "discovery": "guess"
+  },
+  "baltimorecity_External": {
+    "company_name": "baltimorecity",
+    "api_url": "https://baltimorecity.wd1.myworkdayjobs.com/wday/cxs/baltimorecity/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "baltimorecity",
+    "discovery": "guess"
+  },
+  "ww_Careers": {
+    "company_name": "ww",
+    "api_url": "https://ww.wd1.myworkdayjobs.com/wday/cxs/ww/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "ww",
+    "discovery": "guess"
+  },
+  "bristow_Careers": {
+    "company_name": "bristow",
+    "api_url": "https://bristow.wd1.myworkdayjobs.com/wday/cxs/bristow/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "bristow",
+    "discovery": "guess"
+  },
+  "regalrexnord_Careers": {
+    "company_name": "regalrexnord",
+    "api_url": "https://regalrexnord.wd1.myworkdayjobs.com/wday/cxs/regalrexnord/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "regalrexnord",
+    "discovery": "guess"
+  },
+  "ofs_External_Career_Site": {
+    "company_name": "ofs",
+    "api_url": "https://ofs.wd3.myworkdayjobs.com/wday/cxs/ofs/External_Career_Site/jobs",
+    "portal_id": "External_Career_Site",
+    "server": "wd3",
+    "tenant": "ofs",
+    "discovery": "guess"
+  },
+  "wellcarehealth_External": {
+    "company_name": "wellcarehealth",
+    "api_url": "https://wellcarehealth.wd1.myworkdayjobs.com/wday/cxs/wellcarehealth/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "wellcarehealth",
+    "discovery": "guess"
+  },
+  "regeneron_Careers": {
+    "company_name": "regeneron",
+    "api_url": "https://regeneron.wd1.myworkdayjobs.com/wday/cxs/regeneron/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "regeneron",
+    "discovery": "guess"
+  },
+  "anchorglass_Careers": {
+    "company_name": "anchorglass",
+    "api_url": "https://anchorglass.wd1.myworkdayjobs.com/wday/cxs/anchorglass/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "anchorglass",
+    "discovery": "guess"
+  },
+  "thrivent_External": {
+    "company_name": "thrivent",
+    "api_url": "https://thrivent.wd5.myworkdayjobs.com/wday/cxs/thrivent/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "thrivent",
+    "discovery": "guess"
+  },
+  "uchicago_External": {
+    "company_name": "uchicago",
+    "api_url": "https://uchicago.wd5.myworkdayjobs.com/wday/cxs/uchicago/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "uchicago",
+    "discovery": "guess"
+  },
+  "andela_External": {
+    "company_name": "andela",
+    "api_url": "https://andela.wd1.myworkdayjobs.com/wday/cxs/andela/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "andela",
+    "discovery": "guess"
+  },
+  "andersonauto_External": {
+    "company_name": "andersonauto",
+    "api_url": "https://andersonauto.wd5.myworkdayjobs.com/wday/cxs/andersonauto/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "andersonauto",
+    "discovery": "guess"
+  },
+  "ucumberlands_Careers": {
+    "company_name": "ucumberlands",
+    "api_url": "https://ucumberlands.wd1.myworkdayjobs.com/wday/cxs/ucumberlands/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "ucumberlands",
+    "discovery": "guess"
+  },
+  "kansashealthsystem_Careers": {
+    "company_name": "kansashealthsystem",
+    "api_url": "https://kansashealthsystem.wd1.myworkdayjobs.com/wday/cxs/kansashealthsystem/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "kansashealthsystem",
+    "discovery": "guess"
+  },
+  "solutionhealth_Careers": {
+    "company_name": "solutionhealth",
+    "api_url": "https://solutionhealth.wd1.myworkdayjobs.com/wday/cxs/solutionhealth/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "solutionhealth",
+    "discovery": "guess"
+  },
+  "angc_Public": {
+    "company_name": "angc",
+    "api_url": "https://angc.wd5.myworkdayjobs.com/wday/cxs/angc/Public/jobs",
+    "portal_id": "Public",
+    "server": "wd5",
+    "tenant": "angc",
+    "discovery": "guess"
+  },
+  "som_External": {
+    "company_name": "som",
+    "api_url": "https://som.wd5.myworkdayjobs.com/wday/cxs/som/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "som",
+    "discovery": "guess"
+  },
+  "goodlifefitness_Careers": {
+    "company_name": "goodlifefitness",
+    "api_url": "https://goodlifefitness.wd3.myworkdayjobs.com/wday/cxs/goodlifefitness/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd3",
+    "tenant": "goodlifefitness",
+    "discovery": "guess"
+  },
+  "sonoco_CorporateCareers": {
+    "company_name": "sonoco",
+    "api_url": "https://sonoco.wd1.myworkdayjobs.com/wday/cxs/sonoco/CorporateCareers/jobs",
+    "portal_id": "CorporateCareers",
+    "server": "wd1",
+    "tenant": "sonoco",
+    "discovery": "guess"
+  },
+  "kauffman_External": {
+    "company_name": "kauffman",
+    "api_url": "https://kauffman.wd1.myworkdayjobs.com/wday/cxs/kauffman/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "kauffman",
+    "discovery": "guess"
+  },
+  "soti_Careers": {
+    "company_name": "soti",
+    "api_url": "https://soti.wd3.myworkdayjobs.com/wday/cxs/soti/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd3",
+    "tenant": "soti",
+    "discovery": "guess"
+  },
+  "tmobile_External": {
+    "company_name": "tmobile",
+    "api_url": "https://tmobile.wd1.myworkdayjobs.com/wday/cxs/tmobile/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "tmobile",
+    "discovery": "guess"
+  },
+  "tvc_External": {
+    "company_name": "tvc",
+    "api_url": "https://tvc.wd1.myworkdayjobs.com/wday/cxs/tvc/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "tvc",
+    "discovery": "guess"
+  },
+  "ultradent_Careers": {
+    "company_name": "ultradent",
+    "api_url": "https://ultradent.wd1.myworkdayjobs.com/wday/cxs/ultradent/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "ultradent",
+    "discovery": "guess"
+  },
+  "kbpbrands_Careers": {
+    "company_name": "kbpbrands",
+    "api_url": "https://kbpbrands.wd1.myworkdayjobs.com/wday/cxs/kbpbrands/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "kbpbrands",
+    "discovery": "guess"
+  },
+  "wynd_External": {
+    "company_name": "wynd",
+    "api_url": "https://wynd.wd5.myworkdayjobs.com/wday/cxs/wynd/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "wynd",
+    "discovery": "guess"
+  },
+  "grab_Careers": {
+    "company_name": "grab",
+    "api_url": "https://grab.wd3.myworkdayjobs.com/wday/cxs/grab/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd3",
+    "tenant": "grab",
+    "discovery": "guess"
+  },
+  "umchealthsystem_External": {
+    "company_name": "umchealthsystem",
+    "api_url": "https://umchealthsystem.wd1.myworkdayjobs.com/wday/cxs/umchealthsystem/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "umchealthsystem",
+    "discovery": "guess"
+  },
+  "granite_Careers": {
+    "company_name": "granite",
+    "api_url": "https://granite.wd1.myworkdayjobs.com/wday/cxs/granite/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "granite",
+    "discovery": "guess"
+  },
+  "graybar_Careers": {
+    "company_name": "graybar",
+    "api_url": "https://graybar.wd1.myworkdayjobs.com/wday/cxs/graybar/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "graybar",
+    "discovery": "guess"
+  },
+  "skookum_Careers": {
+    "company_name": "skookum",
+    "api_url": "https://skookum.wd1.myworkdayjobs.com/wday/cxs/skookum/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "skookum",
+    "discovery": "guess"
+  },
+  "greatriverhealth_External": {
+    "company_name": "greatriverhealth",
+    "api_url": "https://greatriverhealth.wd5.myworkdayjobs.com/wday/cxs/greatriverhealth/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "greatriverhealth",
+    "discovery": "guess"
+  },
+  "keybank_External_Career_Site": {
+    "company_name": "keybank",
+    "api_url": "https://keybank.wd5.myworkdayjobs.com/wday/cxs/keybank/External_Career_Site/jobs",
+    "portal_id": "External_Career_Site",
+    "server": "wd5",
+    "tenant": "keybank",
+    "discovery": "guess"
+  },
+  "ummh_Careers": {
+    "company_name": "ummh",
+    "api_url": "https://ummh.wd1.myworkdayjobs.com/wday/cxs/ummh/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "ummh",
+    "discovery": "guess"
+  },
+  "unhcr_External": {
+    "company_name": "unhcr",
+    "api_url": "https://unhcr.wd3.myworkdayjobs.com/wday/cxs/unhcr/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "unhcr",
+    "discovery": "guess"
+  },
+  "elara_External": {
+    "company_name": "elara",
+    "api_url": "https://elara.wd5.myworkdayjobs.com/wday/cxs/elara/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "elara",
+    "discovery": "guess"
+  },
+  "kimberlyclark_Global": {
+    "company_name": "kimberlyclark",
+    "api_url": "https://kimberlyclark.wd1.myworkdayjobs.com/wday/cxs/kimberlyclark/Global/jobs",
+    "portal_id": "Global",
+    "server": "wd1",
+    "tenant": "kimberlyclark",
+    "discovery": "guess"
+  },
+  "xcelenergy_External": {
+    "company_name": "xcelenergy",
+    "api_url": "https://xcelenergy.wd1.myworkdayjobs.com/wday/cxs/xcelenergy/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "xcelenergy",
+    "discovery": "guess"
+  },
+  "archgroup_Careers": {
+    "company_name": "archgroup",
+    "api_url": "https://archgroup.wd1.myworkdayjobs.com/wday/cxs/archgroup/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "archgroup",
+    "discovery": "guess"
+  },
+  "elementfleet_External_Career_Site": {
+    "company_name": "elementfleet",
+    "api_url": "https://elementfleet.wd3.myworkdayjobs.com/wday/cxs/elementfleet/External_Career_Site/jobs",
+    "portal_id": "External_Career_Site",
+    "server": "wd3",
+    "tenant": "elementfleet",
+    "discovery": "guess"
+  },
+  "slihrms_Careers": {
+    "company_name": "slihrms",
+    "api_url": "https://slihrms.wd3.myworkdayjobs.com/wday/cxs/slihrms/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd3",
+    "tenant": "slihrms",
+    "discovery": "guess"
+  },
+  "sphera_Careers": {
+    "company_name": "sphera",
+    "api_url": "https://sphera.wd1.myworkdayjobs.com/wday/cxs/sphera/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "sphera",
+    "discovery": "guess"
+  },
+  "greystar_External": {
+    "company_name": "greystar",
+    "api_url": "https://greystar.wd1.myworkdayjobs.com/wday/cxs/greystar/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "greystar",
+    "discovery": "guess"
+  },
+  "archildrens_External_Career_Site": {
+    "company_name": "archildrens",
+    "api_url": "https://archildrens.wd1.myworkdayjobs.com/wday/cxs/archildrens/External_Career_Site/jobs",
+    "portal_id": "External_Career_Site",
+    "server": "wd1",
+    "tenant": "archildrens",
+    "discovery": "guess"
+  },
+  "slu_Careers": {
+    "company_name": "slu",
+    "api_url": "https://slu.wd5.myworkdayjobs.com/wday/cxs/slu/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd5",
+    "tenant": "slu",
+    "discovery": "guess"
+  },
+  "unisys_External": {
+    "company_name": "unisys",
+    "api_url": "https://unisys.wd5.myworkdayjobs.com/wday/cxs/unisys/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "unisys",
+    "discovery": "guess"
+  },
+  "kmkp_Careers": {
+    "company_name": "kmkp",
+    "api_url": "https://kmkp.wd1.myworkdayjobs.com/wday/cxs/kmkp/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "kmkp",
+    "discovery": "guess"
+  },
+  "sprinklr_Careers": {
+    "company_name": "sprinklr",
+    "api_url": "https://sprinklr.wd1.myworkdayjobs.com/wday/cxs/sprinklr/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "sprinklr",
+    "discovery": "guess"
+  },
+  "arcticwolf_External": {
+    "company_name": "arcticwolf",
+    "api_url": "https://arcticwolf.wd1.myworkdayjobs.com/wday/cxs/arcticwolf/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "arcticwolf",
+    "discovery": "guess"
+  },
+  "elringklinger_External": {
+    "company_name": "elringklinger",
+    "api_url": "https://elringklinger.wd3.myworkdayjobs.com/wday/cxs/elringklinger/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "elringklinger",
+    "discovery": "guess"
+  },
+  "cognex_External_Career_Site": {
+    "company_name": "cognex",
+    "api_url": "https://cognex.wd1.myworkdayjobs.com/wday/cxs/cognex/External_Career_Site/jobs",
+    "portal_id": "External_Career_Site",
+    "server": "wd1",
+    "tenant": "cognex",
+    "discovery": "guess"
+  },
+  "yai_Careers": {
+    "company_name": "yai",
+    "api_url": "https://yai.wd5.myworkdayjobs.com/wday/cxs/yai/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd5",
+    "tenant": "yai",
+    "discovery": "guess"
+  },
+  "group1001wd_Careers": {
+    "company_name": "group1001wd",
+    "api_url": "https://group1001wd.wd5.myworkdayjobs.com/wday/cxs/group1001wd/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd5",
+    "tenant": "group1001wd",
+    "discovery": "guess"
+  },
+  "aresmgmt_External": {
+    "company_name": "aresmgmt",
+    "api_url": "https://aresmgmt.wd1.myworkdayjobs.com/wday/cxs/aresmgmt/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "aresmgmt",
+    "discovery": "guess"
+  },
+  "embryriddle_External": {
+    "company_name": "embryriddle",
+    "api_url": "https://embryriddle.wd1.myworkdayjobs.com/wday/cxs/embryriddle/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "embryriddle",
+    "discovery": "guess"
+  },
+  "smithfieldfoods_Careers": {
+    "company_name": "smithfieldfoods",
+    "api_url": "https://smithfieldfoods.wd1.myworkdayjobs.com/wday/cxs/smithfieldfoods/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "smithfieldfoods",
+    "discovery": "guess"
+  },
+  "travelers_External": {
+    "company_name": "travelers",
+    "api_url": "https://travelers.wd5.myworkdayjobs.com/wday/cxs/travelers/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "travelers",
+    "discovery": "guess"
+  },
+  "smithnephew_External": {
+    "company_name": "smithnephew",
+    "api_url": "https://smithnephew.wd5.myworkdayjobs.com/wday/cxs/smithnephew/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "smithnephew",
+    "discovery": "guess"
+  },
+  "univision_External": {
+    "company_name": "univision",
+    "api_url": "https://univision.wd1.myworkdayjobs.com/wday/cxs/univision/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "univision",
+    "discovery": "guess"
+  },
+  "kone_Careers": {
+    "company_name": "kone",
+    "api_url": "https://kone.wd3.myworkdayjobs.com/wday/cxs/kone/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd3",
+    "tenant": "kone",
+    "discovery": "guess"
+  },
+  "unum_External": {
+    "company_name": "unum",
+    "api_url": "https://unum.wd1.myworkdayjobs.com/wday/cxs/unum/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "unum",
+    "discovery": "guess"
+  },
+  "arienscompany_External": {
+    "company_name": "arienscompany",
+    "api_url": "https://arienscompany.wd5.myworkdayjobs.com/wday/cxs/arienscompany/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "arienscompany",
+    "discovery": "guess"
+  },
+  "collegeboard_Careers": {
+    "company_name": "collegeboard",
+    "api_url": "https://collegeboard.wd1.myworkdayjobs.com/wday/cxs/collegeboard/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "collegeboard",
+    "discovery": "guess"
+  },
+  "standardbiotools_External": {
+    "company_name": "standardbiotools",
+    "api_url": "https://standardbiotools.wd5.myworkdayjobs.com/wday/cxs/standardbiotools/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "standardbiotools",
+    "discovery": "guess"
+  },
+  "aritzia_External": {
+    "company_name": "aritzia",
+    "api_url": "https://aritzia.wd3.myworkdayjobs.com/wday/cxs/aritzia/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "aritzia",
+    "discovery": "guess"
+  },
+  "gtsgbu_Careers": {
+    "company_name": "gtsgbu",
+    "api_url": "https://gtsgbu.wd3.myworkdayjobs.com/wday/cxs/gtsgbu/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd3",
+    "tenant": "gtsgbu",
+    "discovery": "guess"
+  },
+  "gtt_External": {
+    "company_name": "gtt",
+    "api_url": "https://gtt.wd3.myworkdayjobs.com/wday/cxs/gtt/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "gtt",
+    "discovery": "guess"
+  },
+  "micron_External": {
+    "company_name": "micron",
+    "api_url": "https://micron.wd1.myworkdayjobs.com/wday/cxs/micron/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "micron",
+    "discovery": "guess"
+  },
+  "gtweed_Careers": {
+    "company_name": "gtweed",
+    "api_url": "https://gtweed.wd1.myworkdayjobs.com/wday/cxs/gtweed/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "gtweed",
+    "discovery": "guess"
+  },
+  "mileone_External": {
+    "company_name": "mileone",
+    "api_url": "https://mileone.wd1.myworkdayjobs.com/wday/cxs/mileone/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "mileone",
+    "discovery": "guess"
+  },
+  "guidehouse_External": {
+    "company_name": "guidehouse",
+    "api_url": "https://guidehouse.wd1.myworkdayjobs.com/wday/cxs/guidehouse/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "guidehouse",
+    "discovery": "guess"
+  },
+  "yesco_External": {
+    "company_name": "yesco",
+    "api_url": "https://yesco.wd1.myworkdayjobs.com/wday/cxs/yesco/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "yesco",
+    "discovery": "guess"
+  },
+  "path_External": {
+    "company_name": "path",
+    "api_url": "https://path.wd1.myworkdayjobs.com/wday/cxs/path/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "path",
+    "discovery": "guess"
+  },
+  "gvsu_Careers": {
+    "company_name": "gvsu",
+    "api_url": "https://gvsu.wd1.myworkdayjobs.com/wday/cxs/gvsu/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "gvsu",
+    "discovery": "guess"
+  },
+  "mjhlifesciences_Careers": {
+    "company_name": "mjhlifesciences",
+    "api_url": "https://mjhlifesciences.wd1.myworkdayjobs.com/wday/cxs/mjhlifesciences/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "mjhlifesciences",
+    "discovery": "guess"
+  },
+  "pciservices_External": {
+    "company_name": "pciservices",
+    "api_url": "https://pciservices.wd1.myworkdayjobs.com/wday/cxs/pciservices/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "pciservices",
+    "discovery": "guess"
+  },
+  "ucf_Careers": {
+    "company_name": "ucf",
+    "api_url": "https://ucf.wd1.myworkdayjobs.com/wday/cxs/ucf/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "ucf",
+    "discovery": "guess"
+  },
+  "sasllc_Careers": {
+    "company_name": "sasllc",
+    "api_url": "https://sasllc.wd1.myworkdayjobs.com/wday/cxs/sasllc/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "sasllc",
+    "discovery": "guess"
+  },
+  "hamiltoncountyindiana_Careers": {
+    "company_name": "hamiltoncountyindiana",
+    "api_url": "https://hamiltoncountyindiana.wd1.myworkdayjobs.com/wday/cxs/hamiltoncountyindiana/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "hamiltoncountyindiana",
+    "discovery": "guess"
+  },
+  "mmc_Careers": {
+    "company_name": "mmc",
+    "api_url": "https://mmc.wd1.myworkdayjobs.com/wday/cxs/mmc/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "mmc",
+    "discovery": "guess"
+  },
+  "modivcare_Careers": {
+    "company_name": "modivcare",
+    "api_url": "https://modivcare.wd1.myworkdayjobs.com/wday/cxs/modivcare/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "modivcare",
+    "discovery": "guess"
+  },
+  "fico_External": {
+    "company_name": "fico",
+    "api_url": "https://fico.wd1.myworkdayjobs.com/wday/cxs/fico/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "fico",
+    "discovery": "guess"
+  },
+  "fielmann_External": {
+    "company_name": "fielmann",
+    "api_url": "https://fielmann.wd3.myworkdayjobs.com/wday/cxs/fielmann/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "fielmann",
+    "discovery": "guess"
+  },
+  "monex_Careers": {
+    "company_name": "monex",
+    "api_url": "https://monex.wd3.myworkdayjobs.com/wday/cxs/monex/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd3",
+    "tenant": "monex",
+    "discovery": "guess"
+  },
+  "peopleservices_External": {
+    "company_name": "peopleservices",
+    "api_url": "https://peopleservices.wd3.myworkdayjobs.com/wday/cxs/peopleservices/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "peopleservices",
+    "discovery": "guess"
+  },
+  "scholastic_External": {
+    "company_name": "scholastic",
+    "api_url": "https://scholastic.wd5.myworkdayjobs.com/wday/cxs/scholastic/External/jobs",
+    "portal_id": "External",
+    "server": "wd5",
+    "tenant": "scholastic",
+    "discovery": "guess"
+  },
+  "haverford_External": {
+    "company_name": "haverford",
+    "api_url": "https://haverford.wd1.myworkdayjobs.com/wday/cxs/haverford/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "haverford",
+    "discovery": "guess"
+  },
+  "findlay_Careers": {
+    "company_name": "findlay",
+    "api_url": "https://findlay.wd5.myworkdayjobs.com/wday/cxs/findlay/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd5",
+    "tenant": "findlay",
+    "discovery": "guess"
+  },
+  "hbfuller_Careers": {
+    "company_name": "hbfuller",
+    "api_url": "https://hbfuller.wd1.myworkdayjobs.com/wday/cxs/hbfuller/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "hbfuller",
+    "discovery": "guess"
+  },
+  "hbpublishing_Careers": {
+    "company_name": "hbpublishing",
+    "api_url": "https://hbpublishing.wd1.myworkdayjobs.com/wday/cxs/hbpublishing/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd1",
+    "tenant": "hbpublishing",
+    "discovery": "guess"
+  },
+  "finning_External": {
+    "company_name": "finning",
+    "api_url": "https://finning.wd3.myworkdayjobs.com/wday/cxs/finning/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "finning",
+    "discovery": "guess"
+  },
+  "hcso_External": {
+    "company_name": "hcso",
+    "api_url": "https://hcso.wd1.myworkdayjobs.com/wday/cxs/hcso/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "hcso",
+    "discovery": "guess"
+  },
+  "scj_External_Career_Site": {
+    "company_name": "scj",
+    "api_url": "https://scj.wd5.myworkdayjobs.com/wday/cxs/scj/External_Career_Site/jobs",
+    "portal_id": "External_Career_Site",
+    "server": "wd5",
+    "tenant": "scj",
+    "discovery": "guess"
+  },
+  "firstcentral_External": {
+    "company_name": "firstcentral",
+    "api_url": "https://firstcentral.wd3.myworkdayjobs.com/wday/cxs/firstcentral/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "firstcentral",
+    "discovery": "guess"
+  },
+  "hdsupply_External": {
+    "company_name": "hdsupply",
+    "api_url": "https://hdsupply.wd1.myworkdayjobs.com/wday/cxs/hdsupply/External/jobs",
+    "portal_id": "External",
+    "server": "wd1",
+    "tenant": "hdsupply",
+    "discovery": "guess"
+  },
+  "motorolasolutions_Careers": {
+    "company_name": "motorolasolutions",
+    "api_url": "https://motorolasolutions.wd5.myworkdayjobs.com/wday/cxs/motorolasolutions/Careers/jobs",
+    "portal_id": "Careers",
+    "server": "wd5",
+    "tenant": "motorolasolutions",
+    "discovery": "guess"
+  },
+  "zeissgroup_External": {
+    "company_name": "zeissgroup",
+    "api_url": "https://zeissgroup.wd3.myworkdayjobs.com/wday/cxs/zeissgroup/External/jobs",
+    "portal_id": "External",
+    "server": "wd3",
+    "tenant": "zeissgroup",
+    "discovery": "guess"
+  }
+}
