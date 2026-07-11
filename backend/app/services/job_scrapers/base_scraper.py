@@ -20,3 +20,8 @@ class BaseScraper(ABC):
     @abstractmethod
     def map_to_scraped_job(self, job: dict, company_name: str) -> Optional[ScrapedJob]:
         pass
+
+    @abstactmethod
+    async def enrich(self, company_name: str, client: httpx.AsyncClient) -> int:
+        """Fetch jobs and push them into the shared job queue."""
+        pass
