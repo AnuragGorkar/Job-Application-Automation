@@ -10,13 +10,14 @@ from pydantic import ValidationError
 
 from app.schemas.scraped_job import ScrapedJob
 from app.services.job_scrapers.base_scraper import BaseScraper
+from app.services.job_scrapers.scraper_config import DEFAULT_SCRAPER_CONFIG, ScraperConfig
 
 logger = logging.getLogger(__name__)
 
 
 class BaseATSScraper(BaseScraper):
-    def __init__(self, base_url, params, job_queue: Queue):
-        super().__init__(job_queue)
+    def __init__(self, base_url, params, job_queue: Queue, config: ScraperConfig | None = None):
+        super().__init__(job_queue, config=config or DEFAULT_SCRAPER_CONFIG)
         self.base_url = base_url
         self.params = params
 
@@ -31,8 +32,8 @@ class BaseATSScraper(BaseScraper):
         url = self.build_company_url(company_name)
         queued_count = 0
         
-        max_retries = 3
-        base_delay = 2.0 
+        max_retries = self.config.max_retries
+        base_delay = self.config.base_delay
         
         for attempt in range(max_retries):
             current_timeout = httpx.Timeout(12.0 + (attempt * 10.0), connect=5.0)

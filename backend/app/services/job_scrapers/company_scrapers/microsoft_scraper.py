@@ -11,13 +11,14 @@ from bs4 import BeautifulSoup
 
 from app.schemas.scraped_job import ScrapedJob
 from app.services.job_scrapers.base_scraper import BaseScraper
+from app.services.job_scrapers.scraper_config import ScraperConfig
 
 logger = logging.getLogger(__name__)
 
 
 class MicrosoftScraper(BaseScraper):
-    def __init__(self, job_queue: Queue, max_concurrency: int = 5):
-        super().__init__(job_queue)
+    def __init__(self, job_queue: Queue, max_concurrency: int = 5, config: ScraperConfig | None = None):
+        super().__init__(job_queue, config=config)
         self.company_name = "Microsoft"
         self.frontend_urls = [
             "https://apply.careers.microsoft.com/careers?query=Software+Engineer&start=30&location=Seattle%2C++WA%2C++United+States&pid=1970393556883703&sort_by=timestamp&filter_distance=160&filter_include_remote=1&filter_career_discipline=Software+Engineering%2CData+Science&filter_profession=software+engineering&filter_seniority=Entry%2CMid-Level",
@@ -148,8 +149,8 @@ class MicrosoftScraper(BaseScraper):
     async def _fetch_single_job_detail(self, client: httpx.AsyncClient, job_id: str, company_name: str) -> Optional[ScrapedJob]:
         """Retrieves and processes deep profile descriptions for an individual target ID."""
         detail_params = {"position_id": job_id, "domain": "microsoft.com", "hl": "en"}
-        max_retries = 3
-        base_delay = 3.0
+        max_retries = self.config.max_retries
+        base_delay = self.config.base_delay
 
         for attempt in range(max_retries):
             try:
@@ -182,7 +183,7 @@ class MicrosoftScraper(BaseScraper):
     async def fetch(self, company_name: str, client: httpx.AsyncClient) -> int:
         queued_count = 0
         unique_job_ids: set[str] = set()
-        semaphore = asyncio.Semaphore(self.max_concurrency)
+        semaphore = asyncio.Semaphore(self.max_concurrency or self.config.semaphore_value)
 
         # Phase 1: Parallelize the collection of targeted Job IDs across all URLs using the Amazon pattern
         logger.info("Executing Phase 1: Gathering Job IDs concurrently...")

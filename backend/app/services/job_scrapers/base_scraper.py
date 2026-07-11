@@ -5,10 +5,12 @@ from typing import Optional
 import httpx
 
 from app.schemas.scraped_job import ScrapedJob
+from app.services.job_scrapers.scraper_config import DEFAULT_SCRAPER_CONFIG, ScraperConfig
 
 class BaseScraper(ABC):
-    def __init__(self, job_queue: Queue):
+    def __init__(self, job_queue: Queue, config: ScraperConfig | None = None):
         self.job_queue = job_queue
+        self.config = config or DEFAULT_SCRAPER_CONFIG
 
     @abstractmethod
     async def fetch(self, company_name: str, client: httpx.AsyncClient) -> int:

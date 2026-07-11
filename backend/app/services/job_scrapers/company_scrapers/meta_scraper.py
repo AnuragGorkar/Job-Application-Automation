@@ -13,6 +13,7 @@ from playwright.async_api import async_playwright
 
 from app.schemas.scraped_job import ScrapedJob
 from app.services.job_scrapers.base_scraper import BaseScraper
+from app.services.job_scrapers.scraper_config import ScraperConfig
 
 logger = logging.getLogger(__name__)
 
@@ -31,8 +32,8 @@ META_JOBS_URL = (
 
 
 class MetaScraper(BaseScraper):
-    def __init__(self, job_queue: Queue, max_pages: int = 5, max_concurrency: int = 10):
-        super().__init__(job_queue)
+    def __init__(self, job_queue: Queue, max_pages: int = 5, max_concurrency: int = 10, config: ScraperConfig | None = None):
+        super().__init__(job_queue, config=config)
         self.company_name = "Meta"
         self.max_pages = max_pages
         self.max_concurrency = max_concurrency
@@ -182,7 +183,7 @@ class MetaScraper(BaseScraper):
         # PHASE 2: Fetch deep descriptions concurrently and map to final schema
         # =========================================================================
         logger.info("Executing Phase 2: Fetching deep HTML descriptions concurrently...")
-        semaphore = asyncio.Semaphore(self.max_concurrency)
+        semaphore = asyncio.Semaphore(self.max_concurrency or self.config.semaphore_value)
 
         async def process_job_with_description(raw_job: dict) -> Optional[ScrapedJob]:
             job_id = raw_job.get("id")

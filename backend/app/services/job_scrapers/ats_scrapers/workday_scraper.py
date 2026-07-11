@@ -13,6 +13,7 @@ from pydantic import ValidationError
 
 from app.schemas.scraped_job import ScrapedJob
 from app.services.job_scrapers.ats_scrapers.base_ats_scraper import BaseATSScraper
+from app.services.job_scrapers.scraper_config import ScraperConfig
 from app.utils.html_utils import clean_html
 
 logger = logging.getLogger(__name__)
@@ -21,9 +22,9 @@ class WorkdayScraper(BaseATSScraper):
     # Local constant for your config file
     CONFIG_FILE_PATH = "app/assets/workday_companies/final_workday_companies_config.json"
 
-    def __init__(self, job_queue: Queue):
+    def __init__(self, job_queue: Queue, config: ScraperConfig | None = None):
         # Initialize parent with empty shells
-        super().__init__(base_url="", params={}, job_queue=job_queue)
+        super().__init__(base_url="", params={}, job_queue=job_queue, config=config)
         
         # Load the 1,000 company configuration map into memory once
         try:
@@ -161,8 +162,8 @@ class WorkdayScraper(BaseATSScraper):
         scrape_start_time = time.time()
         logger.info(f"Starting Workday Orchestrator for {len(self.workday_configs)} companies...")
 
-        # 15 concurrent companies is the sweet spot for speed vs. stability
-        semaphore = asyncio.Semaphore(15)
+        # Use the shared scraper config for concurrency while allowing overrides locally if needed.
+        semaphore = asyncio.Semaphore(self.config.semaphore_value)
 
         # Create the sub-tasks for all 1,000 companies
         tasks = [

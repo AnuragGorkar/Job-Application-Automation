@@ -4,6 +4,7 @@ import logging
 import httpx
 
 from app.schemas.scraped_job import ScrapedJob
+from app.services.job_scrapers.scraper_config import DEFAULT_SCRAPER_CONFIG
 from app.services.job_scrapers.scraper_factory import ScraperFactory
 from app.services.job_scrapers.validators.validations_builder import ValidationsBuilder
 
@@ -20,6 +21,7 @@ class JobScraper:
 
         self.job_queue = asyncio.Queue()
         self.valid_jobs = []
+        self.scraper_config = DEFAULT_SCRAPER_CONFIG
 
     def build_scraper_dict(self, companies_dict: dict[str, list[str]]):
         for scraper in companies_dict.keys():
@@ -59,7 +61,10 @@ class JobScraper:
 
         consumer_task = asyncio.create_task(self._validation_job())
 
-        limits = httpx.Limits(max_connections=100, max_keepalive_connections=20)
+        limits = httpx.Limits(
+            max_connections=self.scraper_config.http_limits_max_connections,
+            max_keepalive_connections=self.scraper_config.http_limits_max_keepalive_connections,
+        )
         async with httpx.AsyncClient(limits=limits) as client:
             tasks = [
                 self._company_scraper(platform, company, client)

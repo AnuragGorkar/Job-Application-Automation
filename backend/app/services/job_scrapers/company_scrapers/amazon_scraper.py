@@ -11,6 +11,7 @@ from bs4 import BeautifulSoup
 
 from app.schemas.scraped_job import ScrapedJob
 from app.services.job_scrapers.base_scraper import BaseScraper
+from app.services.job_scrapers.scraper_config import ScraperConfig
 from app.utils.html_utils import clean_html
 
 logger = logging.getLogger(__name__)
@@ -19,8 +20,8 @@ AMAZON_JOBS_URL = "https://www.amazon.jobs/en-gb/search?offset=0&result_limit=10
 
 
 class AmazonScraper(BaseScraper):
-    def __init__(self, job_queue: Queue, batch_limit: int = 100, max_concurrency: int = 5):
-        super().__init__(job_queue)
+    def __init__(self, job_queue: Queue, batch_limit: int = 100, max_concurrency: int = 5, config: ScraperConfig | None = None):
+        super().__init__(job_queue, config=config)
         self.company_name = "Amazon"
         self.parsed_url = urlparse(AMAZON_JOBS_URL.replace("/search?", "/search.json?"))
         self.query_params = parse_qs(self.parsed_url.query)
@@ -83,8 +84,8 @@ class AmazonScraper(BaseScraper):
         batch_url = self._build_query_url(self.batch_limit, offset)
         jobs: list[ScrapedJob] = []
 
-        max_retries = 3
-        base_delay = 2.0
+        max_retries = self.config.max_retries
+        base_delay = self.config.base_delay
 
         for attempt in range(max_retries):
             timeout = httpx.Timeout(12.0 + attempt * 10.0, connect=5.0)
@@ -135,7 +136,7 @@ class AmazonScraper(BaseScraper):
             return queued_count
 
         offsets = [offset for offset in range(self.batch_limit, total_hits, self.batch_limit)]
-        semaphore = asyncio.Semaphore(self.max_concurrency)
+        semaphore = asyncio.Semaphore(self.max_concurrency or self.config.semaphore_value)
 
         async def bounded_fetch(offset: int) -> list[ScrapedJob]:
             async with semaphore:
