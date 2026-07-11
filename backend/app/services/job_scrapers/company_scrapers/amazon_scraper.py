@@ -1,6 +1,7 @@
 import asyncio
 import logging
 import random
+from asyncio import Queue
 from datetime import datetime, timedelta
 from typing import Optional
 from urllib.parse import parse_qs, urlencode, urlparse, urlunparse
@@ -18,7 +19,8 @@ AMAZON_JOBS_URL = "https://www.amazon.jobs/en-gb/search?offset=0&result_limit=10
 
 
 class AmazonScraper(BaseScraper):
-    def __init__(self, batch_limit: int = 100, max_concurrency: int = 5):
+    def __init__(self, job_queue: Queue, batch_limit: int = 100, max_concurrency: int = 5):
+        super().__init__(job_queue)
         self.company_name = "Amazon"
         self.parsed_url = urlparse(AMAZON_JOBS_URL.replace("/search?", "/search.json?"))
         self.query_params = parse_qs(self.parsed_url.query)
@@ -118,16 +120,19 @@ class AmazonScraper(BaseScraper):
         logger.error("All %s retry attempts failed or aborted for AMAZON offset %s.", max_retries, offset)
         return [], 0
 
-    async def fetch(self, company_name: str, client: httpx.AsyncClient) -> list[ScrapedJob]:
-        jobs: list[ScrapedJob] = []
+    async def fetch(self, company_name: str, client: httpx.AsyncClient) -> int:
+        queued_count = 0
         first_offset = 0
 
         # Extract total hits right from the first call to save a network request
         first_batch, total_hits = await self._fetch_batch(first_offset, client)
-        jobs.extend(first_batch)
+        for job in first_batch:
+            if job is not None:
+                await self.job_queue.put(job)
+                queued_count += 1
 
         if total_hits == 0:
-            return jobs
+            return queued_count
 
         offsets = [offset for offset in range(self.batch_limit, total_hits, self.batch_limit)]
         semaphore = asyncio.Semaphore(self.max_concurrency)
@@ -140,6 +145,9 @@ class AmazonScraper(BaseScraper):
         if offsets:
             batch_results = await asyncio.gather(*(bounded_fetch(offset) for offset in offsets))
             for batch in batch_results:
-                jobs.extend(batch)
+                for job in batch:
+                    if job is not None:
+                        await self.job_queue.put(job)
+                        queued_count += 1
 
-        return jobs
+        return queued_count

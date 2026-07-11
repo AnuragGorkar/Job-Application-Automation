@@ -4,6 +4,7 @@ import logging
 import random
 import re
 from datetime import datetime
+from queue import Queue
 from typing import Optional
 
 import httpx
@@ -30,7 +31,8 @@ META_JOBS_URL = (
 
 
 class MetaScraper(BaseScraper):
-    def __init__(self, max_pages: int = 5, max_concurrency: int = 10):
+    def __init__(self, job_queue: Queue, max_pages: int = 5, max_concurrency: int = 10):
+        super().__init__(job_queue)
         self.company_name = "Meta"
         self.max_pages = max_pages
         self.max_concurrency = max_concurrency
@@ -119,9 +121,9 @@ class MetaScraper(BaseScraper):
             platform=self.company_name,
         )
 
-    async def fetch(self, company_name: str, client: httpx.AsyncClient) -> list[ScrapedJob]:
+    async def fetch(self, company_name: str, client: httpx.AsyncClient) -> int:
+        queued_count = 0
         graphql_payloads: list[list] = []
-        scraped_jobs: list[ScrapedJob] = []
 
         # =========================================================================
         # PHASE 1: Gather raw Job IDs and metadata via Playwright & GraphQL
@@ -174,7 +176,7 @@ class MetaScraper(BaseScraper):
 
         logger.info("Phase 1 Complete. Found %s unique raw Meta jobs.", len(unique_raw_jobs))
         if not unique_raw_jobs:
-            return []
+            return 0
 
         # =========================================================================
         # PHASE 2: Fetch deep descriptions concurrently and map to final schema
@@ -198,7 +200,10 @@ class MetaScraper(BaseScraper):
         detail_tasks = [process_job_with_description(job) for job in unique_raw_jobs.values()]
         detail_results = await asyncio.gather(*detail_tasks)
 
-        scraped_jobs = [job for job in detail_results if job is not None]
+        for job in detail_results:
+            if job is not None:
+                await self.job_queue.put(job)
+                queued_count += 1
         
-        logger.info("Successfully fully extracted %s Meta listings. Passing to validators...", len(scraped_jobs))
-        return scraped_jobs
+        logger.info("Successfully fully extracted %s Meta listings. Passing to validators...", len(detail_results))
+        return queued_count

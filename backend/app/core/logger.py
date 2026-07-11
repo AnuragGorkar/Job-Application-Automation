@@ -26,7 +26,7 @@ def setup_logging() -> None:
 
     console_handler = logging.StreamHandler()
     console_handler.setFormatter(formatter)
-    console_handler.setLevel(logging.DEBUG)
+    console_handler.setLevel(logging.WARNING)
 
     root_logger = logging.getLogger()
     root_logger.setLevel(logging.INFO)

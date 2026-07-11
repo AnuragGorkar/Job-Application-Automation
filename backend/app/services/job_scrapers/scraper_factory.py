@@ -1,3 +1,5 @@
+from asyncio import Queue
+
 from app.services.job_scrapers.ats_scrapers.asbhy_scraper import AshbyScraper
 from app.services.job_scrapers.ats_scrapers.greenhouse_scraper import GreenhouseScraper 
 from app.services.job_scrapers.ats_scrapers.lever_scraper import LeverScraper
@@ -6,23 +8,26 @@ from app.services.job_scrapers.company_scrapers.meta_scraper import MetaScraper
 from app.services.job_scrapers.company_scrapers.microsoft_scraper import MicrosoftScraper
 from app.services.job_scrapers.null_scraper import NullScraper
 from app.services.job_scrapers.base_scraper import BaseScraper
+from app.services.job_scrapers.ats_scrapers.workday_scraper import WorkdayScraper
 
 
 class ScraperFactory:
     @staticmethod
-    def get_scraper(scraper_name: str) -> BaseScraper:
+    def get_scraper(scraper_name: str, job_queue: Queue) -> BaseScraper:
         if scraper_name == "greenhouse":
-            return GreenhouseScraper()
+            return GreenhouseScraper(job_queue)
         elif scraper_name == "ashby":
-            return AshbyScraper()
+            return AshbyScraper(job_queue)
         elif scraper_name == "lever":
-            return LeverScraper()
+            return LeverScraper(job_queue)
         elif scraper_name == "amazon":
-            return AmazonScraper()
+            return AmazonScraper(job_queue)
         elif scraper_name == "meta":
-            return MetaScraper()
+            return MetaScraper(job_queue)
         elif scraper_name == "microsoft":
-            return MicrosoftScraper()
+            return MicrosoftScraper(job_queue)
+        elif scraper_name == "workday":
+            return WorkdayScraper(job_queue)
         else:
             # Returns Null object instead of None
-            return NullScraper()
+            return NullScraper(job_queue)

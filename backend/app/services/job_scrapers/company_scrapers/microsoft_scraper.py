@@ -2,6 +2,7 @@ import asyncio
 import logging
 import random
 from datetime import datetime
+from queue import Queue
 from typing import Optional
 from urllib.parse import parse_qs, urlparse
 
@@ -15,7 +16,8 @@ logger = logging.getLogger(__name__)
 
 
 class MicrosoftScraper(BaseScraper):
-    def __init__(self, max_concurrency: int = 5):
+    def __init__(self, job_queue: Queue, max_concurrency: int = 5):
+        super().__init__(job_queue)
         self.company_name = "Microsoft"
         self.frontend_urls = [
             "https://apply.careers.microsoft.com/careers?query=Software+Engineer&start=30&location=Seattle%2C++WA%2C++United+States&pid=1970393556883703&sort_by=timestamp&filter_distance=160&filter_include_remote=1&filter_career_discipline=Software+Engineering%2CData+Science&filter_profession=software+engineering&filter_seniority=Entry%2CMid-Level",
@@ -177,7 +179,8 @@ class MicrosoftScraper(BaseScraper):
 
         return None
 
-    async def fetch(self, company_name: str, client: httpx.AsyncClient) -> list[ScrapedJob]:
+    async def fetch(self, company_name: str, client: httpx.AsyncClient) -> int:
+        queued_count = 0
         unique_job_ids: set[str] = set()
         semaphore = asyncio.Semaphore(self.max_concurrency)
 
@@ -192,7 +195,7 @@ class MicrosoftScraper(BaseScraper):
 
         logger.info("Phase 1 Complete. Found %s total raw jobs. Passing to Phase 2.", len(unique_job_ids))
         if not unique_job_ids:
-            return []
+            return 0
 
         # Phase 2: Parallelize deep-profile fetches for descriptions (Required for MS API)
         logger.info("Executing Phase 2: Fetching full descriptions concurrently...")
@@ -206,7 +209,9 @@ class MicrosoftScraper(BaseScraper):
         detail_tasks = [bounded_detail_fetch(job_id) for job_id in unique_job_ids]
         detail_results = await asyncio.gather(*detail_tasks)
 
-        scraped_jobs = [job for job in detail_results if job is not None]
-        logger.info("Successfully extracted %s raw Microsoft jobs. Passing to validator chain...", len(scraped_jobs))
-        
-        return scraped_jobs
+        for job in detail_results:
+            if job is not None:
+                await self.job_queue.put(job)
+                queued_count += 1
+        logger.info("Successfully extracted %s raw Microsoft jobs. Passing to validator chain...", len(detail_results))
+        return queued_count

@@ -3,7 +3,7 @@ from functools import lru_cache
 from pydantic import computed_field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-ENV_FILE = os.getenv("ENV_FILE", ".env.prod")
+ENV_FILE = os.getenv("ENV_FILE", ".env.dev")
 
 class BaseConfig(BaseSettings):
     app_name: str = "job-application-automation"

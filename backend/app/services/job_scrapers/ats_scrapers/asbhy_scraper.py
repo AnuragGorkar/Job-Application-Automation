@@ -1,4 +1,5 @@
 import logging
+from queue import Queue
 from typing import Final, Optional
 
 from app.schemas.scraped_job import ScrapedJob
@@ -11,13 +12,14 @@ class AshbyScraper(BaseATSScraper):
         "includeCompensation" : "true"
         }
 
-    def __init__(self):
+    def __init__(self, job_queue: Queue):
         super().__init__(
-            base_url = self.BASE_URL, 
-            params = self.PARAMS
+            base_url=self.BASE_URL,
+            params=self.PARAMS,
+            job_queue=job_queue,
         )
     
-    def map_to_ats_scraped_job(self, job: dict, company_name: str) -> Optional[ScrapedJob]:
+    def map_to_scraped_job(self, job: dict, company_name: str) -> Optional[ScrapedJob]:
         title = job.get('title')
         url = job.get('jobUrl')
         location = job.get('location')

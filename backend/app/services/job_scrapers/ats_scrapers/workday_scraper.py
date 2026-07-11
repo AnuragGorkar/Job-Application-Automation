@@ -1,7 +1,11 @@
 import asyncio
+from datetime import datetime, timedelta, timezone
 import json
 import logging
 import random
+import re
+import time
+from asyncio import Queue
 from typing import Optional
 
 import httpx
@@ -15,21 +19,46 @@ logger = logging.getLogger(__name__)
 
 class WorkdayScraper(BaseATSScraper):
     # Local constant for your config file
-    CONFIG_FILE = "workday_companies_config.json"
+    CONFIG_FILE_PATH = "app/assets/workday_companies/final_workday_companies_config.json"
 
-    def __init__(self):
+    def __init__(self, job_queue: Queue):
         # Initialize parent with empty shells
-        super().__init__(base_url="", params={})
+        super().__init__(base_url="", params={}, job_queue=job_queue)
         
         # Load the 1,000 company configuration map into memory once
         try:
-            with open(self.CONFIG_FILE, "r") as f:
+            with open(self.CONFIG_FILE_PATH, "r") as f:
                 self.workday_configs = json.load(f)
         except Exception as e:
             logger.error(f"Failed to load Workday config: {e}")
             self.workday_configs = {}
+    
+    def _parse_workday_date(self, posted_on: str) -> str:
+        """Translates Workday's fixed relative time strings into valid ISO datetimes."""
+        now = datetime.now(timezone.utc)
+        
+        if not posted_on:
+            return now.isoformat()
+            
+        text = posted_on.lower()
+        
+        # The fixed Workday English format
+        if "today" in text:
+            return now.isoformat()
+        if "yesterday" in text:
+            return (now - timedelta(days=1)).isoformat()
+            
+        # Matches "Posted N Days Ago" and "Posted 30+ Days Ago"
+        match = re.search(r'(\d+)', text)
+        if match:
+            days_ago = int(match.group(1))
+            return (now - timedelta(days=days_ago)).isoformat()
+            
+        # Fallback if something completely unexpected arrives
+        logger.warning(f"Unrecognized Workday date format: {posted_on}")
+        return now.isoformat()
 
-    def map_to_ats_scraped_job(self, job: dict, company_name: str, config: dict) -> Optional[ScrapedJob]:
+    def map_to_scraped_job(self, job: dict, company_name: str, config: dict) -> Optional[ScrapedJob]:
         title = job.get('title')
         external_path = job.get('externalPath', '')
         
@@ -41,7 +70,7 @@ class WorkdayScraper(BaseATSScraper):
         
         location = job.get('locationsText', 'Remote / Unspecified')
         clean_description = clean_html(job.get('jobDescription', ''))
-        posted_at = job.get('postedOn', None)
+        posted_at = self._parse_workday_date(job.get('postedOn', None))
 
         return ScrapedJob(
             title=title,
@@ -53,9 +82,8 @@ class WorkdayScraper(BaseATSScraper):
             platform="Workday"
         )
 
-    async def _scrape_single_company(self, company_name: str, config: dict, client: httpx.AsyncClient, semaphore: asyncio.Semaphore) -> list[ScrapedJob]:
+    async def _scrape_single_company(self, company_name: str, config: dict, client: httpx.AsyncClient, semaphore: asyncio.Semaphore) -> None:
         """Worker function for a single Workday company."""
-        jobs = []
         offset = 0
         limit = 20
         total_jobs = 1
@@ -90,9 +118,9 @@ class WorkdayScraper(BaseATSScraper):
                                 
                             for job in raw_jobs:
                                 try:
-                                    scraped_job = self.map_to_ats_scraped_job(job, company_name, config)
-                                    if scraped_job:
-                                        jobs.append(scraped_job)
+                                    scraped_job = self.map_to_scraped_job(job, company_name, config)
+                                    if scraped_job is not None:
+                                        await self.job_queue.put(scraped_job)
                                 except ValidationError as validation_err:
                                     logger.debug(f"Validation error for {company_name}: {validation_err}")
                             
@@ -120,9 +148,7 @@ class WorkdayScraper(BaseATSScraper):
                 offset += limit 
                 await asyncio.sleep(0.5) # Polite pause between successful pages
 
-        return jobs
-
-    async def fetch(self, dummy_company: str, client: httpx.AsyncClient) -> list[ScrapedJob]:
+    async def fetch(self, dummy_company: str, client: httpx.AsyncClient) -> int:
         """
         THE ORCHESTRATOR.
         This ignores the 'dummy_company' ("workday") passed by JobScraper, 
@@ -130,8 +156,9 @@ class WorkdayScraper(BaseATSScraper):
         """
         if not self.workday_configs:
             logger.error("No Workday configurations loaded. Aborting.")
-            return []
+            return 0
 
+        scrape_start_time = time.time()
         logger.info(f"Starting Workday Orchestrator for {len(self.workday_configs)} companies...")
 
         # 15 concurrent companies is the sweet spot for speed vs. stability
@@ -146,15 +173,13 @@ class WorkdayScraper(BaseATSScraper):
         # Execute them all concurrently using the inherited client
         results = await asyncio.gather(*tasks, return_exceptions=True)
 
-        # Flatten the massive list of lists into a single list of ScrapedJobs
-        all_workday_jobs = []
+        queued_count = 0
         for res in results:
-            if isinstance(res, list):
-                all_workday_jobs.extend(res)
-            else:
+            if isinstance(res, Exception):
                 logger.error(f"A Workday company task crashed completely: {res}")
 
-        logger.info(f"Workday Orchestrator finished. Passing {len(all_workday_jobs)} jobs back to JobScraper.")
-        
-        # Returns directly into the `job_batch = await self.job_queue.get()` of your JobScraper
-        return all_workday_jobs
+        scrape_end_time = time.time()
+        time_take = scrape_end_time-scrape_start_time
+        logger.info("Workday Orchestrator finished. Jobs were pushed to the shared queue.")
+        logger.info(f"Time taken to scrape workday jobs: {time_take//60} minutes {time_take%60} seconds.")
+        return queued_count

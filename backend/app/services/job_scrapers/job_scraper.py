@@ -9,7 +9,6 @@ from app.services.job_scrapers.validators.validations_builder import Validations
 
 logger = logging.getLogger(__name__)
 
-
 class JobScraper:
     def __init__(self, companies_dict: dict[str, list[str]]):
         logger.info("Initializing JobScraper with %s platforms", len(companies_dict))
@@ -24,7 +23,7 @@ class JobScraper:
 
     def build_scraper_dict(self, companies_dict: dict[str, list[str]]):
         for scraper in companies_dict.keys():
-            self.scraper_dict[scraper] = ScraperFactory.get_scraper(scraper)
+            self.scraper_dict[scraper] = ScraperFactory.get_scraper(scraper, self.job_queue)
 
     async def _company_scraper(self, platform_name: str, company_name: str, client: httpx.AsyncClient):
         scraper = self.scraper_dict.get(platform_name)
@@ -34,25 +33,22 @@ class JobScraper:
 
         try:
             logger.debug("Starting scrape for %s on %s", company_name, platform_name)
-            jobs = await scraper.fetch(company_name, client)
-            if jobs:
-                logger.info("Found %s jobs for %s on %s", len(jobs), company_name, platform_name)
-                await self.job_queue.put(jobs)
+            job_count = await scraper.fetch(company_name, client)
+            logger.info("Completed scrape for %s on %s with %s jobs queued", company_name, platform_name, job_count)
         except Exception as exc:
             logger.exception("Scrape failed for %s on %s: %s", company_name, platform_name, exc)
 
     async def _validation_job(self):
         while True:
-            job_batch = await self.job_queue.get()
+            job = await self.job_queue.get()
 
-            if job_batch is None:
+            if job is None:
                 self.job_queue.task_done()
                 break
 
             try:
-                for job in job_batch:
-                    if self.validator.validate(job):
-                        self.valid_jobs.append(job)
+                if self.validator.validate(job):
+                    self.valid_jobs.append(job)
             except Exception as exc:
                 logger.exception("Job validation error in queue: %s", exc)
             finally:

@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from asyncio import Queue
 from typing import Optional
 
 import httpx
@@ -6,9 +7,12 @@ import httpx
 from app.schemas.scraped_job import ScrapedJob
 
 class BaseScraper(ABC):
+    def __init__(self, job_queue: Queue):
+        self.job_queue = job_queue
+
     @abstractmethod
-    async def fetch(self, company_name: str, client: httpx.AsyncClient) -> list[ScrapedJob]:
-        """Must return a list of ScrapedJob objects."""
+    async def fetch(self, company_name: str, client: httpx.AsyncClient) -> int:
+        """Push ScrapedJob objects into the shared job queue and return the number of jobs queued."""
         pass
 
     @abstractmethod
