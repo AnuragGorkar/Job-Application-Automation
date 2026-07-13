@@ -24,4 +24,5 @@ class BaseScraper(ABC):
     @abstactmethod
     async def enrich(self, company_name: str, client: httpx.AsyncClient) -> int:
         """Fetch jobs and push them into the shared job queue."""
+        
         pass
