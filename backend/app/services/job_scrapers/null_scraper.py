@@ -11,12 +11,16 @@ logger = logging.getLogger(__name__)
 
 
 class NullScraper(BaseScraper):
-    def __init__(self, job_queue: Queue):
-        super().__init__(job_queue)
+    def __init__(self, validation_queue: Queue, enrichment_queue: Queue):
+        super().__init__(validation_queue, enrichment_queue)
         
     async def fetch(self, company_name: str, client: httpx.AsyncClient) -> int:
         logger.debug("Ignoring company %s because no scraper is configured", company_name)
         return 0
-    
+
+    async def enrich(self, job: ScrapedJob, company_name: str, client: httpx.AsyncClient) -> ScrapedJob:
+        logger.debug("Ignoring company %s because no enrichment is configured", company_name)
+        return None
+
     def map_to_scraped_job(self, job: dict, company_name: str) -> Optional[ScrapedJob]:
         return None

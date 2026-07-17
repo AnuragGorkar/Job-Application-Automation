@@ -9,5 +9,8 @@ class ScraperConfig:
     base_delay: float = 2.0
     semaphore_value: int = 5
 
+    base_ats_fetch_semaphore = 20
+
+
 
 DEFAULT_SCRAPER_CONFIG = ScraperConfig()

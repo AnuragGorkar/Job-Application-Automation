@@ -13,21 +13,21 @@ from app.services.job_scrapers.ats_scrapers.workday_scraper import WorkdayScrape
 
 class ScraperFactory:
     @staticmethod
-    def get_scraper(scraper_name: str, job_queue: Queue) -> BaseScraper:
+    def get_scraper(scraper_name: str, validation_queue, enrichment_queue: Queue) -> BaseScraper:
         if scraper_name == "greenhouse":
-            return GreenhouseScraper(job_queue)
+            return GreenhouseScraper(validation_queue, enrichment_queue)
         elif scraper_name == "ashby":
-            return AshbyScraper(job_queue)
+            return AshbyScraper(validation_queue, enrichment_queue)
         elif scraper_name == "lever":
-            return LeverScraper(job_queue)
+            return LeverScraper(validation_queue, enrichment_queue)
         elif scraper_name == "amazon":
-            return AmazonScraper(job_queue)
+            return AmazonScraper(validation_queue, enrichment_queue)
         elif scraper_name == "meta":
-            return MetaScraper(job_queue)
+            return MetaScraper(validation_queue, enrichment_queue)
         elif scraper_name == "microsoft":
-            return MicrosoftScraper(job_queue)
+            return MicrosoftScraper(validation_queue, enrichment_queue)
         elif scraper_name == "workday":
-            return WorkdayScraper(job_queue)
+            return WorkdayScraper(validation_queue, enrichment_queue)
         else:
             # Returns Null object instead of None
-            return NullScraper(job_queue)
+            return NullScraper(validation_queue, enrichment_queue)

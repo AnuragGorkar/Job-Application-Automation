@@ -10,6 +10,7 @@ from typing import Optional
 import httpx
 from bs4 import BeautifulSoup
 from playwright.async_api import async_playwright
+from aiolimiter import AsyncLimiter
 
 from app.schemas.scraped_job import ScrapedJob
 from app.services.job_scrapers.base_scraper import BaseScraper
@@ -30,63 +31,27 @@ META_JOBS_URL = (
     "&roles[0]=Full%20time%20employment"
 )
 
-
 class MetaScraper(BaseScraper):
-    def __init__(self, job_queue: Queue, max_pages: int = 5, max_concurrency: int = 10, config: ScraperConfig | None = None):
-        super().__init__(job_queue, config=config)
+    def __init__(self, validation_queue: Queue, enrichment_queue: Queue, max_pages: int = 5, max_concurrency: int = 10, config: ScraperConfig | None = None):
+        super().__init__(
+            validation_queue=validation_queue,
+            enrichment_queue=enrichment_queue, 
+            config=config
+        )
         self.company_name = "Meta"
         self.max_pages = max_pages
         self.max_concurrency = max_concurrency
         
-        # Headers required to spoof browser behavior and bypass Meta's 400 Bad Request blocker
         self.fetch_headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
-            "Accept-Language": "en-US,en;q=0.9",
-            "Upgrade-Insecure-Requests": "1",
-            "Sec-Fetch-Dest": "document",
-            "Sec-Fetch-Mode": "navigate",
-            "Sec-Fetch-Site": "none",
-            "Sec-Fetch-User": "?1"
+            "Upgrade-Insecure-Requests": "1"
         }
 
-    async def _fetch_deep_description(self, client: httpx.AsyncClient, job_id: str) -> str:
-        """Hits the canonical SEO endpoint to extract the full job description."""
-        url = f"https://www.metacareers.com/jobs/{job_id}/"
-        
-        try:
-            response = await client.get(url, headers=self.fetch_headers, timeout=15.0, follow_redirects=True)
-            response.raise_for_status()
-            html = response.text
-            
-            soup = BeautifulSoup(html, "html.parser")
-            
-            # Method 1: Look for JSON-LD schema (cleanest extraction)
-            ld_json_scripts = soup.find_all("script", type="application/ld+json")
-            for script in ld_json_scripts:
-                if not script.string:
-                    continue
-                try:
-                    data = json.loads(script.string)
-                    if data.get("@type") == "JobPosting" and "description" in data:
-                        return BeautifulSoup(data["description"], "html.parser").get_text(separator="\n").strip()
-                except json.JSONDecodeError:
-                    continue
+        self.rate_limiter = AsyncLimiter(max_rate=5, time_period=1)
 
-            # Method 2: Regex extraction from pre-hydrated state
-            match = re.search(r'"job_description":"(.*?)"', html)
-            if match:
-                raw_desc = match.group(1).encode('utf-8').decode('unicode_escape')
-                return BeautifulSoup(raw_desc, "html.parser").get_text(separator="\n").strip()
-
-            return "Description could not be parsed from HTML."
-
-        except Exception as e:
-            logger.warning("Failed to deep fetch description for Meta job %s: %s", job_id, e)
-            return "Description fetch failed."
-
-    def map_to_scraped_job(self, job: dict, company_name: str, deep_description: str) -> Optional[ScrapedJob]:
-        """Maps the combined GraphQL and HTTPx data to the ScrapedJob schema."""
+    def map_to_scraped_job(self, job: dict, company_name: str) -> Optional[ScrapedJob]:
+        """Maps the raw GraphQL payload into a summary ScrapedJob object for validation."""
         job_id = str(job.get("id", ""))
         title = job.get("title", "").strip()
 
@@ -97,27 +62,16 @@ class MetaScraper(BaseScraper):
 
         teams = ", ".join(job.get("teams", []))
         sub_teams = ", ".join(job.get("sub_teams", []))
-        locations_str = " | ".join(locations)
-
-        custom_desc = f"Company: {company_name}\n"
-        custom_desc += f"Locations: {locations_str}\n"
-        custom_desc += f"Team classification: {teams} ({sub_teams})\n\n"
         
-        # Append the successfully scraped deep description, or fallback to the stub
-        if deep_description and deep_description not in ["Description fetch failed.", "Description could not be parsed from HTML."]:
-            custom_desc += f"### Description\n{deep_description}"
-        else:
-            custom_desc += f"### Role Summary\nAn opening for a {title} position within the {teams} department."
-
-        posted_at = datetime.now()
-        url = f"https://www.metacareers.com/jobs/{job_id}/"
+        # We start with a summary description. Enrichment will append to this later.
+        custom_desc = f"Company: {company_name}\nLocations: {' | '.join(locations)}\nTeam: {teams} ({sub_teams})\n"
 
         return ScrapedJob(
             title=title,
             location=location,
             description=custom_desc.strip(),
-            posted_at=posted_at,
-            url=url,
+            posted_at=datetime.now(),
+            url=f"https://www.metacareers.com/jobs/{job_id}/",
             company=company_name,
             platform=self.company_name,
         )
@@ -126,16 +80,10 @@ class MetaScraper(BaseScraper):
         queued_count = 0
         graphql_payloads: list[list] = []
 
-        # =========================================================================
-        # PHASE 1: Gather raw Job IDs and metadata via Playwright & GraphQL
-        # =========================================================================
-        logger.info("Executing Phase 1: Gathering Job IDs via Playwright...")
+        logger.info("Executing Phase 1: Gathering Meta Job IDs via Playwright...")
         async with async_playwright() as p:
             browser = await p.chromium.launch(headless=True, args=["--no-sandbox", "--disable-gpu"])
-            context = await browser.new_context(
-                viewport={"width": 1280, "height": 800},
-                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
-            )
+            context = await browser.new_context(user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36")
             page = await context.new_page()
 
             async def handle_response(response):
@@ -146,17 +94,15 @@ class MetaScraper(BaseScraper):
                         if "all_jobs" in data_block:
                             graphql_payloads.append(data_block["all_jobs"])
                     except Exception as err:
-                        logger.debug("Failed to decode intercepted GraphQL payload: %s", err)
+                        logger.debug("Failed to decode Meta GraphQL payload: %s", err)
 
             page.on("response", handle_response)
 
             try:
                 await page.goto(META_JOBS_URL, wait_until="networkidle", timeout=30000)
-
                 for page_num in range(1, self.max_pages):
                     see_more_btn = page.locator('button:has-text("See More")')
                     if await see_more_btn.count() > 0 and await see_more_btn.is_visible():
-                        logger.info("Clicking pagination 'See More' on page %s", page_num)
                         await see_more_btn.click()
                         await page.wait_for_timeout(2500)
                     else:
@@ -167,44 +113,64 @@ class MetaScraper(BaseScraper):
                 await context.close()
                 await browser.close()
 
-        # Deduplicate the raw GraphQL jobs
-        unique_raw_jobs = {}
-        for jobs_list in graphql_payloads:
-            for raw_job in jobs_list:
-                job_id = raw_job.get("id")
-                if job_id and job_id not in unique_raw_jobs:
-                    unique_raw_jobs[job_id] = raw_job
-
-        logger.info("Phase 1 Complete. Found %s unique raw Meta jobs.", len(unique_raw_jobs))
-        if not unique_raw_jobs:
-            return 0
-
-        # =========================================================================
-        # PHASE 2: Fetch deep descriptions concurrently and map to final schema
-        # =========================================================================
-        logger.info("Executing Phase 2: Fetching deep HTML descriptions concurrently...")
-        semaphore = asyncio.Semaphore(self.max_concurrency or self.config.semaphore_value)
-
-        async def process_job_with_description(raw_job: dict) -> Optional[ScrapedJob]:
-            job_id = raw_job.get("id")
-            async with semaphore:
-                # Slight sleep prevents hammering Meta's edge servers all at exactly 0.001s
-                await asyncio.sleep(random.uniform(0.1, 0.6))
-                deep_desc = await self._fetch_deep_description(client, job_id)
-                
-                try:
-                    return self.map_to_scraped_job(raw_job, company_name, deep_desc)
-                except Exception as map_err:
-                    logger.exception("Failed mapping Meta raw job ID %s: %s", job_id, map_err)
-                    return None
-
-        detail_tasks = [process_job_with_description(job) for job in unique_raw_jobs.values()]
-        detail_results = await asyncio.gather(*detail_tasks)
-
-        for job in detail_results:
-            if job is not None:
-                await self.job_queue.put(job)
-                queued_count += 1
+        unique_raw_jobs = {raw_job.get("id"): raw_job for jobs_list in graphql_payloads for raw_job in jobs_list if raw_job.get("id")}
         
-        logger.info("Successfully fully extracted %s Meta listings. Passing to validators...", len(detail_results))
+        # Map them to summary jobs and immediately push them to the validation queue
+        for raw_job in unique_raw_jobs.values():
+            summary_job = self.map_to_scraped_job(raw_job, company_name)
+            if summary_job:
+                await self.validation_queue.put(summary_job)
+                queued_count += 1
+                
+        logger.info("Phase 1 Complete. Pushed %s summary Meta jobs to validation queue.", queued_count)
         return queued_count
+
+    async def enrich(self, company_name: str, job: ScrapedJob, client: Optional[httpx.AsyncClient] = None) -> ScrapedJob:
+        """Phase 2: Hits the Canonical SEO endpoint to extract the full job description."""
+        job_id = job.url.rstrip('/').split('/')[-1]
+        
+        close_client = False
+        if not client:
+            client = httpx.AsyncClient()
+            close_client = True
+            
+        try:
+            # Replaced the random jitter with the strict token bucket rate limiter
+            async with self.rate_limiter:
+                response = await client.get(job.url, headers=self.fetch_headers, timeout=15.0, follow_redirects=True)
+                
+            response.raise_for_status()
+            
+            html = response.text
+            soup = BeautifulSoup(html, "html.parser")
+            deep_desc = "Description could not be parsed."
+            
+            # Method 1: Look for JSON-LD schema (cleanest extraction)
+            ld_json_scripts = soup.find_all("script", type="application/ld+json")
+            for script in ld_json_scripts:
+                if script.string:
+                    try:
+                        data = json.loads(script.string)
+                        if data.get("@type") == "JobPosting" and "description" in data:
+                            deep_desc = BeautifulSoup(data["description"], "html.parser").get_text(separator="\n").strip()
+                            break
+                    except json.JSONDecodeError:
+                        continue
+
+            if deep_desc == "Description could not be parsed.":
+                # Method 2: Regex extraction
+                match = re.search(r'"job_description":"(.*?)"', html)
+                if match:
+                    raw_desc = match.group(1).encode('utf-8').decode('unicode_escape')
+                    deep_desc = BeautifulSoup(raw_desc, "html.parser").get_text(separator="\n").strip()
+            
+            job.description += f"\n\n### Description\n{deep_desc}"
+            
+        except Exception as e:
+            logger.warning("Failed to deep fetch description for Meta job %s: %s", job_id, e)
+            job.description += "\n\n### Description\n[Description fetch failed]"
+        finally:
+            if close_client:
+                await client.aclose()
+                
+        return job

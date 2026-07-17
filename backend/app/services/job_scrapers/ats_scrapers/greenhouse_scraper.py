@@ -13,11 +13,13 @@ class GreenhouseScraper(BaseATSScraper):
         "content" : "true"
         }
 
-    def __init__(self, job_queue: Queue):
+    def __init__(self, validation_queue: Queue, enrichment_queue: Queue):
         super().__init__(
             base_url=self.BASE_URL,
             params=self.PARAMS,
-            job_queue=job_queue,
+            validation_queue=validation_queue,
+            enrichment_queue=enrichment_queue,
+            base_ats_fetch_semaphore=30,
         )
     
     def build_company_url(self, company_name: str) -> str:
@@ -40,5 +42,5 @@ class GreenhouseScraper(BaseATSScraper):
             posted_at=posted_at,
             url=url,
             company=company_name,
-            platform="Greenhouse"
+            platform="greenhouse"
         )

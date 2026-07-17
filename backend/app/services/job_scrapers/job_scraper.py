@@ -1,6 +1,5 @@
 import asyncio
 import logging
-
 import httpx
 
 from app.schemas.scraped_job import ScrapedJob
@@ -17,15 +16,18 @@ class JobScraper:
         self.validator = ValidationsBuilder.get_all_validations()
         self.companies_dict = companies_dict
         self.scraper_dict = {}
+
+        self.validation_queue = asyncio.Queue()
+        self.enrichment_queue = asyncio.Queue()
+
         self.build_scraper_dict(companies_dict)
 
-        self.job_queue = asyncio.Queue()
         self.valid_jobs = []
         self.scraper_config = DEFAULT_SCRAPER_CONFIG
 
     def build_scraper_dict(self, companies_dict: dict[str, list[str]]):
         for scraper in companies_dict.keys():
-            self.scraper_dict[scraper] = ScraperFactory.get_scraper(scraper, self.job_queue)
+            self.scraper_dict[scraper] = ScraperFactory.get_scraper(scraper, self.validation_queue, self.enrichment_queue)
 
     async def _company_scraper(self, platform_name: str, company_name: str, client: httpx.AsyncClient):
         scraper = self.scraper_dict.get(platform_name)
@@ -42,24 +44,45 @@ class JobScraper:
 
     async def _validation_job(self):
         while True:
-            job = await self.job_queue.get()
-
-            if job is None:
-                self.job_queue.task_done()
-                break
-
+            job = await self.validation_queue.get()
+  
             try:
                 if self.validator.validate(job):
-                    self.valid_jobs.append(job)
+                    logger.info(f"Jobs validated now starting enrichment {job.platform} {job.company}")
+                    await self.enrichment_queue.put((job.platform, job.company, job))
             except Exception as exc:
                 logger.exception("Job validation error in queue: %s", exc)
             finally:
-                self.job_queue.task_done()
+                self.validation_queue.task_done()
+    
+    async def _enrichment_job(self):
+        while True:
+            platform_name, company_name, job = await self.enrichment_queue.get()
+
+            try:
+                scraper = self.scraper_dict.get(platform_name)
+                if not scraper:
+                    logger.debug("No scraper configured for platform %s", platform_name)
+                    continue 
+
+                logger.debug("Starting enrichment for %s on %s", company_name, platform_name)
+                enriched_job = await scraper.enrich(company_name=company_name, client=None, job=job) 
+                logger.info("Completed enrichment for %s on %s", company_name, platform_name)
+                                
+                self.valid_jobs.append(enriched_job)
+            except Exception as exc:
+                logger.exception("Job enrichment error in queue: %s", exc)
+            finally:
+                self.enrichment_queue.task_done()
 
     async def scrape_and_validate(self) -> list[ScrapedJob]:
         self.valid_jobs = []
 
-        consumer_task = asyncio.create_task(self._validation_job())
+        # Spin up a single validation worker in the background
+        validation_task = asyncio.create_task(self._validation_job())
+        
+        # Spin up MULTIPLE enrichment workers (e.g., 10) to process network requests concurrently
+        enrichment_tasks = [asyncio.create_task(self._enrichment_job()) for _ in range(10)]
 
         limits = httpx.Limits(
             max_connections=self.scraper_config.http_limits_max_connections,
@@ -74,9 +97,14 @@ class JobScraper:
 
             await asyncio.gather(*tasks)
 
-        await self.job_queue.put(None)
+        # Wait for both queues to be completely processed
+        await self.validation_queue.join()
+        await self.enrichment_queue.join()
 
-        await consumer_task
+        # Cancel all infinite background tasks so the script can exit cleanly
+        validation_task.cancel()
+        for task in enrichment_tasks:
+            task.cancel()
 
         self.validator.log_validation_stats()
         logger.info("Validation finished. Returning %s matching jobs.", len(self.valid_jobs))

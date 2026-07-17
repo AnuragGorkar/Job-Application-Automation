@@ -9,6 +9,7 @@ from asyncio import Queue
 from typing import Optional
 
 import httpx
+from aiolimiter import AsyncLimiter
 from pydantic import ValidationError
 
 from app.schemas.scraped_job import ScrapedJob
@@ -22,9 +23,15 @@ class WorkdayScraper(BaseATSScraper):
     # Local constant for your config file
     CONFIG_FILE_PATH = "app/assets/workday_companies/final_workday_companies_config.json"
 
-    def __init__(self, job_queue: Queue, config: ScraperConfig | None = None):
+    def __init__(self, validation_queue: Queue, enrichment_queue: Queue, config: ScraperConfig | None = None):
         # Initialize parent with empty shells
-        super().__init__(base_url="", params={}, job_queue=job_queue, config=config)
+        super().__init__(
+            base_url="", 
+            params={}, 
+            validation_queue=validation_queue, 
+            enrichment_queue=enrichment_queue, 
+            config=config
+        )
         
         # Load the 1,000 company configuration map into memory once
         try:
@@ -33,6 +40,10 @@ class WorkdayScraper(BaseATSScraper):
         except Exception as e:
             logger.error(f"Failed to load Workday config: {e}")
             self.workday_configs = {}
+            
+        # Initialize the Token Bucket Limiter (e.g., 5 requests per second)
+        # This protects against Workday's aggressive Akamai WAF blocking your IP
+        self.rate_limiter = AsyncLimiter(max_rate=5, time_period=1)
     
     def _parse_workday_date(self, posted_on: str) -> str:
         """Translates Workday's fixed relative time strings into valid ISO datetimes."""
@@ -70,6 +81,8 @@ class WorkdayScraper(BaseATSScraper):
         url = f"https://{tenant}.{server}.myworkdayjobs.com/en-US/{portal_id}{external_path}" if external_path else ""
         
         location = job.get('locationsText', 'Remote / Unspecified')
+        
+        # In Phase 1, description is left as a stub or empty string
         clean_description = clean_html(job.get('jobDescription', ''))
         posted_at = self._parse_workday_date(job.get('postedOn', None))
 
@@ -80,7 +93,7 @@ class WorkdayScraper(BaseATSScraper):
             posted_at=posted_at,
             url=url,
             company=company_name,
-            platform="Workday"
+            platform="workday"
         )
 
     async def _scrape_single_company(self, company_name: str, config: dict, client: httpx.AsyncClient, semaphore: asyncio.Semaphore) -> None:
@@ -121,7 +134,7 @@ class WorkdayScraper(BaseATSScraper):
                                 try:
                                     scraped_job = self.map_to_scraped_job(job, company_name, config)
                                     if scraped_job is not None:
-                                        await self.job_queue.put(scraped_job)
+                                        await self.validation_queue.put(scraped_job)
                                 except ValidationError as validation_err:
                                     logger.debug(f"Validation error for {company_name}: {validation_err}")
                             
@@ -174,13 +187,65 @@ class WorkdayScraper(BaseATSScraper):
         # Execute them all concurrently using the inherited client
         results = await asyncio.gather(*tasks, return_exceptions=True)
 
-        queued_count = 0
+        # In this architecture, queued_count tracking relies on passing items into validation_queue
+        # Returning len of tasks just as a placeholder since queues handle the flow dynamically.
+        queued_count = len(tasks) 
+
         for res in results:
             if isinstance(res, Exception):
                 logger.error(f"A Workday company task crashed completely: {res}")
 
         scrape_end_time = time.time()
         time_take = scrape_end_time-scrape_start_time
-        logger.info("Workday Orchestrator finished. Jobs were pushed to the shared queue.")
+        logger.info("Workday Orchestrator finished. Jobs were pushed to the validation queue.")
         logger.info(f"Time taken to scrape workday jobs: {time_take//60} minutes {time_take%60} seconds.")
         return queued_count
+    
+    async def enrich(self, company_name: str, job: ScrapedJob, client: Optional[httpx.AsyncClient] = None) -> ScrapedJob:
+        """Phase 2: Hits the hidden CXS API to extract the full HTML job description."""
+        
+        # 1. Look up the specific tenant from your loaded config map
+        config = self.workday_configs.get(company_name, {})
+        tenant = config.get('tenant', company_name)
+        
+        # 2. Convert the public HTML URL into the backend API URL
+        api_detail_url = job.url.replace("/en-US/", f"/wday/cxs/{tenant}/")
+        
+        headers = {
+            "Accept": "application/json",
+            "Accept-Language": "en-US",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        }
+        
+        close_client = False
+        if not client:
+            client = httpx.AsyncClient()
+            close_client = True
+            
+        try:
+            # Wrap the request in the Token Bucket limiter to prevent 429 WAF blocks
+            async with self.rate_limiter:
+                resp = await client.get(api_detail_url, headers=headers, timeout=10.0)
+            
+            if resp.status_code == 200:
+                data = resp.json()
+                raw_html = data.get("jobPostingInfo", {}).get("jobDescription", "")
+                
+                if raw_html:
+                    cleaned_desc = clean_html(raw_html)
+                    # Append the detailed description to the summary description
+                    job.description = f"{job.description}\n\n### Description\n{cleaned_desc}".strip()
+            
+            elif resp.status_code in [403, 429]:
+                logger.warning(f"Rate limited or WAF blocked fetching details for {api_detail_url}")
+                job.description += "\n\n### Description\n[Description fetch failed due to rate limit]"
+                
+        except Exception as e:
+            logger.error(f"Failed to fetch description for {api_detail_url}: {e}")
+            job.description += "\n\n### Description\n[Description fetch failed]"
+            
+        finally:
+            if close_client:
+                await client.aclose()
+                
+        return job

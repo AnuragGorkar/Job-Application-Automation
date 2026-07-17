@@ -22,7 +22,7 @@ def setup_logging() -> None:
         mode="w" if settings.log_overwrite else "a",
     )
     file_handler.setFormatter(formatter)
-    file_handler.setLevel(logging.INFO)
+    file_handler.setLevel(logging.DEBUG)
 
     console_handler = logging.StreamHandler()
     console_handler.setFormatter(formatter)

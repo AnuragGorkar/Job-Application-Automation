@@ -14,11 +14,12 @@ class LeverScraper(BaseATSScraper):
         "mode" : "json"
         }
     
-    def __init__(self, job_queue: Queue):
+    def __init__(self, validation_queue: Queue, enrichment_queue: Queue):
         super().__init__(
             base_url=self.BASE_URL,
             params=self.PARAMS,
-            job_queue=job_queue,
+            validation_queue=validation_queue,
+            enrichment_queue=enrichment_queue
         )
     
     # 3. LEVER SCRAPER
@@ -40,5 +41,5 @@ class LeverScraper(BaseATSScraper):
             posted_at=iso_time,
             url=url,
             company=company_name,
-            platform="Lever"
+            platform="lever"
         )
