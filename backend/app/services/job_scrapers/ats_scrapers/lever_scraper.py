@@ -13,13 +13,15 @@ class LeverScraper(BaseATSScraper):
     PARAMS: Final[dict] = {
         "mode" : "json"
         }
+    LEVER_SEMAPHORE = 20
     
     def __init__(self, validation_queue: Queue, enrichment_queue: Queue):
         super().__init__(
             base_url=self.BASE_URL,
             params=self.PARAMS,
             validation_queue=validation_queue,
-            enrichment_queue=enrichment_queue
+            enrichment_queue=enrichment_queue,
+            base_ats_fetch_semaphore=self.LEVER_SEMAPHORE,
         )
     
     # 3. LEVER SCRAPER

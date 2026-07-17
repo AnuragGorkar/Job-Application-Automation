@@ -11,13 +11,15 @@ class AshbyScraper(BaseATSScraper):
     PARAMS: Final[dict] = {
         "includeCompensation" : "true"
         }
+    ASHBY_SEMAPHORE = 10
 
     def __init__(self, validation_queue: Queue, enrichment_queue: Queue):
         super().__init__(
             base_url=self.BASE_URL,
             params=self.PARAMS,
             validation_queue=validation_queue,
-            enrichment_queue=enrichment_queue
+            enrichment_queue=enrichment_queue,
+            base_ats_fetch_semaphore=self.ASHBY_SEMAPHORE,
         )
     
     def map_to_scraped_job(self, job: dict, company_name: str) -> Optional[ScrapedJob]:

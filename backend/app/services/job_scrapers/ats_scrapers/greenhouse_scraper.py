@@ -12,6 +12,7 @@ class GreenhouseScraper(BaseATSScraper):
     PARAMS: Final[dict] = {
         "content" : "true"
         }
+    GREEHOUSE_SEMAPHORE = 20
 
     def __init__(self, validation_queue: Queue, enrichment_queue: Queue):
         super().__init__(
@@ -19,7 +20,7 @@ class GreenhouseScraper(BaseATSScraper):
             params=self.PARAMS,
             validation_queue=validation_queue,
             enrichment_queue=enrichment_queue,
-            base_ats_fetch_semaphore=30,
+            base_ats_fetch_semaphore=self.GREEHOUSE_SEMAPHORE,
         )
     
     def build_company_url(self, company_name: str) -> str:
