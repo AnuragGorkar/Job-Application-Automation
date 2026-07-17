@@ -27,7 +27,8 @@ class AshbyScraper(BaseATSScraper):
         url = job.get('jobUrl')
         location = job.get('location')
 
-        clean_description = clean_html(job.get('description', ''))
+        raw_description = job.get('descriptionHtml') or job.get('descriptionPlain', '')
+        clean_description = clean_html(raw_description)
 
         posted_at = job.get('publishedAt', None)
 

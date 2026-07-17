@@ -1,25 +1,27 @@
-# import sys
-# import asyncio
-
-# if sys.platform == "win32":
-#     asyncio.set_event_loop_policy(asyncio.WindowsProactorEventLoopPolicy())
-
 import logging
 
 import uvicorn
 from fastapi import FastAPI
+from contextlib import asynccontextmanager
 
 from app.core.config import get_settings
 from app.core.constants import COMPANIES
 from app.core.logger import setup_logging
 from app.services.job_scrapers.job_scraper import JobScraper
 
-setup_logging()
-logger = logging.getLogger(__name__)
 settings = get_settings()
 
+setup_logging()
+logger = logging.getLogger(__name__)
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    print("Application starting up...")
+    yield 
+    print("Application shutting down...")
+
 # Create FastAPI app instance
-app = FastAPI(title="Job Automation")
+app = FastAPI(title="Job Automation", lifespan=lifespan)
 
 
 @app.get("/")
@@ -33,12 +35,6 @@ async def scrape_jobs():
     logger.info("Scrape endpoint requested")
     job_scraper = JobScraper(COMPANIES)
     return await job_scraper.scrape_and_validate()
-
-
-@app.on_event("startup")
-async def startup_event():
-    logger.info("Application starting up")
-
 
 if __name__ == "__main__":
     # Run FastAPI app running in uvicorn webserver

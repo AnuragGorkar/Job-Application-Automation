@@ -35,6 +35,7 @@ class BaseConfig(BaseSettings):
 
 class DevConfig(BaseConfig):
     debug: bool = True
+    log_overwrite: bool = True
 
 class ProdConfig(BaseConfig):
     debug: bool = False
