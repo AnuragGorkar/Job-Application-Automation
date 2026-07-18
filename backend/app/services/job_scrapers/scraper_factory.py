@@ -9,6 +9,7 @@ from app.services.job_scrapers.company_scrapers.microsoft_scraper import Microso
 from app.services.job_scrapers.null_scraper import NullScraper
 from app.services.job_scrapers.base_scraper import BaseScraper
 from app.services.job_scrapers.ats_scrapers.workday_scraper import WorkdayScraper
+from app.services.job_scrapers.ats_scrapers.smart_recruiters_scraper import SmartRecruitersScraper
 
 
 class ScraperFactory:
@@ -22,6 +23,8 @@ class ScraperFactory:
             return LeverScraper(validation_queue, enrichment_queue)
         elif scraper_name == "workday":
             return WorkdayScraper(validation_queue, enrichment_queue)
+        elif scraper_name == "smartrecruiters":
+            return SmartRecruitersScraper(validation_queue, enrichment_queue)
         
         elif scraper_name == "amazon":
             return AmazonScraper(validation_queue, enrichment_queue)
