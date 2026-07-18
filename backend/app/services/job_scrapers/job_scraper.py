@@ -79,7 +79,7 @@ class JobScraper:
         self.valid_jobs = []
 
         # Spin up a single validation worker in the background
-        validation_task = asyncio.create_task(self._validation_job())
+        validation_tasks = [asyncio.create_task(self._validation_job())  for _ in range(10)]
         
         # Spin up MULTIPLE enrichment workers (e.g., 10) to process network requests concurrently
         enrichment_tasks = [asyncio.create_task(self._enrichment_job()) for _ in range(10)]
@@ -102,7 +102,8 @@ class JobScraper:
         await self.enrichment_queue.join()
 
         # Cancel all infinite background tasks so the script can exit cleanly
-        validation_task.cancel()
+        for task in validation_tasks:
+            task.cancel()
         for task in enrichment_tasks:
             task.cancel()
 

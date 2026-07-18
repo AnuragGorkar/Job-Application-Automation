@@ -25,7 +25,7 @@ class AmazonScraper(BaseScraper):
             enrichment_queue=enrichment_queue, 
             config=config
         )
-        self.company_name = "Amazon"
+        self.company_name = "amazon"
         self.parsed_url = urlparse(AMAZON_JOBS_URL.replace("/search?", "/search.json?"))
         self.query_params = parse_qs(self.parsed_url.query)
 

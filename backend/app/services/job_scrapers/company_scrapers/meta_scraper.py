@@ -38,7 +38,7 @@ class MetaScraper(BaseScraper):
             enrichment_queue=enrichment_queue, 
             config=config
         )
-        self.company_name = "Meta"
+        self.company_name = "meta"
         self.max_pages = max_pages
         self.max_concurrency = max_concurrency
         

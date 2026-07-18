@@ -20,14 +20,15 @@ class ScraperFactory:
             return AshbyScraper(validation_queue, enrichment_queue)
         elif scraper_name == "lever":
             return LeverScraper(validation_queue, enrichment_queue)
+        elif scraper_name == "workday":
+            return WorkdayScraper(validation_queue, enrichment_queue)
+        
         elif scraper_name == "amazon":
             return AmazonScraper(validation_queue, enrichment_queue)
         elif scraper_name == "meta":
             return MetaScraper(validation_queue, enrichment_queue)
         elif scraper_name == "microsoft":
             return MicrosoftScraper(validation_queue, enrichment_queue)
-        elif scraper_name == "workday":
-            return WorkdayScraper(validation_queue, enrichment_queue)
         else:
             # Returns Null object instead of None
             return NullScraper(validation_queue, enrichment_queue)
