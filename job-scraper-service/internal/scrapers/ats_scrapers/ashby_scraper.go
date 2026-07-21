@@ -12,6 +12,7 @@ import (
 	"job-scraper-service/internal/config"
 	"job-scraper-service/internal/models"
 	scraper "job-scraper-service/internal/scrapers"
+	utils "job-scraper-service/internal/utils"
 )
 
 type AshbyScraper struct {
@@ -93,7 +94,7 @@ func (a *AshbyScraper) Fetch(ctx context.Context, company string, validationChan
 			Company:     company,
 			Platform:    models.Ashby,
 			Location:    rawJob.Location,
-			Description: desc,
+			Description: utils.CleanHTML(desc),
 			URL:         rawJob.JobURL,
 			PostedAt:    postedAt,
 		}

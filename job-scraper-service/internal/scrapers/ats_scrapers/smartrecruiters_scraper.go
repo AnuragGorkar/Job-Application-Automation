@@ -12,6 +12,7 @@ import (
 	"job-scraper-service/internal/config"
 	"job-scraper-service/internal/models"
 	scraper "job-scraper-service/internal/scrapers"
+	utils "job-scraper-service/internal/utils"
 )
 
 type SmartRecruitersScraper struct {
@@ -99,7 +100,7 @@ func (s *SmartRecruitersScraper) Fetch(ctx context.Context, company string, vali
 			Company:     company,
 			Platform:    models.SmartRecruiters,
 			Location:    rawJob.Location.City,
-			Description: rawDesc,
+			Description: utils.CleanHTML(rawDesc),
 			URL:         rawJob.Ref,
 			PostedAt:    postedAt,
 		}

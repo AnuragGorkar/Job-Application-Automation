@@ -12,6 +12,7 @@ import (
 	"job-scraper-service/internal/config"
 	"job-scraper-service/internal/models"
 	scraper "job-scraper-service/internal/scrapers"
+	utils "job-scraper-service/internal/utils"
 )
 
 type LeverScraper struct {
@@ -85,7 +86,7 @@ func (l *LeverScraper) Fetch(ctx context.Context, company string, validationChan
 			Company:     company,
 			Platform:    models.Lever,
 			Location:    rawJob.Categories.Location,
-			Description: rawJob.DescriptionPlain,
+			Description: utils.CleanHTML(rawJob.DescriptionPlain),
 			URL:         rawJob.HostedURL,
 			PostedAt:    postedAt,
 		}

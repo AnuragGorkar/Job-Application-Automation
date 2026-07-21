@@ -12,6 +12,7 @@ import (
 	"job-scraper-service/internal/config"
 	"job-scraper-service/internal/models"
 	scraper "job-scraper-service/internal/scrapers"
+	utils "job-scraper-service/internal/utils"
 )
 
 type GreenhouseScraper struct {
@@ -101,7 +102,7 @@ func (g *GreenhouseScraper) Fetch(ctx context.Context, company string, validatio
 			Company:     company,
 			Platform:    models.Greenhouse,
 			Location:    rawJob.Location.Name,
-			Description: rawJob.Content,
+			Description: utils.CleanHTML(rawJob.Content),
 			URL:         rawJob.AbsoluteURL,
 			PostedAt:    postedAt,
 		}

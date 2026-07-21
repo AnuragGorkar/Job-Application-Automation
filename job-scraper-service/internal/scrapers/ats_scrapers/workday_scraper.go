@@ -18,6 +18,7 @@ import (
 	"job-scraper-service/internal/config"
 	"job-scraper-service/internal/models"
 	scraper "job-scraper-service/internal/scrapers"
+	utils "job-scraper-service/internal/utils"
 )
 
 // WorkdayCompanyConfig matches the structure of your JSON values
@@ -49,7 +50,7 @@ func NewWorkdayScraper(client *http.Client, cfg *config.ScraperConfig) *WorkdayS
 
 	return &WorkdayScraper{
 		// Strict WAF token bucket: 5 req/s max. Semaphore at 10 concurrent companies.
-		BaseScraper: scraper.NewBaseScraper(client, cfg, 10, 10, 50),
+		BaseScraper: scraper.NewBaseScraper(client, cfg, 8, 10, 50),
 		dateRegex:   regexp.MustCompile(`(\d+)`),
 		configs:     loadedConfigs,
 	}
@@ -252,7 +253,7 @@ func (w *WorkdayScraper) Enrich(ctx context.Context, job models.ScrapedJob) (mod
 		if err := json.NewDecoder(resp.Body).Decode(&detailData); err == nil {
 			if info, ok := detailData["jobPostingInfo"].(map[string]interface{}); ok {
 				if desc, ok := info["jobDescription"].(string); ok {
-					job.Description = desc
+					job.Description = utils.CleanHTML(desc)
 				}
 			}
 		}
