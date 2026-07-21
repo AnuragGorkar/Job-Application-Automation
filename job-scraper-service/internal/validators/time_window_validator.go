@@ -26,7 +26,7 @@ func (v *TimeWindowValidator) Validate(job models.ScrapedJob) bool {
 	// Dereference the pointer to get the time.Time value and convert to UTC
 	jobTime := (*job.PostedAt).UTC()
 
-	if time.Since(jobTime) > 30*24*time.Hour {
+	if time.Since(jobTime) > 24*time.Hour {
 		v.RecordStat(job.Platform, "fail")
 		return false
 	}

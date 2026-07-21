@@ -1,6 +1,7 @@
 import asyncio
 import logging
 import httpx
+import time
 
 from app.schemas.scraped_job import ScrapedJob
 from app.services.job_scrapers.scraper_config import DEFAULT_SCRAPER_CONFIG
@@ -84,6 +85,8 @@ class JobScraper:
         # Spin up MULTIPLE enrichment workers (e.g., 10) to process network requests concurrently
         enrichment_tasks = [asyncio.create_task(self._enrichment_job()) for _ in range(10)]
 
+        start_time = time.time()
+
         limits = httpx.Limits(
             max_connections=self.scraper_config.http_limits_max_connections,
             max_keepalive_connections=self.scraper_config.http_limits_max_keepalive_connections,
@@ -109,4 +112,7 @@ class JobScraper:
 
         self.validator.log_validation_stats()
         logger.info("Validation finished. Returning %s matching jobs.", len(self.valid_jobs))
+        
+        time_taken = time.time() - start_time
+        logger.info(f"Time taken: {time_taken//60}m {time_taken%60}sec")
         return self.valid_jobs

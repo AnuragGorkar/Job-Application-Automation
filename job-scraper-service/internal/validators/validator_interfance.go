@@ -1,6 +1,7 @@
 package validator
 
 import (
+	"fmt"
 	"log"
 	"sync"
 
@@ -11,6 +12,7 @@ import (
 type JobValidator interface {
 	Validate(job models.ScrapedJob) bool
 	SetNext(validator JobValidator)
+	PrintStats(name string)
 }
 
 // BaseValidator implements the standard chain traversal and thread-safe stat tracking.
@@ -52,11 +54,18 @@ func (b *BaseValidator) RecordStat(platform models.JobPlatform, status string) {
 }
 
 func (b *BaseValidator) PrintStats(name string) {
-	b.mu.Lock()
-	defer b.mu.Unlock()
+	func() {
+		b.mu.Lock()
+		defer b.mu.Unlock()
 
-	for platform, counts := range b.stats {
-		log.Printf("[%s] Platform: %s | Scraped: %d | Pass: %d | Fail: %d\n",
-			name, platform, counts["total"], counts["pass"], counts["fail"])
+		for platform, counts := range b.stats {
+			log.Printf("[%s] Platform: %s | Scraped: %d | Pass: %d | Fail: %d\n",
+				name, platform, counts["total"], counts["pass"], counts["fail"])
+		}
+	}()
+
+	if b.Next != nil {
+		validatorName := fmt.Sprintf("%T", b.Next)
+		b.Next.PrintStats(validatorName)
 	}
 }

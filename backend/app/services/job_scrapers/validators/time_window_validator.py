@@ -15,7 +15,7 @@ class TimeWindowValidator(ScrapedJobValidator):
                 job_time = job_time.replace(tzinfo=timezone.utc)
             time_diff = datetime.now(timezone.utc) - job_time    
 
-            if time_diff > timedelta(hours=24*30):
+            if time_diff > timedelta(hours=24):
                 return False
         except Exception as e:
             print(f"[TimeWindowValidator] Error processing timestamp object: {e}")

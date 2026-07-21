@@ -5,11 +5,13 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"log"
 	"net/http"
+	"time"
 
 	"job-scraper-service/internal/config"
 	"job-scraper-service/internal/models"
-	"job-scraper-service/internal/scraper"
+	scraper "job-scraper-service/internal/scrapers"
 )
 
 type GreenhouseScraper struct {
@@ -77,13 +79,29 @@ func (g *GreenhouseScraper) Fetch(ctx context.Context, company string, validatio
 
 	// 3. Transform and stream jobs immediately into the pipeline channel
 	for _, rawJob := range ghResp.Jobs {
+		// 1. Initialize a nil pointer for the time
+		var postedAt *time.Time
+
+		// 2. Safely attempt to parse the string if it isn't empty
+		if rawJob.UpdatedAt != "" {
+			parsedTime, err := time.Parse(time.RFC3339, rawJob.UpdatedAt)
+			if err == nil {
+				// If successful, assign the memory address of the parsed time
+				postedAt = &parsedTime
+			} else {
+				// Log the error but don't crash the scraper; it will just remain nil
+				log.Printf("Warning: Failed to parse time '%s' for job %s", rawJob.UpdatedAt, rawJob.Title)
+			}
+		}
+
 		job := models.ScrapedJob{
 			Title:       rawJob.Title,
 			Company:     company,
 			Platform:    models.Greenhouse,
 			Location:    rawJob.Location.Name,
-			Description: rawJob.Content, // HTML clean is handled down the pipe
+			Description: rawJob.Content,
 			URL:         rawJob.AbsoluteURL,
+			PostedAt:    postedAt,
 		}
 		validationChan <- job
 	}
