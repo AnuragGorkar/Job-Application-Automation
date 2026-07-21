@@ -22,8 +22,10 @@ func getScrapers(sharedClient *http.Client, cfg *config.ScraperConfig) map[model
 
 	// Register drivers using their dedicated platform enums
 	scrapersMap[models.Greenhouse] = ats_scraper.NewGreenhouseScraper(sharedClient, cfg)
-	// scrapersMap[models.Workday] = ats_scraper.NewWorkdayScraper(sharedClient, cfg)
-	// scrapersMap[models.Lever] = ats_scraper.NewLeverScraper(sharedClient, cfg)
+	scrapersMap[models.Lever] = ats_scraper.NewLeverScraper(sharedClient, cfg)
+	scrapersMap[models.SmartRecruiters] = ats_scraper.NewSmartRecruitersScraper(sharedClient, cfg)
+	scrapersMap[models.Ashby] = ats_scraper.NewAshbyScraper(sharedClient, cfg)
+	scrapersMap[models.Workday] = ats_scraper.NewWorkdayScraper(sharedClient, cfg)
 
 	return scrapersMap
 }

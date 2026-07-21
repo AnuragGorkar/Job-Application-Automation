@@ -21,7 +21,8 @@ type GreenhouseScraper struct {
 
 func NewGreenhouseScraper(client *http.Client, cfg *config.ScraperConfig) *GreenhouseScraper {
 	return &GreenhouseScraper{
-		BaseScraper: scraper.NewBaseScraper(client, cfg, 50, 50, 20), // 20 concurrent requests max
+		// BaseScraper: scraper.NewBaseScraper(client, cfg, 100, 50, 100), Safe config
+		BaseScraper: scraper.NewBaseScraper(client, cfg, 250, 250, 250), // 50 concurrent requests max
 		BaseURL:     "https://boards-api.greenhouse.io/v1/boards/",
 	}
 }
@@ -59,6 +60,7 @@ func (g *GreenhouseScraper) Fetch(ctx context.Context, company string, validatio
 
 	resp, err := g.BaseScraper.Client.Do(req)
 	if err != nil {
+		log.Printf("[Greenhouse Fetch] Error for %s: %v", company, err)
 		return err
 	}
 	defer resp.Body.Close()
